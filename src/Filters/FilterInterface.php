@@ -22,5 +22,5 @@ interface FilterInterface
    * Unless you know what you are doing, the return type must be the same as
    * parameter type.
    */
-  public function filter(mixed $propertyValue): mixed;
+  public function filter(mixed $propertyValue);
 }

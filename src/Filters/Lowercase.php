@@ -5,14 +5,10 @@ namespace Jawira\Sanitizer\Filters;
 use Attribute;
 
 #[Attribute]
-class Trim implements FilterInterface
+class Lowercase implements FilterInterface
 {
-  public function __construct(private string $characters = " \t\n\r\0\x0B")
-  {
-  }
-
   /**
-   * `trim` function only accepts strings.
+   * `mb_strtolower` function only accepts strings.
    */
   public function check(mixed $propertyValue): bool
   {
@@ -20,13 +16,13 @@ class Trim implements FilterInterface
   }
 
   /**
-   * Apply `trim` function.
+   * Apply `mb_strtolower function.
    *
    * @param string $propertyValue
    * @return string
    */
   public function filter(mixed $propertyValue): mixed
   {
-    return trim($propertyValue, $this->characters);
+    return mb_strtolower($propertyValue);
   }
 }

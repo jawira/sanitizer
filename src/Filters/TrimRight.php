@@ -5,14 +5,14 @@ namespace Jawira\Sanitizer\Filters;
 use Attribute;
 
 #[Attribute]
-class Trim implements FilterInterface
+class TrimRight implements FilterInterface
 {
   public function __construct(private string $characters = " \t\n\r\0\x0B")
   {
   }
 
   /**
-   * `trim` function only accepts strings.
+   * `rtrim function only accepts strings.
    */
   public function check(mixed $propertyValue): bool
   {
@@ -20,13 +20,13 @@ class Trim implements FilterInterface
   }
 
   /**
-   * Apply `trim` function.
+   * Apply `rtrim` function.
    *
    * @param string $propertyValue
    * @return string
    */
   public function filter(mixed $propertyValue): mixed
   {
-    return trim($propertyValue, $this->characters);
+    return rtrim($propertyValue, $this->characters);
   }
 }

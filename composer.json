@@ -26,11 +26,6 @@
       "Jawira\\Sanitizer\\": "src/"
     }
   },
-  "autoload-dev": {
-    "psr-4": {
-      "Tests\\": "tests"
-    }
-  },
   "config": {
     "allow-plugins": {
       "ergebnis/composer-normalize": true
