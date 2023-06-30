@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Project name" description="Project description" default="help" phingVersion="3">
 
+
+  <target name="setup" depends="composer:install"/>
+  <target name="qa" depends="php:lint,composer:normalize,composer:validate"/>
+
+
   <target name="php:lint" description="Check PHP syntax">
     <phplint haltonfailure="true">
       <fileset dir="${project.basedir}">
@@ -10,17 +15,6 @@
       </fileset>
     </phplint>
   </target>
-
-  <target name="symfony:lint:yaml" description="Validate YAML files in project">
-    <SymfonyConsole command="lint:yaml">
-      <arg value="--parse-tags"/>
-      <arg value="--no-debug"/>
-      <arg value="--ansi"/>
-      <arg value="--no-interaction"/>
-      <arg value="${phing.dir}"/>
-    </SymfonyConsole>
-  </target>
-
 
   <target name="help">
     <uptodate property="uptodate.visualizer" srcfile="build.xml" targetfile="build.svg"/>
@@ -32,15 +26,13 @@
     <visualizer format="svg"/>
   </target>
 
-  <property name="composer.flag" value="--dev"/>
-  <target name="composer:install" description="PHP dependencies">
-    <!-- Use &#45;&#45;no-dev for prod -->
+  <target name="composer:install" description="Install PHP dependencies for dev">
     <composer command="install">
       <arg value="--no-interaction"/>
       <arg value="--prefer-dist"/>
       <arg value="--no-progress"/>
       <arg value="--ansi"/>
-      <arg value="${composer.flag}"/>
+      <arg value="--dev"/>
     </composer>
   </target>
 
