@@ -16,27 +16,24 @@ class SanitizerService implements SanitizerInterface
 
   private function sanitizeProperty(object $object, ReflectionProperty $reflectionProperty): void
   {
-    // Is this property initialized ?
     $reflectionProperty->setAccessible(true);
     if (!$reflectionProperty->isInitialized($object)) {
       return;
     }
 
-    // extract all attributes
-    $attributes = $reflectionProperty->getAttributes();
-    foreach ($attributes as $attribute) {
+    foreach ($reflectionProperty->getAttributes() as $attribute) {
       $this->applyFilter($object, $reflectionProperty, $attribute);
     }
   }
 
   private function applyFilter(object $object, ReflectionProperty $reflectionProperty, ReflectionAttribute $attribute): void
   {
-    // Check is valid Sanitizer
     $filter = $attribute->newInstance();
     if (!$filter instanceof Filters\FilterInterface) {
       return;
     }
 
+    /** @var mixed $oldValue */
     $oldValue = $reflectionProperty->getValue($object);
     if (!$filter->check($oldValue)) {
       return;

@@ -7,8 +7,12 @@ use Attribute;
 #[Attribute]
 class Trim implements FilterInterface
 {
+  public function __construct(private string $characters = " \t\n\r\0\x0B")
+  {
+  }
+
   /**
-   * {@inheritDoc}
+   * Trim function only accepts strings.
    */
   public function check(mixed $propertyValue): bool
   {
@@ -16,11 +20,11 @@ class Trim implements FilterInterface
   }
 
   /**
-   * {@inheritDoc}
+   * Apply trim function.
    */
   public function filter(mixed $propertyValue): mixed
   {
     assert(is_string($propertyValue));
-    return trim($propertyValue);
+    return trim($propertyValue, $this->characters);
   }
 }

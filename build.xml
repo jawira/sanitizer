@@ -3,7 +3,7 @@
 
 
   <target name="setup" depends="composer:install"/>
-  <target name="qa" depends="php:lint,composer:normalize,composer:validate,psalm:check"/>
+  <target name="qa" depends="php:lint,composer:normalize,composer:validate,psalm:check,phpunit:check"/>
 
 
   <target name="php:lint" description="Check PHP syntax">
@@ -56,6 +56,18 @@
   <target name="psalm:check" description="Check code with Psalm">
     <exec executable="vendor/bin/psalm" checkreturn="true" passthru="true">
       <arg line="--no-cache --long-progress"/>
+    </exec>
+  </target>
+
+  <target name="psalm:run" description="Check code with Psalm">
+    <exec executable="vendor/bin/psalm" checkreturn="true" passthru="true">
+      <arg line="--no-cache --long-progress"/>
+    </exec>
+  </target>
+
+  <target name="phpunit:check" description="Run unitary tests">
+    <exec executable="vendor/bin/phpunit" checkreturn="true" passthru="true">
+      <env key="XDEBUG_MODE" value="coverage"/>
     </exec>
   </target>
 
