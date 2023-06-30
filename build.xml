@@ -3,7 +3,7 @@
 
 
   <target name="setup" depends="composer:install"/>
-  <target name="qa" depends="php:lint,composer:normalize,composer:validate"/>
+  <target name="qa" depends="php:lint,composer:normalize,composer:validate,psalm:check"/>
 
 
   <target name="php:lint" description="Check PHP syntax">
@@ -51,6 +51,12 @@
       <arg value="--indent-size=2"/>
       <arg value="--indent-style=space"/>
     </composer>
+  </target>
+
+  <target name="psalm:check" description="Check code with Psalm">
+    <exec executable="vendor/bin/psalm" checkreturn="true" passthru="true">
+      <arg line="--no-cache --long-progress"/>
+    </exec>
   </target>
 
 </project>

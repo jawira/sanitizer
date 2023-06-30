@@ -18,7 +18,8 @@
     "ergebnis/composer-normalize": "^2.31",
     "jawira/skeleton": "^2.18",
     "pds/skeleton": "^1.0",
-    "phpunit/phpunit": "^9.6"
+    "phpunit/phpunit": "^9.6",
+    "vimeo/psalm": "^5.13"
   },
   "autoload": {
     "psr-4": {
