@@ -2,20 +2,16 @@
 
 namespace Jawira\Sanitizer;
 
-use Jawira\Sanitizer\Filters\FilterInterface;
 use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionProperty;
 
-class SanitizerService
+class SanitizerService implements SanitizerInterface
 {
-  public function sanitize(object $toSanitize): void
+  public function sanitize(object $object): void
   {
-    $reflectionClass = new ReflectionClass($toSanitize);
-    $allProperties = $reflectionClass->getProperties();
-    foreach ($allProperties as $reflectionProperty) {
-      $this->sanitizeProperty($toSanitize, $reflectionProperty);
-    }
+    $reflectionClass = new ReflectionClass($object);
+    array_map(fn(ReflectionProperty $reflectionProperty) => $this->sanitizeProperty($object, $reflectionProperty), $reflectionClass->getProperties());
   }
 
   private function sanitizeProperty(object $object, ReflectionProperty $reflectionProperty): void
@@ -35,14 +31,14 @@ class SanitizerService
 
   private function applyFilter(object $object, ReflectionProperty $reflectionProperty, ReflectionAttribute $attribute): void
   {
-    // Check is Sanitizer
+    // Check is valid Sanitizer
     $filter = $attribute->newInstance();
-    if (!$filter instanceof FilterInterface) {
+    if (!$filter instanceof Filters\FilterInterface) {
       return;
     }
 
     $oldValue = $reflectionProperty->getValue($object);
-    if (!$filter->preConditions($oldValue)) {
+    if (!$filter->check($oldValue)) {
       return;
     }
 

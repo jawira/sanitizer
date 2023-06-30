@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Jawira\Sanitizer\Filters;
 
@@ -7,13 +7,19 @@ use Attribute;
 #[Attribute]
 class Trim implements FilterInterface
 {
-  public function preConditions(mixed $data): bool
+  /**
+   * {@inheritDoc}
+   */
+  public function check(mixed $propertyValue): bool
   {
-    return is_string($data);
+    return is_string($propertyValue);
   }
 
-  public function filter(mixed $data): mixed
+  /**
+   * {@inheritDoc}
+   */
+  public function filter(mixed $propertyValue): mixed
   {
-    return trim($data);
+    return trim($propertyValue);
   }
 }
