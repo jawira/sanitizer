@@ -38,7 +38,7 @@ final class TrimTest extends TestCase
    */
   public function testTrimPrivate($name, $expected): void
   {
-    $trim = new Demos\TrimPrivate();
+    $trim = new \Tests\Demos\TrimPrivate();
     $trim->setName($name);
     $this->sanitizer->sanitize($trim);
 

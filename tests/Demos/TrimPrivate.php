@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\Demos;
+namespace Tests\Demos;
 
 use Jawira\Sanitizer\Filters as Sanitizer;
 

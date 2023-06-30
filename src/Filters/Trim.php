@@ -21,10 +21,12 @@ class Trim implements FilterInterface
 
   /**
    * Apply trim function.
+   *
+   * @param string $propertyValue
+   * @return string
    */
   public function filter(mixed $propertyValue): mixed
   {
-    assert(is_string($propertyValue));
     return trim($propertyValue, $this->characters);
   }
 }

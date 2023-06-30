@@ -12,6 +12,7 @@
          failOnRisky="true"
          failOnWarning="true"
          verbose="true">
+
   <testsuites>
     <testsuite name="default">
       <directory>tests</directory>
@@ -24,4 +25,5 @@
       <directory suffix=".php">src</directory>
     </include>
   </coverage>
+
 </phpunit>
