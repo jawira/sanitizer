@@ -20,6 +20,7 @@ class Trim implements FilterInterface
    */
   public function filter(mixed $propertyValue): mixed
   {
+    assert(is_string($propertyValue));
     return trim($propertyValue);
   }
 }

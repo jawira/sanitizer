@@ -7,7 +7,8 @@ interface FilterInterface
   /**
    * Can you use this filter with this value?
    *
-   * Be as strict as possible to be sure you can apply filter later.
+   * Be as strict as possible to be sure you can
+   * apply {@see FilterInterface::filter}.
    */
   public function check(mixed $propertyValue): bool;
 
@@ -18,8 +19,8 @@ interface FilterInterface
    * implement {@see FilterInterface::check} to be sure you can apply the
    * filter.
    *
-   * @param mixed $propertyValue The original value.
-   * @return mixed The new sanitized value.
+   * Unless you know what you are doing, the return type must be the same as
+   * parameter type.
    */
   public function filter(mixed $propertyValue): mixed;
 }
