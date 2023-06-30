@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Project name" description="Project description" default="help" phingVersion="3">
+
+  <target name="php:lint" description="Check PHP syntax">
+    <phplint haltonfailure="true">
+      <fileset dir="${project.basedir}">
+        <include name="src/**/*.php"/>
+        <include name="tests/**/*.php"/>
+        <include name="migrations/**/*.php"/>
+      </fileset>
+    </phplint>
+  </target>
+
+  <target name="symfony:lint:yaml" description="Validate YAML files in project">
+    <SymfonyConsole command="lint:yaml">
+      <arg value="--parse-tags"/>
+      <arg value="--no-debug"/>
+      <arg value="--ansi"/>
+      <arg value="--no-interaction"/>
+      <arg value="${phing.dir}"/>
+    </SymfonyConsole>
+  </target>
+
+
+  <target name="help">
+    <uptodate property="uptodate.visualizer" srcfile="build.xml" targetfile="build.svg"/>
+    <runtarget target="map"/>
+    <open path="build.svg"/>
+  </target>
+
+  <target name="map" unless="uptodate.visualizer" description="Create buildfile map">
+    <visualizer format="svg"/>
+  </target>
+
+  <property name="composer.flag" value="--dev"/>
+  <target name="composer:install" description="PHP dependencies">
+    <!-- Use &#45;&#45;no-dev for prod -->
+    <composer command="install">
+      <arg value="--no-interaction"/>
+      <arg value="--prefer-dist"/>
+      <arg value="--no-progress"/>
+      <arg value="--ansi"/>
+      <arg value="${composer.flag}"/>
+    </composer>
+  </target>
+
+  <target name="composer:validate" description="Validate composer.json">
+    <composer command="validate">
+      <arg value="--ansi"/>
+      <arg value="--no-interaction"/>
+    </composer>
+  </target>
+
+  <target name="composer:normalize" description="Normalize composer.json">
+    <composer command="normalize">
+      <arg value="--ansi"/>
+      <arg value="--no-interaction"/>
+      <arg value="--diff"/>
+      <arg value="--indent-size=2"/>
+      <arg value="--indent-style=space"/>
+    </composer>
+  </target>
+
+</project>

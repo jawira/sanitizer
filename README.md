@@ -1,2 +1,3 @@
-# sanitizer
-Sanitize your classes with attributes
+# 😷 jawira/sanitizer
+
+Sanitize your classes using attributes

@@ -1,0 +1,36 @@
+{
+  "name": "jawira/sanitizer",
+  "description": "Sanitize your classes using attributes",
+  "license": [
+    "MIT"
+  ],
+  "type": "library",
+  "authors": [
+    {
+      "name": "Jawira Portugal",
+      "email": "dev@tugal.be"
+    }
+  ],
+  "require": {
+    "php": "^8.0"
+  },
+  "require-dev": {
+    "ergebnis/composer-normalize": "^2.31",
+    "jawira/skeleton": "^2.18",
+    "pds/skeleton": "^1.0",
+    "phpunit/phpunit": "^9.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "Jawira\\Sanitizer\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "ergebnis/composer-normalize": true
+    },
+    "platform-check": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  }
+}
