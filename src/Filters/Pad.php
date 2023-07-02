@@ -21,12 +21,11 @@ class Pad implements FilterInterface
 
   /**
    * Apply `str_pad` function adding pad to the right.
-   *
-   * @param mixed $propertyValue
-   * @return string
    */
-  public function filter(mixed $propertyValue): mixed
+  public function filter(mixed $propertyValue): string
   {
+    assert(is_string($propertyValue));
+
     return str_pad($propertyValue, $this->length, $this->padString);
   }
 }

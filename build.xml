@@ -62,6 +62,7 @@
   <target name="phpunit:check" description="Run unitary tests">
     <exec executable="vendor/bin/phpunit" checkreturn="true" passthru="true">
       <env key="XDEBUG_MODE" value="coverage"/>
+      <arg value="--coverage-text"/>
     </exec>
   </target>
 

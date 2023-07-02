@@ -5,27 +5,19 @@ namespace Jawira\Sanitizer\Filters;
 use Attribute;
 
 #[Attribute]
-class TrimLeft implements FilterInterface
+class Integer implements FilterInterface
 {
-  public function __construct(private string $characters = " \t\n\r\0\x0B")
-  {
-  }
-
-  /**
-   * `ltrim` function only accepts strings.
-   */
   public function check(mixed $propertyValue): bool
   {
     return is_string($propertyValue);
   }
 
-  /**
-   * Apply `ltrim` function.
-   */
   public function filter(mixed $propertyValue): string
   {
     assert(is_string($propertyValue));
+    $result = filter_var($propertyValue, \FILTER_SANITIZE_NUMBER_INT);
+    assert(is_string($result));
 
-    return ltrim($propertyValue, $this->characters);
+    return $result;
   }
 }

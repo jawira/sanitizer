@@ -17,12 +17,10 @@ class Uppercase implements FilterInterface
 
   /**
    * Apply `mb_strtoupper` function.
-   *
-   * @param string $propertyValue
-   * @return string
    */
-  public function filter(mixed $propertyValue): mixed
+  public function filter(mixed $propertyValue): string
   {
+    assert(is_string($propertyValue));
     return mb_strtoupper($propertyValue);
   }
 }
