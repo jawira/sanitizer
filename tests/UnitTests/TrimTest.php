@@ -46,7 +46,7 @@ class TrimTest extends TestCase
    */
   public function testFilter($value, $direction, $expected)
   {
-    $filter = new Trim();
+    $filter = new Trim(direction: $direction);
     $result = $filter->filter($value);
     $this->assertSame($result, $expected);
   }
@@ -56,18 +56,19 @@ class TrimTest extends TestCase
     return [
       ['', Trim::BOTH, ''],
       ["\t", Trim::BOTH, ''],
+      ["\r\n", Trim::BOTH, ''],
       ['xxx', Trim::BOTH, 'xxx'],
       ['123', Trim::BOTH, '123'],
       ['5e5', Trim::BOTH, '5e5'],
-      ['Hello      ', Trim::BOTH, 'Hello'],
       ['      Hello', Trim::BOTH, 'Hello'],
       ['   Hello   ', Trim::BOTH, 'Hello'],
-      ['Hello      ', Trim::LEFT, 'Hello      '],
+      ['Hello      ', Trim::BOTH, 'Hello'],
       ['      Hello', Trim::LEFT, 'Hello'],
       ['   Hello   ', Trim::LEFT, 'Hello   '],
-      ['Hello      ', Trim::RIGHT, 'Hello      '],
-      ['      Hello', Trim::RIGHT, 'Hello'],
+      ['Hello      ', Trim::LEFT, 'Hello      '],
+      ['      Hello', Trim::RIGHT, '      Hello'],
       ['   Hello   ', Trim::RIGHT, '   Hello'],
+      ['Hello      ', Trim::RIGHT, 'Hello'],
     ];
   }
 }

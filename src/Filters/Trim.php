@@ -30,13 +30,11 @@ class Trim implements FilterInterface
   public function filter(mixed $propertyValue): string
   {
     assert(is_string($propertyValue));
-    $result = match ($this->direction) {
+
+    return match ($this->direction) {
       self::LEFT => ltrim($propertyValue, $this->characters),
       self::RIGHT => rtrim($propertyValue, $this->characters),
       default => trim($propertyValue, $this->characters),
     };
-    assert(is_string($result));
-
-    return $result;
   }
 }
