@@ -7,7 +7,12 @@ use Attribute;
 #[Attribute]
 class Trim implements FilterInterface
 {
-  public function __construct(private string $characters = " \t\n\r\0\x0B")
+  public const BOTH = 'both';
+  public const LEFT = 'left';
+  public const RIGHT = 'right';
+
+  public function __construct(private string $characters = " \t\n\r\0\x0B",
+                              private string $direction = self::BOTH)
   {
   }
 
@@ -27,6 +32,14 @@ class Trim implements FilterInterface
    */
   public function filter(mixed $propertyValue): mixed
   {
-    return trim($propertyValue, $this->characters);
+    assert(is_string($propertyValue));
+    $result = match ($this->direction) {
+      self::LEFT => ltrim($propertyValue, $this->characters),
+      self::RIGHT => rtrim($propertyValue, $this->characters),
+      default => trim($propertyValue, $this->characters),
+    };
+    assert(is_string($result));
+
+    return $result;
   }
 }
