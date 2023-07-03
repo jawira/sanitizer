@@ -44,37 +44,37 @@ class IntegerTest extends TestCase
   /**
    * @covers       \Jawira\Sanitizer\Filters\Integer::filter
    * @dataProvider filterProvider
-   * @testdox Integer filter sanitizes value $value as $expected
+   * @testdox      Integer filter sanitizes value $value as $expected
    */
   public function testFilter($value, $expected)
   {
     $filter = new Integer();
     $result = $filter->filter($value);
 
-    $this->assertSame($result, $expected);
+    $this->assertSame($expected, $result);
   }
 
   public function filterProvider()
   {
     return [
-      ['',''],
-      ["\t",""],
-      ['xxx',''],
-      ['032','032'],
-      ['+24','+24'],
-      ['++032','++032'],
-      ['--032','--032'],
-      ['-64 with text','-64'],
-      ['00032','00032'],
-      ['000003200000','000003200000'],
-      ['123','123'],
-      ['3.14','314'],
-      ['5e5','55'],
-      ['Hello      ',''],
-      ['      Hello',''],
-      ['   Hello   ',''],
-      ['Γεια σας',''],
-      ['H3ll0','30'],
+      ['', ''],
+      ["\t", ""],
+      ['xxx', ''],
+      ['032', '032'],
+      ['+24', '+24'],
+      ['++032', '++032'],
+      ['--032', '--032'],
+      ['-64 with text', '-64'],
+      ['00032', '00032'],
+      ['000003200000', '000003200000'],
+      ['123', '123'],
+      ['3.14', '314'],
+      ['5e5', '55'],
+      ['Hello      ', ''],
+      ['      Hello', ''],
+      ['   Hello   ', ''],
+      ['Γεια σας', ''],
+      ['H3ll0', '30'],
     ];
   }
 }

@@ -49,7 +49,7 @@ class LowercaseTest extends TestCase
     $filter = new Lowercase();
     $result = $filter->filter($value);
 
-    $this->assertSame($result, $expected);
+    $this->assertSame($expected, $result);
   }
 
   public function filterProvider()

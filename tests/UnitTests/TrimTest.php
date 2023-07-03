@@ -48,7 +48,7 @@ class TrimTest extends TestCase
   {
     $filter = new Trim(direction: $direction);
     $result = $filter->filter($value);
-    $this->assertSame($result, $expected);
+    $this->assertSame($expected, $result);
   }
 
   public function filterProvider()
