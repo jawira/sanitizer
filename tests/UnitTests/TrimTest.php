@@ -44,24 +44,31 @@ class TrimTest extends TestCase
    * @covers       \Jawira\Sanitizer\Filters\Trim::__construct
    * @dataProvider filterProvider
    */
-  public function testFilter($value, $expected)
+  public function testFilter($value, $direction, $expected)
   {
-    $filter = new Trim();
+    $filter = new Trim(direction: $direction);
     $result = $filter->filter($value);
-    $this->assertSame($result, $expected);
+    $this->assertSame($expected, $result);
   }
 
   public function filterProvider()
   {
     return [
-      ['',''],
-      ["\t",''],
-      ['xxx','xxx'],
-      ['123','123'],
-      ['5e5','5e5'],
-      ['Hello      ','Hello'],
-      ['      Hello','Hello'],
-      ['   Hello   ','Hello'],
+      ['', Trim::BOTH, ''],
+      ["\t", Trim::BOTH, ''],
+      ["\r\n", Trim::BOTH, ''],
+      ['xxx', Trim::BOTH, 'xxx'],
+      ['123', Trim::BOTH, '123'],
+      ['5e5', Trim::BOTH, '5e5'],
+      ['      Hello', Trim::BOTH, 'Hello'],
+      ['   Hello   ', Trim::BOTH, 'Hello'],
+      ['Hello      ', Trim::BOTH, 'Hello'],
+      ['      Hello', Trim::LEFT, 'Hello'],
+      ['   Hello   ', Trim::LEFT, 'Hello   '],
+      ['Hello      ', Trim::LEFT, 'Hello      '],
+      ['      Hello', Trim::RIGHT, '      Hello'],
+      ['   Hello   ', Trim::RIGHT, '   Hello'],
+      ['Hello      ', Trim::RIGHT, 'Hello'],
     ];
   }
 }

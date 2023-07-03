@@ -3,29 +3,21 @@
 namespace Jawira\Sanitizer\Filters;
 
 use Attribute;
+use function is_string;
+use function mb_strtolower;
 
 #[Attribute]
-class TrimLeft implements FilterInterface
+class Capitalize implements FilterInterface
 {
-  public function __construct(private string $characters = " \t\n\r\0\x0B")
-  {
-  }
-
-  /**
-   * `ltrim` function only accepts strings.
-   */
   public function check(mixed $propertyValue): bool
   {
     return is_string($propertyValue);
   }
 
-  /**
-   * Apply `ltrim` function.
-   */
   public function filter(mixed $propertyValue): string
   {
     assert(is_string($propertyValue));
 
-    return ltrim($propertyValue, $this->characters);
+    return mb_convert_case($propertyValue, MB_CASE_TITLE);
   }
 }

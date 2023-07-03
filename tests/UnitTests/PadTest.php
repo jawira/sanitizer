@@ -46,9 +46,9 @@ class PadTest extends TestCase
    */
   public function testFilter($value, $length, $padString, $expected)
   {
-    $filter = new Pad($length, $padString);
+    $filter = new Pad($length, $padString,);
     $result = $filter->filter($value);
-    $this->assertSame($result, $expected);
+    $this->assertSame($expected, $result);
   }
 
   public function filterProvider()
