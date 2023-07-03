@@ -38,6 +38,7 @@ echo $user->name; // After: 'Bob'
 | **Integer**    | _string_   | Remove all characters except digits, plus and minus sign.                               |
 | **Lowercase**  | _string_   | Make a string lowercase.                                                                |
 | **Pad**        | _string_   | Pad a string to a certain length with another string.                                   |
+| **StripTags**  | _string_   | Strip HTML and PHP tags from a string.                                                  |
 | **Trim**       | _string_   | Strip whitespace (or other characters) from the beginning and end of a string.          |
 | **Uppercase**  | _string_   | Make a string uppercase.                                                                |
 
@@ -46,3 +47,7 @@ echo $user->name; // After: 'Bob'
 ```console
 composer require jawira/sanitizer
 ```
+
+### Security
+
+You must not solely rely on sanitization, you must implement a proper data validation mechanism.
