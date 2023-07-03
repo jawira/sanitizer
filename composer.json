@@ -16,6 +16,7 @@
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.31",
+    "friendsofphp/php-cs-fixer": "^3.20",
     "jawira/skeleton": "^2.18",
     "pds/skeleton": "^1.0",
     "phpunit/phpunit": "^9.6",

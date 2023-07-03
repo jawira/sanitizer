@@ -1,11 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Jawira\Sanitizer\Filters;
 
 #[\Attribute]
 class LteZero implements FilterInterface
 {
-
   public function check(mixed $propertyValue): bool
   {
     if (!\is_int($propertyValue) && !\is_float($propertyValue)) {

@@ -66,4 +66,16 @@
     </exec>
   </target>
 
+  <target name="cs:check" description="Check if coding standards are respected">
+    <exec executable="vendor/bin/php-cs-fixer" passthru="true" checkreturn="true">
+      <arg line="fix --diff --allow-risky=yes --ansi --dry-run"/>
+    </exec>
+  </target>
+
+  <target name="cs:fix" description="Fix coding standards in project">
+    <exec executable="vendor/bin/php-cs-fixer" passthru="true" checkreturn="true">
+      <arg line="fix --diff --allow-risky=yes --ansi"/>
+    </exec>
+  </target>
+
 </project>
