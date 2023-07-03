@@ -7,7 +7,13 @@ use Attribute;
 #[Attribute]
 class Pad implements FilterInterface
 {
-  public function __construct(private int $length, private string $padString = ' ')
+  public const BOTH = 'both';
+  public const LEFT = 'left';
+  public const RIGHT = 'right';
+
+  public function __construct(private int    $length,
+                              private string $padString = ' ',
+                              private string $direction = self::RIGHT)
   {
   }
 
@@ -25,7 +31,12 @@ class Pad implements FilterInterface
   public function filter(mixed $propertyValue): string
   {
     assert(is_string($propertyValue));
+    $padType = match ($this->direction) {
+      self::LEFT => \STR_PAD_LEFT,
+      self::RIGHT => \STR_PAD_RIGHT,
+      self::BOTH => \STR_PAD_BOTH,
+    };
 
-    return str_pad($propertyValue, $this->length, $this->padString);
+    return str_pad($propertyValue, $this->length, $this->padString, $padType);
   }
 }
