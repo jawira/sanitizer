@@ -39,6 +39,7 @@ class SanitizerService implements SanitizerInterface
       return;
     }
 
+    /** @var mixed $newValue */
     $newValue = $filter->filter($oldValue);
     $reflectionProperty->setValue($object, $newValue);
   }

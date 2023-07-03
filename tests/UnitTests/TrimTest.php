@@ -9,6 +9,7 @@ class TrimTest extends TestCase
 {
   /**
    * @covers       \Jawira\Sanitizer\Filters\Trim::check
+   * @covers       \Jawira\Sanitizer\Filters\Trim::__construct
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
@@ -40,6 +41,7 @@ class TrimTest extends TestCase
 
   /**
    * @covers       \Jawira\Sanitizer\Filters\Trim::filter
+   * @covers       \Jawira\Sanitizer\Filters\Trim::__construct
    * @dataProvider filterProvider
    */
   public function testFilter($value, $direction, $expected)

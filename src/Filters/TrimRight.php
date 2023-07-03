@@ -3,17 +3,16 @@
 namespace Jawira\Sanitizer\Filters;
 
 use Attribute;
-use const STR_PAD_LEFT;
 
 #[Attribute]
-class PadLeft implements FilterInterface
+class TrimRight implements FilterInterface
 {
-  public function __construct(private int $length, private string $padString = ' ')
+  public function __construct(private string $characters = " \t\n\r\0\x0B")
   {
   }
 
   /**
-   * `str_pad` function only accepts strings.
+   * `rtrim function only accepts strings.
    */
   public function check(mixed $propertyValue): bool
   {
@@ -21,12 +20,12 @@ class PadLeft implements FilterInterface
   }
 
   /**
-   * Apply `str_pad` function adding pad to the left.
+   * Apply `rtrim` function.
    */
   public function filter(mixed $propertyValue): string
   {
     assert(is_string($propertyValue));
 
-    return str_pad($propertyValue, $this->length, $this->padString, STR_PAD_LEFT);
+    return rtrim($propertyValue, $this->characters);
   }
 }

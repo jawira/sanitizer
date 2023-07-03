@@ -9,6 +9,7 @@ class PadTest extends TestCase
 {
   /**
    * @covers       \Jawira\Sanitizer\Filters\Pad::check
+   * @covers       \Jawira\Sanitizer\Filters\Pad::__construct
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
@@ -40,6 +41,7 @@ class PadTest extends TestCase
 
   /**
    * @covers       \Jawira\Sanitizer\Filters\Pad::filter
+   * @covers       \Jawira\Sanitizer\Filters\Pad::__construct
    * @dataProvider filterProvider
    */
   public function testFilter($value, $length, $padString, $expected)

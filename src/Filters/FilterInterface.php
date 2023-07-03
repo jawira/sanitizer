@@ -2,25 +2,26 @@
 
 namespace Jawira\Sanitizer\Filters;
 
+use phpDocumentor\Reflection\Types\Mixed_;
+
 interface FilterInterface
 {
   /**
    * Can you use this filter with this value?
    *
-   * Be as strict as possible to be sure you can
-   * apply {@see FilterInterface::filter}.
+   * If this condition is not met, the filter will be skipped. Be as strict as
+   * possible to be sure you can apply {@see FilterInterface::filter}.
    */
   public function check(mixed $propertyValue): bool;
 
   /**
    * Apply the filter to sanitize the value.
    *
-   * You must return a value. Because input value is not known you have to
-   * implement {@see FilterInterface::check} to be sure you can apply the
-   * filter.
+   * Because input value is `mixed` you have to implement
+   * {@see FilterInterface::check} to be sure you can apply the filter.
    *
-   * Unless you know what you are doing, the return type must be the same as
-   * parameter type.
+   * Because return type is `mixed`, please double-check return type will
+   * be the expected one.
    */
-  public function filter(mixed $propertyValue);
+  public function filter(mixed $propertyValue): mixed;
 }
