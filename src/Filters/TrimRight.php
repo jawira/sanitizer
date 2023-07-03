@@ -21,12 +21,11 @@ class TrimRight implements FilterInterface
 
   /**
    * Apply `rtrim` function.
-   *
-   * @param string $propertyValue
-   * @return string
    */
-  public function filter(mixed $propertyValue): mixed
+  public function filter(mixed $propertyValue): string
   {
+    assert(is_string($propertyValue));
+
     return rtrim($propertyValue, $this->characters);
   }
 }

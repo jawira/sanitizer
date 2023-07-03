@@ -22,12 +22,11 @@ class PadLeft implements FilterInterface
 
   /**
    * Apply `str_pad` function adding pad to the left.
-   *
-   * @param mixed $propertyValue
-   * @return string
    */
-  public function filter(mixed $propertyValue): mixed
+  public function filter(mixed $propertyValue): string
   {
+    assert(is_string($propertyValue));
+
     return str_pad($propertyValue, $this->length, $this->padString, STR_PAD_LEFT);
   }
 }

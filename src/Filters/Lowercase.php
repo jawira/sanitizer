@@ -3,6 +3,8 @@
 namespace Jawira\Sanitizer\Filters;
 
 use Attribute;
+use function is_string;
+use function mb_strtolower;
 
 #[Attribute]
 class Lowercase implements FilterInterface
@@ -17,12 +19,11 @@ class Lowercase implements FilterInterface
 
   /**
    * Apply `mb_strtolower function.
-   *
-   * @param string $propertyValue
-   * @return string
    */
-  public function filter(mixed $propertyValue): mixed
+  public function filter(mixed $propertyValue): string
   {
+    assert(is_string($propertyValue));
+
     return mb_strtolower($propertyValue);
   }
 }
