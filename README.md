@@ -29,26 +29,27 @@ $sanitizer->sanitize($user);
 echo $user->name; // After: 'Bob'
 ```
 
-### Available sanitizers
+## Available sanitizers
 
-| Sanitize         | Works with     | Description                                                                             |
+| Sanitizer        | Works with     | Description                                                                             |
 |------------------|----------------|-----------------------------------------------------------------------------------------|
-| **Ascii**        | _string_       | Remove all characters except ascii characters (numerical value >127).                   |
+| **Ascii**        | _string_       | Remove all characters except ascii characters.                                          |
 | **Capitalize**   | _string_       | Converts the first letter of each word to uppercase and leaves the others as lowercase. |
-| **GteZero**      | _int_, _float_ | Ensures number is greater or equal to zero.                                             |
+| **GteZero**      | _int_, _float_ | Ensures number is greater than or equal to zero.                                        |
 | **IntegerChars** | _string_       | Remove all characters except digits, plus and minus sign.                               |
 | **Lowercase**    | _string_       | Make a string lowercase.                                                                |
+| **LteZero**      | _int_, _float_ | Ensures number is lower than or equal to zero.                                          |
 | **Pad**          | _string_       | Pad a string to a certain length with another string.                                   |
 | **StripTags**    | _string_       | Strip HTML and PHP tags from a string.                                                  |
 | **Trim**         | _string_       | Strip whitespace (or other characters) from the beginning and end of a string.          |
 | **Uppercase**    | _string_       | Make a string uppercase.                                                                |
 
-### Install
+## Install
 
 ```console
 composer require jawira/sanitizer
 ```
 
-### Security
+## Security
 
 You must not solely rely on sanitization, you must implement a proper data validation mechanism.
