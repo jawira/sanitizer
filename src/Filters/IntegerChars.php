@@ -5,18 +5,18 @@ namespace Jawira\Sanitizer\Filters;
 use Attribute;
 
 #[Attribute]
-class Integer implements FilterInterface
+class IntegerChars implements FilterInterface
 {
   public function check(mixed $propertyValue): bool
   {
-    return is_string($propertyValue);
+    return \is_string($propertyValue);
   }
 
   public function filter(mixed $propertyValue): string
   {
-    assert(is_string($propertyValue));
-    $result = filter_var($propertyValue, \FILTER_SANITIZE_NUMBER_INT);
-    assert(is_string($result));
+    \assert(\is_string($propertyValue));
+    $result = \filter_var($propertyValue, \FILTER_SANITIZE_NUMBER_INT);
+    \assert(\is_string($result));
 
     return $result;
   }

@@ -2,18 +2,18 @@
 
 namespace UnitTests;
 
-use Jawira\Sanitizer\Filters\Integer;
+use Jawira\Sanitizer\Filters\IntegerChars;
 use PHPUnit\Framework\TestCase;
 
 class IntegerTest extends TestCase
 {
   /**
-   * @covers       \Jawira\Sanitizer\Filters\Integer::check
+   * @covers       \Jawira\Sanitizer\Filters\IntegerChars::check
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
-    $filter = new Integer();
+    $filter = new IntegerChars();
     $result = $filter->check($value);
 
     $this->assertSame($expected, $result);
@@ -42,13 +42,13 @@ class IntegerTest extends TestCase
   }
 
   /**
-   * @covers       \Jawira\Sanitizer\Filters\Integer::filter
+   * @covers       \Jawira\Sanitizer\Filters\IntegerChars::filter
    * @dataProvider filterProvider
    * @testdox      Integer filter sanitizes value $value as $expected
    */
   public function testFilter($value, $expected)
   {
-    $filter = new Integer();
+    $filter = new IntegerChars();
     $result = $filter->filter($value);
 
     $this->assertSame($expected, $result);
