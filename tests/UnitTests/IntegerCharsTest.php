@@ -5,7 +5,7 @@ namespace UnitTests;
 use Jawira\Sanitizer\Filters\IntegerChars;
 use PHPUnit\Framework\TestCase;
 
-class IntegerTest extends TestCase
+class IntegerCharsTest extends TestCase
 {
   /**
    * @covers       \Jawira\Sanitizer\Filters\IntegerChars::check
@@ -34,6 +34,9 @@ class IntegerTest extends TestCase
       ["\t", true],
       [123, false],
       [1.1, false],
+      [-123, false],
+      [-1.1, false],
+      [0, false],
       [null, false],
       [true, false],
       [false, false],
@@ -69,6 +72,7 @@ class IntegerTest extends TestCase
       ['000003200000', '000003200000'],
       ['123', '123'],
       ['3.14', '314'],
+      ['-3.14', '-314'],
       ['5e5', '55'],
       ['Hello      ', ''],
       ['      Hello', ''],

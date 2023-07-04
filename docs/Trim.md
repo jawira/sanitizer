@@ -19,7 +19,7 @@ Use <code>right</code> to apply trim at the end of string.
 
 ## Examples
 
-Remove spaces from the beggining and end of string:
+Remove spaces from the beginning and end of string:
 
 ```php
 use Jawira\Sanitizer\Filters as Sanitizer;
