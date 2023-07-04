@@ -46,7 +46,7 @@ class LteZeroTest extends TestCase
 
 
   /**
-   * @covers       \Jawira\Sanitizer\Filters\GteZero::filter
+   * @covers       \Jawira\Sanitizer\Filters\LteZero::filter
    * @dataProvider filterProvider
    */
   public function testFilter($value, $expected)
