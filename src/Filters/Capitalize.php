@@ -3,8 +3,6 @@
 namespace Jawira\Sanitizer\Filters;
 
 use Attribute;
-use function is_string;
-use function mb_strtolower;
 
 #[Attribute]
 class Capitalize implements FilterInterface

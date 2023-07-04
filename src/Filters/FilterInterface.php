@@ -1,8 +1,7 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Jawira\Sanitizer\Filters;
 
-use phpDocumentor\Reflection\Types\Mixed_;
 
 interface FilterInterface
 {
