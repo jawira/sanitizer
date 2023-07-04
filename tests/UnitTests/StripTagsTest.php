@@ -11,6 +11,7 @@ class StripTagsTest extends TestCase
 
   /**
    * @covers       \Jawira\Sanitizer\Filters\StripTags::check
+   * @covers       \Jawira\Sanitizer\Filters\StripTags::__construct
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
@@ -42,6 +43,7 @@ class StripTagsTest extends TestCase
 
   /**
    * @covers       \Jawira\Sanitizer\Filters\StripTags::filter
+   * @covers       \Jawira\Sanitizer\Filters\StripTags::__construct
    * @dataProvider filterProvider
    *
    */

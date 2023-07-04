@@ -13,7 +13,7 @@ class Pad implements FilterInterface
 
   public function __construct(private int    $length,
                               private string $padString = ' ',
-                              private string $direction = self::RIGHT)
+                              private string $side = self::RIGHT)
   {
   }
 
@@ -31,7 +31,7 @@ class Pad implements FilterInterface
   public function filter(mixed $propertyValue): string
   {
     assert(is_string($propertyValue));
-    $padType = match ($this->direction) {
+    $padType = match ($this->side) {
       self::LEFT => \STR_PAD_LEFT,
       self::RIGHT => \STR_PAD_RIGHT,
       self::BOTH => \STR_PAD_BOTH,

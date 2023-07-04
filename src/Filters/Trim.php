@@ -12,7 +12,7 @@ class Trim implements FilterInterface
   public const RIGHT = 'right';
 
   public function __construct(private string $characters = " \t\n\r\0\x0B",
-                              private string $direction = self::BOTH)
+                              private string $side = self::BOTH)
   {
   }
 
@@ -31,10 +31,10 @@ class Trim implements FilterInterface
   {
     assert(is_string($propertyValue));
 
-    return match ($this->direction) {
+    return match ($this->side) {
       self::LEFT => ltrim($propertyValue, $this->characters),
       self::RIGHT => rtrim($propertyValue, $this->characters),
-      default => trim($propertyValue, $this->characters),
+      self::BOTH => trim($propertyValue, $this->characters),
     };
   }
 }
