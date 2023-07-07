@@ -12,18 +12,18 @@ class Lowercase implements FilterInterface
   /**
    * `mb_strtolower` function only accepts strings.
    */
-  public function check(mixed $propertyValue): bool
+  public function check(mixed $value): bool
   {
-    return is_string($propertyValue);
+    return is_string($value);
   }
 
   /**
    * Apply `mb_strtolower function.
    */
-  public function filter(mixed $propertyValue): string
+  public function filter(mixed $value): string
   {
-    assert(is_string($propertyValue));
+    assert(is_string($value));
 
-    return mb_strtolower($propertyValue);
+    return mb_strtolower($value);
   }
 }

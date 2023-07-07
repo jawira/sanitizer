@@ -19,22 +19,22 @@ class Trim implements FilterInterface
   /**
    * `trim` function only accepts strings.
    */
-  public function check(mixed $propertyValue): bool
+  public function check(mixed $value): bool
   {
-    return is_string($propertyValue);
+    return is_string($value);
   }
 
   /**
    * Apply `trim` function.
    */
-  public function filter(mixed $propertyValue): string
+  public function filter(mixed $value): string
   {
-    assert(is_string($propertyValue));
+    assert(is_string($value));
 
     return match ($this->side) {
-      self::LEFT => ltrim($propertyValue, $this->characters),
-      self::RIGHT => rtrim($propertyValue, $this->characters),
-      self::BOTH => trim($propertyValue, $this->characters),
+      self::LEFT => ltrim($value, $this->characters),
+      self::RIGHT => rtrim($value, $this->characters),
+      self::BOTH => trim($value, $this->characters),
     };
   }
 }

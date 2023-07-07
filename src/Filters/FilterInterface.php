@@ -11,7 +11,7 @@ interface FilterInterface
    * If this condition is not met, the filter will be skipped. Be as strict as
    * possible to be sure you can apply {@see FilterInterface::filter}.
    */
-  public function check(mixed $propertyValue): bool;
+  public function check(mixed $value): bool;
 
   /**
    * Apply the filter to sanitize the value.
@@ -22,5 +22,5 @@ interface FilterInterface
    * Because return type is `mixed`, please double-check return type will
    * be the expected one.
    */
-  public function filter(mixed $propertyValue): mixed;
+  public function filter(mixed $value): mixed;
 }

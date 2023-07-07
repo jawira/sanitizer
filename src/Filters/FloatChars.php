@@ -10,17 +10,17 @@ class FloatChars implements FilterInterface
   {
   }
 
-  public function check(mixed $propertyValue): bool
+  public function check(mixed $value): bool
   {
-    return is_string($propertyValue);
+    return is_string($value);
   }
 
-  public function filter(mixed $propertyValue): string
+  public function filter(mixed $value): string
   {
-    \assert(\is_string($propertyValue));
+    \assert(\is_string($value));
     $thousandFlag = $this->allowThousand ? \FILTER_FLAG_ALLOW_THOUSAND : 0;
     $scientificFlag = $this->allowScientific ? \FILTER_FLAG_ALLOW_SCIENTIFIC : 0;
-    $result = \filter_var($propertyValue, \FILTER_SANITIZE_NUMBER_FLOAT, \FILTER_FLAG_ALLOW_FRACTION | $thousandFlag | $scientificFlag);
+    $result = \filter_var($value, \FILTER_SANITIZE_NUMBER_FLOAT, \FILTER_FLAG_ALLOW_FRACTION | $thousandFlag | $scientificFlag);
     \assert(\is_string($result));
 
     return $result;
