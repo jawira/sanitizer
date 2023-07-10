@@ -8,7 +8,8 @@ class StripTags implements FilterInterface
   public function __construct(
     /** @var string[] */
     private array $allowedTags = []
-  ) {
+  )
+  {
   }
 
   public function check(mixed $value): bool
@@ -20,6 +21,7 @@ class StripTags implements FilterInterface
   {
     assert(is_string($value));
 
+    /** @psalm-suppress InvalidArgument */
     return strip_tags($value, $this->allowedTags);
   }
 }

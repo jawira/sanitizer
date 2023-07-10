@@ -7,6 +7,49 @@ use PHPUnit\Framework\TestCase;
 
 class AbsTest extends TestCase
 {
+
+  /**
+   * @covers       \Jawira\Sanitizer\Filters\Abs::check
+   * @dataProvider checkProvider
+   */
+  public function testCheck($value, $expected)
+  {
+    $filter = new Abs();
+    $result = $filter->check($value);
+
+    $this->assertSame($expected, $result);
+  }
+
+  public function checkProvider()
+  {
+    return [
+      // true
+      [123, true],
+      [1.1, true],
+      [-123, true],
+      [-1.1, true],
+      [0, true],
+      [10E3, true],
+      [-10e3, true],
+      // false
+      ['a', false],
+      [' ', false],
+      ['13', false],
+      ["hello-world", false],
+      ["10e13", false],
+      ["false", false],
+      ["HELLO", false],
+      ['Test', false],
+      ['Û', false],
+      ["\t", false],
+      [null, false],
+      [true, false],
+      [false, false],
+      [array(), false],
+    ];
+  }
+
+
   /**
    * @covers       \Jawira\Sanitizer\Filters\Abs::filter
    * @dataProvider filterProvider
