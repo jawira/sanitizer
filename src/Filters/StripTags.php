@@ -11,15 +11,15 @@ class StripTags implements FilterInterface
   ) {
   }
 
-  public function check(mixed $propertyValue): bool
+  public function check(mixed $value): bool
   {
-    return is_string($propertyValue);
+    return is_string($value);
   }
 
-  public function filter(mixed $propertyValue): string
+  public function filter(mixed $value): string
   {
-    assert(is_string($propertyValue));
+    assert(is_string($value));
 
-    return strip_tags($propertyValue, $this->allowedTags);
+    return strip_tags($value, $this->allowedTags);
   }
 }
