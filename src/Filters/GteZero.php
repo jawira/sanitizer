@@ -14,7 +14,7 @@ class GteZero implements FilterInterface
     return $value < 0;
   }
 
-  public function filter(mixed $value): mixed
+  public function filter(mixed $value): int|float
   {
     \assert(\is_int($value) || \is_float($value));
 

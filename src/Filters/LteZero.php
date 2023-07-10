@@ -14,7 +14,7 @@ class LteZero implements FilterInterface
     return 0 < $value;
   }
 
-  public function filter(mixed $value): mixed
+  public function filter(mixed $value): int|float
   {
     \assert(\is_int($value) || \is_float($value));
 
