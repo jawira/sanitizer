@@ -10,7 +10,7 @@ class Digits implements FilterInterface
     return is_string($value);
   }
 
-  public function filter(mixed $value): mixed
+  public function filter(mixed $value): string
   {
     assert(is_string($value));
 
