@@ -20,8 +20,9 @@ ij_php_align_multiline_chained_methods = true
 ij_php_blank_lines_before_return_statement = 1
 ij_php_comma_after_last_array_element = true
 
-[LICENSE.md]
+[{LICENSE,README}.md]
 max_line_length = 80
+ij_visual_guides = 80
 
 [.gitattributes]
 indent_style = tab

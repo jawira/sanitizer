@@ -1,6 +1,6 @@
 {
   "name": "jawira/sanitizer",
-  "description": "Sanitize your classes using attributes",
+  "description": "Sanitize your objects with attributes.",
   "license": [
     "MIT"
   ],
