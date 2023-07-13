@@ -8,8 +8,7 @@ class StripTags implements FilterInterface
   public function __construct(
     /** @var string[] */
     private array $allowedTags = []
-  )
-  {
+  ) {
   }
 
   public function check(mixed $value): bool
