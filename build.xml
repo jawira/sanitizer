@@ -78,4 +78,25 @@
     </exec>
   </target>
 
+  <target name="mkdocs:build" description="Build documentation">
+    <exec executable="mkdocs" passthru="true" checkreturn="true">
+      <arg value="build"/>
+      <arg value="--verbose"/>
+    </exec>
+  </target>
+
+  <target name="mkdocs:serve" description="Run local server">
+    <exec executable="mkdocs" passthru="true" checkreturn="true">
+      <arg value="serve"/>
+      <arg value="--verbose"/>
+    </exec>
+  </target>
+
+  <target name="mkdocs:gh-deploy" description="Deploy docs to github">
+    <exec executable="mkdocs" passthru="true" checkreturn="true">
+      <arg value="gh-deploy"/>
+      <arg value="--verbose"/>
+    </exec>
+  </target>
+
 </project>

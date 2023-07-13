@@ -5,42 +5,53 @@ namespace Jawira\Sanitizer;
 use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionProperty;
+use function array_map;
+use function assert;
 
 class SanitizerService implements SanitizerInterface
 {
   public function sanitize(object $object): void
   {
     $reflectionClass = new ReflectionClass($object);
-    array_map(fn(ReflectionProperty $reflectionProperty) => $this->sanitizeProperty($object, $reflectionProperty), $reflectionClass->getProperties());
+    $mapper = fn(ReflectionProperty $reflectionProperty): bool => $this->sanitizeProperty($object, $reflectionProperty);
+    array_map($mapper, $reflectionClass->getProperties());
   }
 
-  private function sanitizeProperty(object $object, ReflectionProperty $reflectionProperty): void
+  /**
+   * @return bool Return value is useless but required by `array_map` function.
+   */
+  private function sanitizeProperty(object $object, ReflectionProperty $reflectionProperty): bool
   {
-    $reflectionProperty->setAccessible(true);
+    $reflectionProperty->setAccessible(true); // @todo remove when php >= 8.1
     if (!$reflectionProperty->isInitialized($object)) {
-      return;
+      return false;
     }
+    $mapper = function (ReflectionAttribute $attribute) use ($object, $reflectionProperty): bool {
+      $filter = $attribute->newInstance();
+      assert($filter instanceof Filters\FilterInterface);
 
-    foreach ($reflectionProperty->getAttributes() as $attribute) {
-      $this->applyFilter($object, $reflectionProperty, $attribute);
-    }
+      return $this->applyFilter($object, $reflectionProperty, $filter);
+    };
+    array_map($mapper, $reflectionProperty->getAttributes(Filters\FilterInterface::class, ReflectionAttribute::IS_INSTANCEOF));
+
+    return true;
   }
 
-  private function applyFilter(object $object, ReflectionProperty $reflectionProperty, ReflectionAttribute $attribute): void
+  /**
+   * @return bool Return value is useless but required by `array_map` function.
+   */
+  private function applyFilter(object $object, ReflectionProperty $reflectionProperty, Filters\FilterInterface $filter): bool
   {
-    $filter = $attribute->newInstance();
-    if (!$filter instanceof Filters\FilterInterface) {
-      return;
-    }
-
     /** @var mixed $oldValue */
     $oldValue = $reflectionProperty->getValue($object);
     if (!$filter->check($oldValue)) {
-      return;
+      return false;
     }
 
     /** @var mixed $newValue */
     $newValue = $filter->filter($oldValue);
     $reflectionProperty->setValue($object, $newValue);
+
+    return true;
   }
 }
