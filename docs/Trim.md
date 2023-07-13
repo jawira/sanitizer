@@ -2,6 +2,12 @@
 
 Trim - Strip whitespace (or other characters) from the beginning and end of a string.
 
+## Description
+
+```
+#[Sanitizer\Trim(side: 'left', characters: '+-')]
+```
+
 Trim only works with `string`, any other type is ignored.
 
 ## Parameters
@@ -74,5 +80,3 @@ class User {
 ```
 
 ## See also
-
-[Pad](pad.md) - Pad a string to a certain length with another string.
