@@ -5,3 +5,4 @@
 /.php-cs-fixer.cache
 /composer.lock
 /.phpunit.result.cache
+/build.svg

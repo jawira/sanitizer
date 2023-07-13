@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Project name" description="Project description" default="help" phingVersion="3">
+<project name="jawira/sanitizer" description="Sanitize your objects with attributes." default="help" phingVersion="3">
 
 
-  <target name="setup" depends="composer:install"/>
-  <target name="qa" depends="php:lint,composer:normalize,composer:validate,psalm:check,phpunit:check"/>
+  <target name="setup" depends="composer:install,mkdocs:build"/>
+  <target name="qa" depends="php:lint,composer:normalize,composer:validate,cs:check,psalm:check,phpunit:check"/>
 
 
   <target name="php:lint" description="Check PHP syntax">

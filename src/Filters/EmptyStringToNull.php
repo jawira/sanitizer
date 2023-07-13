@@ -5,7 +5,6 @@ namespace Jawira\Sanitizer\Filters;
 #[\Attribute]
 class EmptyStringToNull implements FilterInterface
 {
-
   public function check(mixed $value): bool
   {
     return $value === '';
