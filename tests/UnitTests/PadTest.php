@@ -125,4 +125,30 @@ class PadTest extends TestCase
       ['Hello', 10, Pad::RIGHT, 'Hello     '],
     ];
   }
+
+
+  /**
+   * @covers       \Jawira\Sanitizer\Filters\Pad::filter
+   * @covers       \Jawira\Sanitizer\Filters\Pad::__construct
+   * @dataProvider filterWithAllOptionsProvider
+   */
+  public function testFilterWithAllOptions($value, $length, $padString, $side, $expected)
+  {
+    $filter = new Pad(length: $length, padString: $padString, side: $side);
+    $result = $filter->filter($value);
+    $this->assertSame($expected, $result);
+  }
+
+  public function filterWithAllOptionsProvider()
+  {
+    return [
+      ['', 0, '*', 'left', ''],
+      ["\t", 3, ' ', 'right', "\t  "],
+      ['123', 8, 'azerty', 'left', 'azert123'],
+      ['68', 3, '0', 'left', '068'],
+      ['5e5', 0, 'x', 'both', '5e5'],
+      ['Hello      ', 10, 'x', 'right', 'Hello      '],
+    ];
+  }
 }
+
