@@ -14,7 +14,8 @@ class ToInt implements FilterInterface
      * Base 0 works as "auto" mode with strings.
      */
     private int $base = 10
-  ) {
+  )
+  {
   }
 
   /**
@@ -24,11 +25,15 @@ class ToInt implements FilterInterface
    */
   public function check(mixed $value): bool
   {
-    return is_bool($value) || is_float($value) || is_string($value) || is_null($value) || is_array($value);
+    if (\is_int($value)) {
+      return false;
+    }
+
+    return \is_null($value) || \is_scalar($value) || \is_array($value);
   }
 
   public function filter(mixed $value): int
   {
-    return intval($value, $this->base);
+    return \intval($value, $this->base);
   }
 }
