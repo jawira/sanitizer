@@ -55,6 +55,7 @@ class ToIntTest extends TestCase
     $filter = new ToInt($base);
     $result = $filter->filter($value);
 
+    $this->assertIsInt($result);
     $this->assertSame($expected, $result);
   }
 
