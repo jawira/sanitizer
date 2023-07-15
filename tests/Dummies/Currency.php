@@ -23,7 +23,8 @@ class Currency
     #[Sanitizer\Trim]
     private string $code,
 
-    #[Sanitizer\Trim]
+    #[Sanitizer\Trim(side: 'left')]
+    #[Sanitizer\Trim(side: 'right')]
     private string $name,
 
     #[Sanitizer\GteZero]

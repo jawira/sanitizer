@@ -2,19 +2,17 @@
 
 namespace Jawira\Sanitizer\Filters;
 
-#[\Attribute]
+use Attribute;
+use function abs;
+use function is_float;
+use function is_int;
+
+#[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class Abs implements FilterInterface
 {
   public function check(mixed $value): bool
   {
-    if (is_int($value)) {
-      return true;
-    }
-    if (is_float($value)) {
-      return true;
-    }
-
-    return false;
+    return is_int($value) || is_float($value);
   }
 
   public function filter(mixed $value): int|float

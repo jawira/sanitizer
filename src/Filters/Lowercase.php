@@ -3,10 +3,11 @@
 namespace Jawira\Sanitizer\Filters;
 
 use Attribute;
+use function assert;
 use function is_string;
 use function mb_strtolower;
 
-#[Attribute]
+#[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class Lowercase implements FilterInterface
 {
   /**

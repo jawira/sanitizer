@@ -2,7 +2,11 @@
 
 namespace Jawira\Sanitizer\Filters;
 
-#[\Attribute]
+use Attribute;
+use function assert;
+use function is_string;
+
+#[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class Replace implements FilterInterface
 {
   public function __construct(private string $search = ' ',
