@@ -3,8 +3,11 @@
 namespace Jawira\Sanitizer\Filters;
 
 use Attribute;
+use const STR_PAD_BOTH;
+use const STR_PAD_LEFT;
+use const STR_PAD_RIGHT;
 
-#[Attribute]
+#[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class Pad implements FilterInterface
 {
   public const BOTH = 'both';
@@ -32,9 +35,9 @@ class Pad implements FilterInterface
   {
     assert(is_string($value));
     $padType = match ($this->side) {
-      self::LEFT => \STR_PAD_LEFT,
-      self::RIGHT => \STR_PAD_RIGHT,
-      self::BOTH => \STR_PAD_BOTH,
+      self::LEFT => STR_PAD_LEFT,
+      self::RIGHT => STR_PAD_RIGHT,
+      self::BOTH => STR_PAD_BOTH,
     };
 
     return str_pad($value, $this->length, $this->padString, $padType);

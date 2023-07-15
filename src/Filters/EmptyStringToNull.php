@@ -2,7 +2,9 @@
 
 namespace Jawira\Sanitizer\Filters;
 
-#[\Attribute]
+use Attribute;
+
+#[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class EmptyStringToNull implements FilterInterface
 {
   public function check(mixed $value): bool

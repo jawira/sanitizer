@@ -2,12 +2,18 @@
 
 namespace Jawira\Sanitizer\Filters;
 
-#[\Attribute]
+use Attribute;
+use function assert;
+use function is_float;
+use function is_int;
+use function min;
+
+#[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class LteZero implements FilterInterface
 {
   public function check(mixed $value): bool
   {
-    if (!\is_int($value) && !\is_float($value)) {
+    if (!is_int($value) && !is_float($value)) {
       return false;
     }
 
@@ -16,8 +22,8 @@ class LteZero implements FilterInterface
 
   public function filter(mixed $value): int|float
   {
-    \assert(\is_int($value) || \is_float($value));
+    assert(is_int($value) || is_float($value));
 
-    return \min(0, $value);
+    return min(0, $value);
   }
 }

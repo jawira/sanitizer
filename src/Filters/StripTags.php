@@ -2,7 +2,12 @@
 
 namespace Jawira\Sanitizer\Filters;
 
-#[\Attribute]
+use Attribute;
+use function assert;
+use function is_string;
+use function strip_tags;
+
+#[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class StripTags implements FilterInterface
 {
   public function __construct(

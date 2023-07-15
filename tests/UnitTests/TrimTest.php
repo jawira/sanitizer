@@ -36,6 +36,7 @@ class TrimTest extends TestCase
       [true, false],
       [false, false],
       [array(), false],
+      [new \stdClass(), false],
     ];
   }
 

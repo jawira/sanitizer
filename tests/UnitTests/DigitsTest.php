@@ -59,6 +59,12 @@ class DigitsTest extends TestCase
 
   public function filterProvider()
   {
+    $longText = <<<TEXT
+    Lorem ipsum dolor 123 sit amet, 24 consectetur adipiscing elit.
+    Ego vero isti, inquam, permitto 500.
+    Philosophi autem in suis lectulis 88 plerumque moriuntur.
+    TEXT;
+
     return [
       ['10 AM', '10'],
       ['Hello', ''],
@@ -93,6 +99,7 @@ class DigitsTest extends TestCase
       ['      Hello', ''],
       ['   Hello   ', ''],
       ['Γεια σας', ''],
+      [$longText, '1232450088'],
     ];
   }
 }

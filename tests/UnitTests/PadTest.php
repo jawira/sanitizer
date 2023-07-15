@@ -150,5 +150,17 @@ class PadTest extends TestCase
       ['Hello      ', 10, 'x', 'right', 'Hello      '],
     ];
   }
+
+  /**
+   * @coversNothing
+   */
+  public function testNewFunction()
+  {
+    $exists = function_exists('mb_str_pad');
+    /**
+     * @link https://wiki.php.net/rfc/mb_str_pad
+     */
+    $this->assertFalse($exists, 'Update filter with mb_str_pad!!');
+  }
 }
 

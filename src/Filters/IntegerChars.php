@@ -3,20 +3,24 @@
 namespace Jawira\Sanitizer\Filters;
 
 use Attribute;
+use function assert;
+use function filter_var;
+use function is_string;
+use const FILTER_SANITIZE_NUMBER_INT;
 
-#[Attribute]
+#[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class IntegerChars implements FilterInterface
 {
   public function check(mixed $value): bool
   {
-    return \is_string($value);
+    return is_string($value);
   }
 
   public function filter(mixed $value): string
   {
-    \assert(\is_string($value));
-    $result = \filter_var($value, \FILTER_SANITIZE_NUMBER_INT);
-    \assert(\is_string($result));
+    assert(is_string($value));
+    $result = filter_var($value, FILTER_SANITIZE_NUMBER_INT);
+    assert(is_string($result));
 
     return $result;
   }
