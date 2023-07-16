@@ -2,11 +2,53 @@
 
 namespace UnitTests;
 
+use Jawira\Sanitizer\Filters\FloatChars;
 use Jawira\Sanitizer\Filters\ToInt;
 use PHPUnit\Framework\TestCase;
 
 class ToIntTest extends TestCase
 {
+
+  /**
+   * @covers       \Jawira\Sanitizer\Filters\ToInt::check
+   * @covers       \Jawira\Sanitizer\Filters\ToInt::__construct
+   * @dataProvider checkProvider
+   */
+  public function testCheck($value, $expected)
+  {
+    $filter = new ToInt();
+    $result = $filter->check($value);
+
+    $this->assertSame($expected, $result);
+  }
+
+  public function checkProvider()
+  {
+    return [
+      ['', true],
+      ['a', true],
+      [' ', true],
+      ["hello-world", true],
+      ["10e13", true],
+      ["false", true],
+      ["HELLO", true],
+      ['Test', true],
+      ['Û', true],
+      ["\t", true],
+      [123, false],
+      [1.1, true],
+      [-123, false],
+      [-1.1, true],
+      [0, false],
+      [null, true],
+      [true, true],
+      [false, true],
+      [array(), true],
+      [array('foo'), true],
+      [new \stdClass(), false],
+    ];
+  }
+
   /**
    * @dataProvider filterProvider
    * @covers       \Jawira\Sanitizer\Filters\ToInt::__construct

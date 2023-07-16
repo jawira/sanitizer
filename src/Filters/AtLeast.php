@@ -9,21 +9,25 @@ use function is_int;
 use function max;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
-class GteZero implements FilterInterface
+class AtLeast implements FilterInterface
 {
+  public function __construct(private int|float $number = 0)
+  {
+  }
+
   public function check(mixed $value): bool
   {
     if (!is_int($value) && !is_float($value)) {
       return false;
     }
 
-    return $value < 0;
+    return $value < $this->number;
   }
 
   public function filter(mixed $value): int|float
   {
     assert(is_int($value) || is_float($value));
 
-    return max(0, $value);
+    return max($this->number, $value);
   }
 }

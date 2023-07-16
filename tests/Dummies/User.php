@@ -15,8 +15,8 @@ class User
   #[Sanitizer\Ascii(onlyPrintable: true)]
   public string $phone;
 
-  #[Sanitizer\GteZero]
-  public string $age;
+  #[Sanitizer\AtLeast(0)]
+  public int $age;
 
   public string $email;
 
