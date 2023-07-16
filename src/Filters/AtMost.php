@@ -9,21 +9,25 @@ use function is_int;
 use function min;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
-class LteZero implements FilterInterface
+class AtMost implements FilterInterface
 {
+  public function __construct(private int|float $number = 0)
+  {
+  }
+
   public function check(mixed $value): bool
   {
     if (!is_int($value) && !is_float($value)) {
       return false;
     }
 
-    return 0 < $value;
+    return $this->number < $value;
   }
 
   public function filter(mixed $value): int|float
   {
     assert(is_int($value) || is_float($value));
 
-    return min(0, $value);
+    return min($this->number, $value);
   }
 }

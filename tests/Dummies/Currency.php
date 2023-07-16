@@ -27,8 +27,8 @@ class Currency
     #[Sanitizer\Trim(side: 'right')]
     private string $name,
 
-    #[Sanitizer\GteZero]
-    private int    $digits,
+    #[Sanitizer\AtLeast]
+    private int $digits,
   )
   {
   }

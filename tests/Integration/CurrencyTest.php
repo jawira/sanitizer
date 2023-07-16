@@ -20,8 +20,9 @@ class CurrencyTest extends TestCase
    * @dataProvider nameProvider
    * @covers       \Jawira\Sanitizer\Filters\Digits::check
    * @covers       \Jawira\Sanitizer\Filters\Digits::filter
-   * @covers       \Jawira\Sanitizer\Filters\GteZero::check
-   * @covers       \Jawira\Sanitizer\Filters\GteZero::filter
+   * @covers       \Jawira\Sanitizer\Filters\AtLeast::__construct
+   * @covers       \Jawira\Sanitizer\Filters\AtLeast::check
+   * @covers       \Jawira\Sanitizer\Filters\AtLeast::filter
    * @covers       \Jawira\Sanitizer\Filters\Pad::__construct
    * @covers       \Jawira\Sanitizer\Filters\Pad::check
    * @covers       \Jawira\Sanitizer\Filters\Pad::filter

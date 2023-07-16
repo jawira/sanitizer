@@ -22,8 +22,7 @@ class ToInt implements FilterInterface
      * Base 0 works as "auto" mode with strings.
      */
     private int $base = 10
-  )
-  {
+  ) {
   }
 
   /**
