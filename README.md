@@ -51,6 +51,7 @@ echo $user->name; // After: 'Bob'
 | **Pad**               | _string_                                   | Pad a _string_ to a certain length with another _string_.                               |
 | **Replace**           | _string_                                   | Replace all occurrences of the search _string_ with the replacement _string_.           |
 | **StripTags**         | _string_                                   | Strip HTML and PHP tags from a _string_.                                                |
+| **Substring**         | _string_                                   | Limit _string_ length.                                                                  |
 | **ToInt**             | _null_, _bool_, _float_, _string_, _array_ | Cast to _integer_.                                                                      |
 | **ToString**          | _null_, _bool_, _int_, _float_, _array_    | Cast to _string_.                                                                       |
 | **Trim**              | _string_                                   | Strip whitespace (or other characters) from the beginning and end of a _string_.        |
