@@ -9,13 +9,13 @@ use PHPUnit\Framework\TestCase;
 class CapitalizeTest extends TestCase
 {
   /**
-   * @covers       \Jawira\Sanitizer\Filters\Capitalize::check
+   * @covers       \Jawira\Sanitizer\Filters\Capitalize::precondition
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
     $filter = new Capitalize();
-    $result = $filter->check($value);
+    $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
   }

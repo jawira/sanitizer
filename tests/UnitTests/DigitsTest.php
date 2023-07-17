@@ -9,13 +9,13 @@ class DigitsTest extends TestCase
 {
 
   /**
-   * @covers       \Jawira\Sanitizer\Filters\Digits::check
+   * @covers       \Jawira\Sanitizer\Filters\Digits::precondition
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
     $filter = new Digits();
-    $result = $filter->check($value);
+    $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
   }

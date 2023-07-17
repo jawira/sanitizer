@@ -9,13 +9,13 @@ class AtLeastTest extends TestCase
 {
   /**
    * @covers       \Jawira\Sanitizer\Filters\AtLeast::__construct
-   * @covers       \Jawira\Sanitizer\Filters\AtLeast::check
+   * @covers       \Jawira\Sanitizer\Filters\AtLeast::precondition
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
     $filter = new AtLeast();
-    $result = $filter->check($value);
+    $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
   }

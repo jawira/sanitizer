@@ -30,7 +30,7 @@ class ToInt implements FilterInterface
    *
    * Object are not accepted because `intval` will print a warning.
    */
-  public function check(mixed $value): bool
+  public function precondition(mixed $value): bool
   {
     if (is_int($value)) {
       return false;

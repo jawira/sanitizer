@@ -9,13 +9,13 @@ class AbsTest extends TestCase
 {
 
   /**
-   * @covers       \Jawira\Sanitizer\Filters\Abs::check
+   * @covers       \Jawira\Sanitizer\Filters\Abs::precondition
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
     $filter = new Abs();
-    $result = $filter->check($value);
+    $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
   }

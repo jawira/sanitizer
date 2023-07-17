@@ -10,14 +10,14 @@ class StripTagsTest extends TestCase
 {
 
   /**
-   * @covers       \Jawira\Sanitizer\Filters\StripTags::check
+   * @covers       \Jawira\Sanitizer\Filters\StripTags::precondition
    * @covers       \Jawira\Sanitizer\Filters\StripTags::__construct
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
     $filter = new StripTags();
-    $result = $filter->check($value);
+    $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
   }

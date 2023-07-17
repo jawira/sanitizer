@@ -9,13 +9,13 @@ class EmptyStringToNullTest extends TestCase
 {
 
   /**
-   * @covers       \Jawira\Sanitizer\Filters\EmptyStringToNull::check
+   * @covers       \Jawira\Sanitizer\Filters\EmptyStringToNull::precondition
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
     $filter = new EmptyStringToNull();
-    $result = $filter->check($value);
+    $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
   }

@@ -11,13 +11,13 @@ class ReplaceTest extends TestCase
 
   /**
    * @covers       \Jawira\Sanitizer\Filters\Replace::__construct
-   * @covers       \Jawira\Sanitizer\Filters\Replace::check
+   * @covers       \Jawira\Sanitizer\Filters\Replace::precondition
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
     $filter = new Replace();
-    $result = $filter->check($value);
+    $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
   }

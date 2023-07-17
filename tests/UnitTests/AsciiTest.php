@@ -10,12 +10,12 @@ class AsciiTest extends TestCase
   /**
    * @dataProvider checkProvider
    * @covers       \Jawira\Sanitizer\Filters\Ascii::__construct
-   * @covers       \Jawira\Sanitizer\Filters\Ascii::check
+   * @covers       \Jawira\Sanitizer\Filters\Ascii::precondition
    */
   public function testCheck($value, $expected)
   {
     $filter = new Ascii();
-    $result = $filter->check($value);
+    $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
   }

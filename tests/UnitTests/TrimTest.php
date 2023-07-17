@@ -8,14 +8,14 @@ use PHPUnit\Framework\TestCase;
 class TrimTest extends TestCase
 {
   /**
-   * @covers       \Jawira\Sanitizer\Filters\Trim::check
+   * @covers       \Jawira\Sanitizer\Filters\Trim::precondition
    * @covers       \Jawira\Sanitizer\Filters\Trim::__construct
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
     $filter = new Trim();
-    $result = $filter->check($value);
+    $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
   }

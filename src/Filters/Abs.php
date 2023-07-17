@@ -10,7 +10,7 @@ use function is_int;
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class Abs implements FilterInterface
 {
-  public function check(mixed $value): bool
+  public function precondition(mixed $value): bool
   {
     return is_int($value) || is_float($value);
   }

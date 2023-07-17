@@ -9,14 +9,14 @@ class FloatCharsTest extends TestCase
 {
 
   /**
-   * @covers       \Jawira\Sanitizer\Filters\FloatChars::check
+   * @covers       \Jawira\Sanitizer\Filters\FloatChars::precondition
    * @covers       \Jawira\Sanitizer\Filters\FloatChars::__construct
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
     $filter = new FloatChars();
-    $result = $filter->check($value);
+    $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
   }

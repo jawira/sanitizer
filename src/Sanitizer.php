@@ -8,7 +8,7 @@ use ReflectionProperty;
 use function array_map;
 use function assert;
 
-class SanitizerService implements SanitizerInterface
+class Sanitizer implements SanitizerInterface
 {
   public function sanitize(object $object): void
   {
@@ -44,7 +44,7 @@ class SanitizerService implements SanitizerInterface
   {
     /** @var mixed $oldValue */
     $oldValue = $reflectionProperty->getValue($object);
-    if (!$filter->check($oldValue)) {
+    if (!$filter->precondition($oldValue)) {
       return false;
     }
 

@@ -9,13 +9,13 @@ class AtMostTest extends TestCase
 {
   /**
    * @covers       \Jawira\Sanitizer\Filters\AtMost::__construct
-   * @covers       \Jawira\Sanitizer\Filters\AtMost::check
+   * @covers       \Jawira\Sanitizer\Filters\AtMost::precondition
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
     $filter = new AtMost();
-    $result = $filter->check($value);
+    $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
   }

@@ -15,7 +15,7 @@ class AtMost implements FilterInterface
   {
   }
 
-  public function check(mixed $value): bool
+  public function precondition(mixed $value): bool
   {
     if (!is_int($value) && !is_float($value)) {
       return false;

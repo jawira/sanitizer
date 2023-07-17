@@ -8,13 +8,13 @@ use PHPUnit\Framework\TestCase;
 class LowercaseTest extends TestCase
 {
   /**
-   * @covers       \Jawira\Sanitizer\Filters\Lowercase::check
+   * @covers       \Jawira\Sanitizer\Filters\Lowercase::precondition
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
     $filter = new Lowercase();
-    $result = $filter->check($value);
+    $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
   }
