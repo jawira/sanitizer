@@ -99,4 +99,15 @@
     </exec>
   </target>
 
+  <target name="doc:new" description="Create new documentation page.">
+    <input message="Filter name:" propertyName="filter.name"/>
+    <copy file="resources/template.md" tofile="docs/${filter.name}.md">
+      <filterchain>
+        <replacetokens>
+          <token key="NAME" value="${filter.name}"/>
+        </replacetokens>
+      </filterchain>
+    </copy>
+  </target>
+
 </project>

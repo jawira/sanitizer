@@ -84,6 +84,8 @@ class PadTest extends TestCase
       ['123', 8, 'azerty', '123azert'],
       ['5e5', 0, 'x', '5e5'],
       ['Hello      ', 10, 'x', 'Hello      '],
+      ['four thousand', 30, '*', 'four thousand*****************'],
+      ['one thousand five hundred', 30, '*', 'one thousand five hundred*****'],
     ];
   }
 
@@ -148,6 +150,9 @@ class PadTest extends TestCase
       ['68', 3, '0', 'left', '068'],
       ['5e5', 0, 'x', 'both', '5e5'],
       ['Hello      ', 10, 'x', 'right', 'Hello      '],
+      ['CREDITS', 30, '-+-', 'both', '-+--+--+--+CREDITS-+--+--+--+-'],
+      ['DOCUMENTATION', 30, '-+-', 'both', '-+--+--+DOCUMENTATION-+--+--+-'],
+      ['AUTHOR', 30, '-+-', 'both', '-+--+--+--+-AUTHOR-+--+--+--+-'],
     ];
   }
 
