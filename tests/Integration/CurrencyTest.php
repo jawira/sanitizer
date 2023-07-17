@@ -3,37 +3,36 @@
 namespace Integration;
 
 use Dummies\Currency;
-use Dummies\User;
-use Jawira\Sanitizer\SanitizerService;
+use Jawira\Sanitizer\Sanitizer;
 use PHPUnit\Framework\TestCase;
 
 class CurrencyTest extends TestCase
 {
-  private SanitizerService $sanitizer;
+  private Sanitizer $sanitizer;
 
   public function setUp(): void
   {
-    $this->sanitizer = new SanitizerService();
+    $this->sanitizer = new Sanitizer();
   }
 
   /**
    * @dataProvider nameProvider
-   * @covers       \Jawira\Sanitizer\Filters\Digits::check
+   * @covers       \Jawira\Sanitizer\Filters\Digits::precondition
    * @covers       \Jawira\Sanitizer\Filters\Digits::filter
    * @covers       \Jawira\Sanitizer\Filters\AtLeast::__construct
-   * @covers       \Jawira\Sanitizer\Filters\AtLeast::check
+   * @covers       \Jawira\Sanitizer\Filters\AtLeast::precondition
    * @covers       \Jawira\Sanitizer\Filters\AtLeast::filter
    * @covers       \Jawira\Sanitizer\Filters\Pad::__construct
-   * @covers       \Jawira\Sanitizer\Filters\Pad::check
+   * @covers       \Jawira\Sanitizer\Filters\Pad::precondition
    * @covers       \Jawira\Sanitizer\Filters\Pad::filter
    * @covers       \Jawira\Sanitizer\Filters\Trim::__construct
-   * @covers       \Jawira\Sanitizer\Filters\Trim::check
+   * @covers       \Jawira\Sanitizer\Filters\Trim::precondition
    * @covers       \Jawira\Sanitizer\Filters\Trim::filter
-   * @covers       \Jawira\Sanitizer\Filters\Uppercase::check
+   * @covers       \Jawira\Sanitizer\Filters\Uppercase::precondition
    * @covers       \Jawira\Sanitizer\Filters\Uppercase::filter
-   * @covers       \Jawira\Sanitizer\SanitizerService::applyFilter
-   * @covers       \Jawira\Sanitizer\SanitizerService::sanitize
-   * @covers       \Jawira\Sanitizer\SanitizerService::sanitizeProperty
+   * @covers       \Jawira\Sanitizer\Sanitizer::applyFilter
+   * @covers       \Jawira\Sanitizer\Sanitizer::sanitize
+   * @covers       \Jawira\Sanitizer\Sanitizer::sanitizeProperty
    */
   public function testName($number, $numberExpected, $code, $codeExpected, $name, $nameExpected, $digits, $digitsExpected)
   {

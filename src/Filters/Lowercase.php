@@ -13,7 +13,7 @@ class Lowercase implements FilterInterface
   /**
    * `mb_strtolower` function only accepts strings.
    */
-  public function check(mixed $value): bool
+  public function precondition(mixed $value): bool
   {
     return is_string($value);
   }

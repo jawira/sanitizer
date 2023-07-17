@@ -13,7 +13,7 @@ class Uppercase implements FilterInterface
   /**
    * `mb_strtoupper` function only accepts strings.
    */
-  public function check(mixed $value): bool
+  public function precondition(mixed $value): bool
   {
     return is_string($value);
   }

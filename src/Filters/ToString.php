@@ -12,7 +12,7 @@ use function strval;
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class ToString implements FilterInterface
 {
-  public function check(mixed $value): bool
+  public function precondition(mixed $value): bool
   {
     if (\is_string($value)) {
       return false;

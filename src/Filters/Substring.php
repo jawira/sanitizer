@@ -8,13 +8,12 @@ use function is_string;
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class Substring implements FilterInterface
 {
-
   public function __construct(private int  $length,
                               private bool $inBytes = false)
   {
   }
 
-  public function check(mixed $value): bool
+  public function precondition(mixed $value): bool
   {
     return is_string($value);
   }

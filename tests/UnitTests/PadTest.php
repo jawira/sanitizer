@@ -8,14 +8,14 @@ use PHPUnit\Framework\TestCase;
 class PadTest extends TestCase
 {
   /**
-   * @covers       \Jawira\Sanitizer\Filters\Pad::check
+   * @covers       \Jawira\Sanitizer\Filters\Pad::precondition
    * @covers       \Jawira\Sanitizer\Filters\Pad::__construct
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
     $filter = new Pad(0);
-    $result = $filter->check($value);
+    $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
   }

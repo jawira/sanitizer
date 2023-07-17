@@ -9,14 +9,14 @@ class SubstringTest extends TestCase
 {
 
   /**
-   * @covers       \Jawira\Sanitizer\Filters\Substring::check
+   * @covers       \Jawira\Sanitizer\Filters\Substring::precondition
    * @covers       \Jawira\Sanitizer\Filters\Substring::__construct
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
     $filter = new Substring(0);
-    $result = $filter->check($value);
+    $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
   }

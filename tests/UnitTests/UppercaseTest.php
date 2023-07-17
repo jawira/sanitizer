@@ -8,13 +8,13 @@ use PHPUnit\Framework\TestCase;
 class UppercaseTest extends TestCase
 {
   /**
-   * @covers       \Jawira\Sanitizer\Filters\Uppercase::check
+   * @covers       \Jawira\Sanitizer\Filters\Uppercase::precondition
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
     $filter = new Uppercase();
-    $result = $filter->check($value);
+    $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
   }

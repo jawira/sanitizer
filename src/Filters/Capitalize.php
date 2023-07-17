@@ -10,7 +10,7 @@ use function mb_convert_case;
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class Capitalize implements FilterInterface
 {
-  public function check(mixed $value): bool
+  public function precondition(mixed $value): bool
   {
     return is_string($value);
   }

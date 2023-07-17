@@ -10,14 +10,14 @@ class ToIntTest extends TestCase
 {
 
   /**
-   * @covers       \Jawira\Sanitizer\Filters\ToInt::check
+   * @covers       \Jawira\Sanitizer\Filters\ToInt::precondition
    * @covers       \Jawira\Sanitizer\Filters\ToInt::__construct
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
     $filter = new ToInt();
-    $result = $filter->check($value);
+    $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
   }

@@ -8,13 +8,13 @@ use PHPUnit\Framework\TestCase;
 class IntegerCharsTest extends TestCase
 {
   /**
-   * @covers       \Jawira\Sanitizer\Filters\IntegerChars::check
+   * @covers       \Jawira\Sanitizer\Filters\IntegerChars::precondition
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
     $filter = new IntegerChars();
-    $result = $filter->check($value);
+    $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
   }

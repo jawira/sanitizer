@@ -21,12 +21,12 @@ class User {
 }
 ```
 
-Call `SanitizerService::sanitize` method to apply sanitizers:
+Call `Sanitizer::sanitize` method to apply sanitizers:
 
 ```php
-use Jawira\Sanitizer\SanitizerService;
+use Jawira\Sanitizer\Sanitizer;
 
-$sanitizer = new SanitizerService();
+$sanitizer = new Sanitizer();
 $user = new User();
 $user->name = ' BOB ';
 

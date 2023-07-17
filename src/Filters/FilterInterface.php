@@ -11,13 +11,13 @@ interface FilterInterface
    * If this condition is not met, the filter will be skipped. Be as strict as
    * possible to be sure you can apply {@see FilterInterface::filter}.
    */
-  public function check(mixed $value): bool;
+  public function precondition(mixed $value): bool;
 
   /**
    * Apply the filter to sanitize the value.
    *
    * Because input value is `mixed` you have to implement
-   * {@see FilterInterface::check} to be sure you can apply the filter.
+   * {@see FilterInterface::precondition} to be sure you can apply the filter.
    *
    * Because return type is `mixed`, please double-check return type will
    * be the expected one.

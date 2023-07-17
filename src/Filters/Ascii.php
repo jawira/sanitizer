@@ -16,7 +16,7 @@ class Ascii implements FilterInterface
   {
   }
 
-  public function check(mixed $value): bool
+  public function precondition(mixed $value): bool
   {
     return is_string($value);
   }
