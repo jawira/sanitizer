@@ -63,7 +63,10 @@ class AsciiTest extends TestCase
       ["\r\n", false, "\r\n"],
       ["\u{01}A\u{10}B\u{30}C", false, "\u{01}A\u{10}B\u{30}C"],
       ["\t", true, ""],
+      ["Foo\nBar", false, "Foo\nBar"],
       ["\r\n", true, ""],
+      ["Hello\r\nfriend", true, "Hellofriend"],
+      ["Hello\r\nfriend", false, "Hello\r\nfriend"],
       ["A\u{00}B\u{06}C\u{20}A\u{1A}B\u{1C}C\u{1F}", true, "ABC ABC"],
       ['Elephpant🐘', false, 'Elephpant'],
       ['xxx', false, 'xxx'],
@@ -75,6 +78,7 @@ class AsciiTest extends TestCase
       ['Γεια σας', true, ' '],
       ['H3ll0', true, 'H3ll0'],
       ['Árbol', true, 'rbol'],
+      ['1-BRÚ-016', false, '1-BR-016'],
     ];
   }
 
