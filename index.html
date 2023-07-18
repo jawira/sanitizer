@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" /><meta name="author" content="Jawira Portugal" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>jawira/sanitize</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "jawira/sanitizer";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> jawira/sanitize
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="index.html">jawira/sanitizer</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#list-of-sanitizers">List of sanitizers</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Numbers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="Numbers/Abs.html">Abs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Strings</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="Strings/Pad.html">Pad</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Strings/Trim.html">Trim</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">jawira/sanitize</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li>jawira/sanitizer</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="jawirasanitizer">jawira/sanitizer</h1>
+<h2 id="list-of-sanitizers">List of sanitizers</h2>
+<table>
+<thead>
+<tr>
+<th>Sanitizer</th>
+<th>Works with</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Numbers/Abs.html">Abs</a></td>
+<td><em>int</em>, <em>float</em></td>
+<td>Absolute value.</td>
+</tr>
+<tr>
+<td><strong>Ascii</strong></td>
+<td><em>string</em></td>
+<td>Remove all characters except ascii characters.</td>
+</tr>
+<tr>
+<td><strong>AtLeast</strong></td>
+<td><em>int</em>, <em>float</em></td>
+<td>Value is at least equal to provided number.</td>
+</tr>
+<tr>
+<td><strong>AtMost</strong></td>
+<td><em>int</em>, <em>float</em></td>
+<td>Value is at most equal to provided number.</td>
+</tr>
+<tr>
+<td><strong>Capitalize</strong></td>
+<td><em>string</em></td>
+<td>Converts the first letter of each word to uppercase and leaves the others as lowercase.</td>
+</tr>
+<tr>
+<td><strong>Digits</strong></td>
+<td><em>string</em></td>
+<td>Remove all characters except digits.</td>
+</tr>
+<tr>
+<td><strong>EmptyStringToNull</strong></td>
+<td><em>string</em></td>
+<td>Set <em>null</em> if value is empty <em>string</em>.</td>
+</tr>
+<tr>
+<td><strong>FloatChars</strong></td>
+<td><em>string</em></td>
+<td>Remove all characters except digits, <code>+-.</code> and optionally <code>,eE</code>.</td>
+</tr>
+<tr>
+<td><strong>IntegerChars</strong></td>
+<td><em>string</em></td>
+<td>Remove all characters except digits, plus and minus sign.</td>
+</tr>
+<tr>
+<td><strong>Lowercase</strong></td>
+<td><em>string</em></td>
+<td>Make a <em>string</em> lowercase.</td>
+</tr>
+<tr>
+<td><a href="Strings/Pad.html">Pad</a></td>
+<td><em>string</em></td>
+<td>Pad a <em>string</em> to a certain length with another <em>string</em>.</td>
+</tr>
+<tr>
+<td><strong>Replace</strong></td>
+<td><em>string</em></td>
+<td>Replace all occurrences of the search <em>string</em> with the replacement <em>string</em>.</td>
+</tr>
+<tr>
+<td><strong>StripTags</strong></td>
+<td><em>string</em></td>
+<td>Strip HTML and PHP tags from a <em>string</em>.</td>
+</tr>
+<tr>
+<td><strong>Substring</strong></td>
+<td><em>string</em></td>
+<td>Reduce the size of <em>string</em> to provided length.</td>
+</tr>
+<tr>
+<td><strong>ToInt</strong></td>
+<td><em>null</em>, <em>bool</em>, <em>float</em>, <em>string</em>, <em>array</em></td>
+<td>Cast to <em>integer</em>.</td>
+</tr>
+<tr>
+<td><strong>ToString</strong></td>
+<td><em>null</em>, <em>bool</em>, <em>int</em>, <em>float</em>, <em>array</em></td>
+<td>Cast to <em>string</em>.</td>
+</tr>
+<tr>
+<td><a href="Strings/Trim.html">Trim</a></td>
+<td><em>string</em></td>
+<td>Strip whitespace (or other characters) from the beginning and end of a <em>string</em>.</td>
+</tr>
+<tr>
+<td><strong>Uppercase</strong></td>
+<td><em>string</em></td>
+<td>Make a <em>string</em> uppercase.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="Numbers/Abs.html" class="btn btn-neutral float-right" title="Abs">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>© 2023 Jawira Portugal</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="Numbers/Abs.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.4.3
+Build Date UTC : 2023-07-18 20:05:41.038202+00:00
+-->
