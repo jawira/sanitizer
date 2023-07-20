@@ -8,7 +8,7 @@
 | [Ascii](Strings/Ascii.md)     | _string_                                   | Remove all characters except ascii characters.                                          |
 | [AtLeast](Numbers/AtLeast.md) | _int_, _float_                             | Value is at least equal to provided number.                                             |
 | [AtMost](Numbers/AtMost.md)   | _int_, _float_                             | Value is at most equal to provided number.                                              |
-| **Capitalize**                | _string_                                   | Converts the first letter of each word to uppercase and leaves the others as lowercase. |
+| **Title**                     | _string_                                   | Converts the first letter of each word to uppercase and leaves the others as lowercase. |
 | **Digits**                    | _string_                                   | Remove all characters except digits.                                                    |
 | **EmptyStringToNull**         | _string_                                   | Set _null_ if value is empty _string_.                                                  |
 | **FloatChars**                | _string_                                   | Remove all characters except digits, `+-.` and optionally `,eE`.                        |

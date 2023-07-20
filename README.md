@@ -16,7 +16,7 @@ use Jawira\Sanitizer\Filters as Sanitizer;
 
 class User {
     #[Sanitizer\Trim]
-    #[Sanitizer\Capitalize]
+    #[Sanitizer\Title]
     public string $name;
 }
 ```
