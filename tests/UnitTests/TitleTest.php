@@ -64,12 +64,15 @@ class TitleTest extends TestCase
       ['foo   bar   baz', 'Foo   Bar   Baz'],
       [' need4speed ', ' Need4Speed '],
       ["   FOO\tBAR   ", "   Foo\tBar   "],
+      ["foo\nbar", "Foo\nBar"],
       ['Hello world', 'Hello World'],
       ['Hello World', 'Hello World'],
       ['hello world', 'Hello World'],
       ['heLLo worLd', 'Hello World'],
       ['HELLO WORLD', 'Hello World'],
       ['Γεια σας', 'Γεια Σας'],
+      ['prêt-à-porter', 'Prêt-À-Porter'],
+      ['Loin, très loin, au delà des monts Mots.', 'Loin, Très Loin, Au Delà Des Monts Mots.'],
     ];
   }
 }
