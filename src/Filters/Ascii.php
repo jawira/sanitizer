@@ -3,12 +3,12 @@
 namespace Jawira\Sanitizer\Filters;
 
 use Attribute;
-use function assert;
-use function filter_var;
-use function is_string;
 use const FILTER_FLAG_STRIP_HIGH;
 use const FILTER_FLAG_STRIP_LOW;
 use const FILTER_UNSAFE_RAW;
+use function assert;
+use function filter_var;
+use function is_string;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class Ascii implements FilterInterface

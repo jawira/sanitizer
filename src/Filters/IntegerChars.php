@@ -3,10 +3,10 @@
 namespace Jawira\Sanitizer\Filters;
 
 use Attribute;
+use const FILTER_SANITIZE_NUMBER_INT;
 use function assert;
 use function filter_var;
 use function is_string;
-use const FILTER_SANITIZE_NUMBER_INT;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class IntegerChars implements FilterInterface
