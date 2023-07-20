@@ -2,19 +2,18 @@
 
 namespace UnitTests;
 
-use Jawira\Sanitizer\Filters\Capitalize;
-use Jawira\Sanitizer\Filters\Lowercase;
+use Jawira\Sanitizer\Filters\Title;
 use PHPUnit\Framework\TestCase;
 
-class CapitalizeTest extends TestCase
+class TitleTest extends TestCase
 {
   /**
-   * @covers       \Jawira\Sanitizer\Filters\Capitalize::precondition
+   * @covers       \Jawira\Sanitizer\Filters\Title::precondition
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
-    $filter = new Capitalize();
+    $filter = new Title();
     $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
@@ -42,12 +41,12 @@ class CapitalizeTest extends TestCase
   }
 
   /**
-   * @covers       \Jawira\Sanitizer\Filters\Capitalize::filter
+   * @covers       \Jawira\Sanitizer\Filters\Title::filter
    * @dataProvider filterProvider
    */
   public function testFilter($value, $expected)
   {
-    $filter = new Capitalize();
+    $filter = new Title();
     $result = $filter->filter($value);
 
     $this->assertSame($expected, $result);
@@ -62,6 +61,9 @@ class CapitalizeTest extends TestCase
       ['123', '123'],
       ['3.14', '3.14'],
       ['5e5', '5E5'],
+      ['foo   bar   baz', 'Foo   Bar   Baz'],
+      [' need4speed ', ' Need4Speed '],
+      ["   FOO\tBAR   ", "   Foo\tBar   "],
       ['Hello world', 'Hello World'],
       ['Hello World', 'Hello World'],
       ['hello world', 'Hello World'],
