@@ -7,6 +7,7 @@ use Stringable;
 use function assert;
 use function is_null;
 use function is_scalar;
+use function is_string;
 use function strval;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
@@ -14,7 +15,7 @@ class ToString implements FilterInterface
 {
   public function precondition(mixed $value): bool
   {
-    if (\is_string($value)) {
+    if (is_string($value)) {
       return false;
     }
 

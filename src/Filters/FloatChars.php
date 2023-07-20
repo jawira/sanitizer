@@ -2,15 +2,16 @@
 
 namespace Jawira\Sanitizer\Filters;
 
-use function assert;
-use function filter_var;
-use function is_string;
+use Attribute;
 use const FILTER_FLAG_ALLOW_FRACTION;
 use const FILTER_FLAG_ALLOW_SCIENTIFIC;
 use const FILTER_FLAG_ALLOW_THOUSAND;
 use const FILTER_SANITIZE_NUMBER_FLOAT;
+use function assert;
+use function filter_var;
+use function is_string;
 
-#[\Attribute(\Attribute::IS_REPEATABLE | \Attribute::TARGET_PROPERTY)]
+#[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class FloatChars implements FilterInterface
 {
   public function __construct(private bool $allowThousand = false,

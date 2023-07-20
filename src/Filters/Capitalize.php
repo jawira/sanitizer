@@ -3,6 +3,7 @@
 namespace Jawira\Sanitizer\Filters;
 
 use Attribute;
+use const MB_CASE_TITLE;
 use function assert;
 use function is_string;
 use function mb_convert_case;
