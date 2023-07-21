@@ -1,8 +1,8 @@
-# Lowercase
+# Uppercase
 
-Lowercase - Make a _string_ lowercase.
+Uppercase - Make a _string_ uppercase.
 
-Lowercase only works with `string`, any other type is ignored.
+Uppercase only works with `string`, any other type is ignored.
 
 ## Basic usage
 
@@ -10,8 +10,8 @@ Lowercase only works with `string`, any other type is ignored.
 use Jawira\Sanitizer\Filters as Sanitizer;
 
 class User {
-  #[Sanitizer\Lowercase]
-  public string $username;
+  #[Sanitizer\Uppercase]
+  public string $initials;
 }
 ```
 
@@ -27,18 +27,18 @@ Convert string to lowercase letters.
 use Jawira\Sanitizer\Filters as Sanitizer;
 
 class Article {
-  #[Sanitizer\Lowercase]
+  #[Sanitizer\Uppercase]
   public string $keywords;
 }
 ```
 
 ```php
-"HELLO" → "hello"
-"Foo Bar" → "foo bar"
-"Γεια σας" → "γεια σας"
+"foo" → "FOO"
+"Bar Baz" → "BAR BAZ"
+"prêt-à-porter" → "PRÊT-À-PORTER"
 ```
 
 ## See also
 
+* [Lowercase](Lowercase.md) - Make a _string_ lowercase.
 * [Title](Title.md) - Converts the first letter of each word to uppercase and leaves the others as lowercase.
-* [Uppercase](Uppercase.md) - Make a _string_ uppercase.

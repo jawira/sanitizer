@@ -41,4 +41,5 @@ class Article {
 
 ## See also
 
-[Lowercase](Lowercase.md) - Make a _string_ lowercase.
+* [Lowercase](Lowercase.md) - Make a _string_ lowercase.
+* [Uppercase](Uppercase.md) - Make a _string_ uppercase.

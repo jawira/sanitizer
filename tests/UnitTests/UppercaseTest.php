@@ -65,6 +65,7 @@ class UppercaseTest extends TestCase
       ['      Hello', '      HELLO'],
       ['   Hello   ', '   HELLO   '],
       ['Γεια σας', 'ΓΕΙΑ ΣΑΣ'],
+      ['prêt-à-porter', 'PRÊT-À-PORTER'],
     ];
   }
 }
