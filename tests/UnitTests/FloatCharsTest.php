@@ -86,6 +86,7 @@ class FloatCharsTest extends TestCase
       ['   Hello   ', ''],
       ['Γεια σας', ''],
       ['H3ll0', '30'],
+      ['-654-.-546-', '-654-.-546-'],
     ];
   }
 
@@ -129,6 +130,8 @@ class FloatCharsTest extends TestCase
       ['   Hello   ', ''],
       ['Γεια σας', ''],
       ['H3ll0', '30'],
+      ['437.50F', '437.50'],
+      ['-64,.,56-', '-64,.,56-'],
     ];
   }
 
@@ -172,6 +175,8 @@ class FloatCharsTest extends TestCase
       ['   Hello   ', 'e'],
       ['Γεια σας', ''],
       ['H3ll0', '30'],
+      ['Foo 33 Bar', '33'],
+      ['-+E123...', '-+E123...'],
     ];
   }
 }

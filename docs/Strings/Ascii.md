@@ -22,8 +22,8 @@ class User {
 <dl>
 <dt><em>bool</em> <code>onlyPrintable</code> (optional):</dt>
 <dd>
-Default value is <code>false</code>, all ascii characters are preserved.<br>
-When <code>true</code> all characters with numerical value less than 32 are
+Default value is <em>false</em>, all ascii characters are preserved.<br>
+When <em>true</em> all characters with numerical value less than 32 are
 also removed, this is the first column of the following table.
 </dd>
 </dl>
