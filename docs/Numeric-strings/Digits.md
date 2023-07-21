@@ -42,4 +42,6 @@ class Phone {
 
 ## See also
 
--
+[IntegerChars](IntegerChars.md) - Remove all characters except `0-9`, `+`, `-`,
+and `.`.
+
