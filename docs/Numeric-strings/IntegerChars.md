@@ -49,7 +49,6 @@ class User {
 
 ## See also
 
-[FloatChars](FloatChars.md) - Remove all characters except `0-9`, `+`, `-`, `.`
+* [FloatChars](FloatChars.md) - Remove all characters except `0-9`, `+`, `-`, `.`
 and optionally `,`, `e`, and `E`.
-
-[Digits](Digits.md) - Remove all characters except digits.
+* [Digits](Digits.md) - Remove all characters except digits.

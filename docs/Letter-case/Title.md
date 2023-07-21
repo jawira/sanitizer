@@ -1,6 +1,7 @@
 # Title
 
-Title - Converts the first letter of each word to uppercase and leaves the others as lowercase.
+Title - Converts the first letter of each word to uppercase and leaves the
+others as lowercase.
 
 Title only works with `string`, any other type is ignored.
 
@@ -40,4 +41,4 @@ class Article {
 
 ## See also
 
--
+[Lowercase](Lowercase.md) - Make a _string_ lowercase.
