@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Jawira Portugal" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Trim - jawira/sanitize</title>
+    <title>AtLeast - jawira/sanitize</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Trim";
-        var mkdocs_page_input_path = "Strings/Trim.md";
+        var mkdocs_page_name = "AtLeast";
+        var mkdocs_page_input_path = "Numbers/AtLeast.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -45,32 +45,10 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Numbers</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../Numbers/Abs.html">Abs</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Numbers/AtLeast.html">AtLeast</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Numbers/AtMost.html">AtMost</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Numeric strings</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../Numeric-strings/Digits.html">Digits</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Numeric-strings/FloatChars.html">FloatChars</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Strings</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="Ascii.html">Ascii</a>
+                  <li class="toctree-l1"><a class="reference internal" href="Abs.html">Abs</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="EmptyStringToNull.html">EmptyStringToNull</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="Pad.html">Pad</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="Title.html">Title</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="Trim.html">Trim</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="AtLeast.html">AtLeast</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#basic-usage">Basic usage</a>
     </li>
@@ -81,6 +59,28 @@
     <li class="toctree-l2"><a class="reference internal" href="#see-also">See also</a>
     </li>
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="AtMost.html">AtMost</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Numeric strings</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Numeric-strings/Digits.html">Digits</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Numeric-strings/FloatChars.html">FloatChars</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Strings</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Strings/Ascii.html">Ascii</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Strings/EmptyStringToNull.html">EmptyStringToNull</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Strings/Pad.html">Pad</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Strings/Title.html">Title</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Strings/Trim.html">Trim</a>
                   </li>
               </ul>
       </div>
@@ -97,8 +97,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html" class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
-          <li>Strings &raquo;</li>
-      <li>Trim</li>
+          <li>Numbers &raquo;</li>
+      <li>AtLeast</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -107,76 +107,61 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="trim">Trim</h1>
-<p>Trim - Strip whitespace (or other characters) from the beginning and end of a string.</p>
-<p>Trim only works with <code>string</code>, any other type is ignored.</p>
+                <h1 id="atleast">AtLeast</h1>
+<p>AtLeast - Value is at least equal to provided number.</p>
+<p>AtLeast only works with <code>int</code> and <code>float</code>, any other type is ignored.</p>
 <h2 id="basic-usage">Basic usage</h2>
 <pre><code class="language-php">use Jawira\Sanitizer\Filters as Sanitizer;
 
-class User {
-  #[Sanitizer\Trim]
-  public string $name;
+class Motorcycle {
+  #[Sanitizer\AtLeast(number: 2)]
+  public int $wheels;
 }
 </code></pre>
 <h2 id="parameters">Parameters</h2>
 <dl>
-<dt><em>string</em> <code>characters</code> (optional):</dt>
-<dd>Set of characters you want to remove, default value is "<code> \t\n\r\0\x0B</code>".</dd>
-<dt><em>string</em> <code>side</code> (optional):</dt>
+<dt><em>int|float</em> <code>number</code> (optional):</dt>
 <dd>
-Use <code>both</code> to apply trim at the beginning and the end of string, this is the default value.<br>
-Use <code>left</code> to apply trim at the beginning of string.<br>
-Use <code>right</code> to apply trim at the end of string.
+The property value will be compared against this number, if value is
+<strong>less than</strong> provided number then this number will be used
+instead.<br>
+Default value is <em>0</em>.
 </dd>
 </dl>
 
 <h2 id="examples">Examples</h2>
-<p>Remove spaces from the beginning and end of string:</p>
+<p>Value must be positive or zero.</p>
 <pre><code class="language-php">use Jawira\Sanitizer\Filters as Sanitizer;
 
-class User {
-    #[Sanitizer\Trim]
-    public string $name;
+class Post {
+  #[Sanitizer\AtLeast]
+  public int $likes;
 }
 </code></pre>
-<pre><code class="language-php">&quot;Paul    &quot; → &quot;Paul&quot;
-&quot;  Paul  &quot; → &quot;Paul&quot;
-&quot;    Paul&quot; → &quot;Paul&quot;
-&quot;\t\tPaul&quot; → &quot;Paul&quot;
-&quot;Paul\r\n&quot; → &quot;Paul&quot;
+<pre><code class="language-php">0 → 0
+10 → 10
+-5 → 5
 </code></pre>
-<p>Remove spaces at the end of the string:</p>
+<p>Value must be greater or equal than <em>-273.15</em>.</p>
 <pre><code class="language-php">use Jawira\Sanitizer\Filters as Sanitizer;
 
-class User {
-    #[Sanitizer\Trim(side: 'right')]
-    public string $name;
+class Chemical {
+  #[Sanitizer\AtLeast(number: -273.15)]
+  public int|float $temperature;
 }
 </code></pre>
-<pre><code class="language-php">&quot;Paul    &quot; → &quot;Paul&quot;
-&quot;  Paul  &quot; → &quot;  Paul&quot;
-&quot;    Paul&quot; → &quot;    Paul&quot;
-&quot;\t\tPaul&quot; → &quot;\t\tPaul&quot;
-&quot;Paul\r\n&quot; → &quot;Paul&quot;
-</code></pre>
-<p>Remove plus and minus signs at the beginning of the string:</p>
-<pre><code class="language-php">use Jawira\Sanitizer\Filters as Sanitizer;
-
-class User {
-    #[Sanitizer\Trim(side: 'left', characters: '+-')]
-    public string $name;
-}
-</code></pre>
-<pre><code class="language-php">&quot;    Paul    &quot; → &quot;    Paul    &quot;
-&quot;-+-+Paul+-+-&quot; → &quot;Paul+-+-&quot;
+<pre><code class="language-phpl">53  → 53
+-100.50 → -100.50
+-3000 → -273.15
 </code></pre>
 <h2 id="see-also">See also</h2>
-<p><a href="Pad.html">Pad</a> - Pad a string to a certain length with another string.</p>
+<p><a href="AtMost.html">AtMost</a> - Value is at most equal to provided number.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="Title.html" class="btn btn-neutral float-left" title="Title"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="Abs.html" class="btn btn-neutral float-left" title="Abs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="AtMost.html" class="btn btn-neutral float-right" title="AtMost">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -200,8 +185,10 @@ class User {
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="Title.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="Abs.html" style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="AtMost.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -12,7 +12,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "jawira/sanitizer";
+        var mkdocs_page_name = "Home";
         var mkdocs_page_input_path = "index.md";
         var mkdocs_page_url = null;
       </script>
@@ -41,7 +41,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="index.html">jawira/sanitizer</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="index.html">Home</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#list-of-sanitizers">List of sanitizers</a>
     </li>
@@ -52,10 +52,27 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="Numbers/Abs.html">Abs</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Numbers/AtLeast.html">AtLeast</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Numbers/AtMost.html">AtMost</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Numeric strings</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="Numeric-strings/Digits.html">Digits</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Numeric-strings/FloatChars.html">FloatChars</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Strings</span></p>
               <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="Strings/Ascii.html">Ascii</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Strings/EmptyStringToNull.html">EmptyStringToNull</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="Strings/Pad.html">Pad</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Strings/Title.html">Title</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="Strings/Trim.html">Trim</a>
                   </li>
@@ -74,7 +91,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
-      <li>jawira/sanitizer</li>
+      <li>Home</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -83,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="jawirasanitizer">jawira/sanitizer</h1>
+                <h1 id="home">Home</h1>
 <h2 id="list-of-sanitizers">List of sanitizers</h2>
 <table>
 <thead>
@@ -100,37 +117,32 @@
 <td>Absolute value.</td>
 </tr>
 <tr>
-<td><strong>Ascii</strong></td>
+<td><a href="Strings/Ascii.html">Ascii</a></td>
 <td><em>string</em></td>
 <td>Remove all characters except ascii characters.</td>
 </tr>
 <tr>
-<td><strong>AtLeast</strong></td>
+<td><a href="Numbers/AtLeast.html">AtLeast</a></td>
 <td><em>int</em>, <em>float</em></td>
 <td>Value is at least equal to provided number.</td>
 </tr>
 <tr>
-<td><strong>AtMost</strong></td>
+<td><a href="Numbers/AtMost.html">AtMost</a></td>
 <td><em>int</em>, <em>float</em></td>
 <td>Value is at most equal to provided number.</td>
 </tr>
 <tr>
-<td><strong>Capitalize</strong></td>
-<td><em>string</em></td>
-<td>Converts the first letter of each word to uppercase and leaves the others as lowercase.</td>
-</tr>
-<tr>
-<td><strong>Digits</strong></td>
+<td><a href="Numeric-strings/Digits.html">Digits</a></td>
 <td><em>string</em></td>
 <td>Remove all characters except digits.</td>
 </tr>
 <tr>
-<td><strong>EmptyStringToNull</strong></td>
+<td><a href="Strings/EmptyStringToNull.html">EmptyStringToNull</a></td>
 <td><em>string</em></td>
 <td>Set <em>null</em> if value is empty <em>string</em>.</td>
 </tr>
 <tr>
-<td><strong>FloatChars</strong></td>
+<td><a href="Numeric-strings/FloatChars.html">FloatChars</a></td>
 <td><em>string</em></td>
 <td>Remove all characters except digits, <code>+-.</code> and optionally <code>,eE</code>.</td>
 </tr>
@@ -165,13 +177,18 @@
 <td>Reduce the size of <em>string</em> to provided length.</td>
 </tr>
 <tr>
+<td><a href="Strings/Title.html">Title</a></td>
+<td><em>string</em></td>
+<td>Converts the first letter of each word to uppercase and leaves the others as lowercase.</td>
+</tr>
+<tr>
 <td><strong>ToInt</strong></td>
-<td><em>null</em>, <em>bool</em>, <em>float</em>, <em>string</em>, <em>array</em></td>
+<td><em>null</em>, <em>bool</em>, <em>float</em>,<br><em>string</em>, <em>array</em></td>
 <td>Cast to <em>integer</em>.</td>
 </tr>
 <tr>
 <td><strong>ToString</strong></td>
-<td><em>null</em>, <em>bool</em>, <em>int</em>, <em>float</em>, <em>array</em></td>
+<td><em>null</em>, <em>bool</em>, <em>int</em>,<br><em>float</em>, <em>array</em></td>
 <td>Cast to <em>string</em>.</td>
 </tr>
 <tr>
@@ -234,5 +251,5 @@
 
 <!--
 MkDocs version : 1.4.3
-Build Date UTC : 2023-07-18 20:05:41.038202+00:00
+Build Date UTC : 2023-07-21 11:50:02.748259+00:00
 -->
