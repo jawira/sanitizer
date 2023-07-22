@@ -40,4 +40,4 @@ class User {
 
 ## See also
 
--
+[Trim](Trim.md) - Strip whitespace (or other characters) from the beginning and end of a string.
