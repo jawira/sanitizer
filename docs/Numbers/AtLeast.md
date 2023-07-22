@@ -46,7 +46,7 @@ class Post {
 -5 → 5
 ```
 
-Value must be positive or zero.
+Value must be greater or equal than _-273.15_.
 
 ```php
 use Jawira\Sanitizer\Filters as Sanitizer;

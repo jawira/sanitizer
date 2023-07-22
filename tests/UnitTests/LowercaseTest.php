@@ -65,6 +65,7 @@ class LowercaseTest extends TestCase
       ['      Hello','      hello'],
       ['   Hello   ','   hello   '],
       ['Γεια σας','γεια σας'],
+      ['Австралия','австралия'],
     ];
   }
 }

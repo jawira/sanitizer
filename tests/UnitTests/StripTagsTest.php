@@ -67,6 +67,8 @@ class StripTagsTest extends TestCase
       ['<p>James<br>Bond</p>', ['p'], '<p>JamesBond</p>'],
       ['<p>James<br>Bond</p>', ['p', 'br'], '<p>James<br>Bond</p>'],
       ['Hello <!-- comment --> World', [], 'Hello  World'],
+      ['<p>Hello <strong>John</strong></p>', [], 'Hello John'],
+      ['<p>Hello <strong>John</strong></p>', ['p', 'br'], '<p>Hello John</p>'],
     ];
   }
 }
