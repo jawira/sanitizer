@@ -6,10 +6,10 @@ use Attribute;
 use function is_string;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
-class Substring implements FilterInterface
+class Cut implements FilterInterface
 {
   public function __construct(private int  $length,
-                              private bool $inBytes = false)
+                              private bool $useBytes = false)
   {
   }
 
@@ -20,9 +20,17 @@ class Substring implements FilterInterface
 
   public function filter(mixed $value): mixed
   {
-    /** @var callable-string $substring */
-    $substring = $this->inBytes ? 'mb_strcut' : 'mb_substr'; // @todo use proper callable notation in PHP 8.1
+    $start = 0;
+    $length = $this->length;
 
-    return $substring($value, 0, $this->length);
+    if ($this->length < 0) {
+      $start = $this->length;
+      $length = null;
+    }
+
+    /** @var callable-string $substring */
+    $substring = $this->useBytes ? 'mb_strcut' : 'mb_substr'; // @todo use proper callable notation in PHP 8.1
+
+    return $substring($value, $start, $length);
   }
 }
