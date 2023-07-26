@@ -21,9 +21,15 @@ class Article {
 
 <dt><em>int</em> <code>length</code>:</dt>
 <dd>
-Maximum length of string.<br>
-Use _null_ to set the length is used the length is the end of string.<br>
-Default value is _null_.
+If desired length is positive, the resulting string will start from the beginning of the string.<br>
+If length is negative, the resulting string will start from the ending of the string.
+</dd>
+
+<dt><em>bool</em> <code>useBytes</code> (optional):</dt>
+<dd>
+When false, length will represent characters.<br>
+If true, length will be in bytes.<br>
+Default value is _false_.
 </dd>
 
 </dl>
@@ -37,32 +43,47 @@ use Jawira\Sanitizer\Filters as Sanitizer;
 
 class Project {
   #[Sanitizer\Cut(length: 5)]
-  public string $code;
+  public string $name;
 }
 ```
 
 ```php
-"CP1"     → "CP1"
-"CP008"   → "CP008"
-"CP00855" → "CP008"
-"CP5139"  → "CP513"
+"CPU-486"   → "CPU-4"
+"しょうぼうし" → "しょうぼう"
 ```
 
-Remove the last 6 characters from a string.
+Limit the length of string to the last 3 characters.
 
 ```php
 use Jawira\Sanitizer\Filters as Sanitizer;
 
 class Project {
-  #[Sanitizer\Cut(length: -6)]
-  public string $code;
+  #[Sanitizer\Cut(length: -3)]
+  public string $name;
 }
 ```
 
 ```php
-"Hello world" → "Hello"
+"CPU-486"   → "486"
+"しょうぼうし" → "ぼうし"
+```
+
+The string must be 3 bytes in size.
+
+```php
+use Jawira\Sanitizer\Filters as Sanitizer;
+
+class Project {
+  #[Sanitizer\Cut(length: 2)]
+  public string $name;
+}
+```
+
+```php
+"CPU-486"   → "CPU"
+"しょうぼうし" → "し"
 ```
 
 ## See also
 
-XXX - xxxxxxxxxxxxxxxxxxxxxx.
+* [Trim](Trim.md) - Strip whitespace (or other characters) from the beginning and end of a string.
