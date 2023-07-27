@@ -19,5 +19,6 @@ return (new PhpCsFixer\Config())
                  'import_constants' => true,
                  'import_functions' => true,
                ],
+               'visibility_required' => true,
              ])
   ->setFinder($finder);
