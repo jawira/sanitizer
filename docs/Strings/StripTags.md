@@ -62,4 +62,5 @@ class Article {
 
 ## See also
 
-[Trim](Trim.md) - Strip whitespace (or other characters) from the beginning and end of a string.
+[Replace](Replace.md) - Replace all occurrences of the search _string_ with the
+replacement _string_.

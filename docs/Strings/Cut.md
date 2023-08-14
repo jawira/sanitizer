@@ -29,7 +29,7 @@ If length is negative, the resulting string will start from the ending of the st
 <dd>
 When false, length will represent characters.<br>
 If true, length will be in bytes.<br>
-Default value is _false_.
+Default value is <em>false</em>.
 </dd>
 
 </dl>
