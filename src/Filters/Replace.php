@@ -3,15 +3,16 @@
 namespace Jawira\Sanitizer\Filters;
 
 use Attribute;
-use function assert;
 use function is_string;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class Replace implements FilterInterface
 {
-  public function __construct(private string $search = ' ',
-                              private string $replace = '',
-                              private bool   $insensitive = false)
+  private const DELIMITER = '#';
+
+  public function __construct(private string $search,
+                              private string $replace,
+                              private bool   $caseSensitive = true)
   {
   }
 
@@ -22,12 +23,14 @@ class Replace implements FilterInterface
 
   public function filter(mixed $value): string
   {
-    /** @var callable-string $replace */
-    $replace = $this->insensitive ? 'str_ireplace' : 'str_replace';
+    $modifiers = 'u';
+    if (!$this->caseSensitive) {
+      $modifiers .= 'i';
+    }
+    $search = preg_quote($this->search, self::DELIMITER);
+    $pattern = sprintf('%s%s%s%s', self::DELIMITER, $search, self::DELIMITER, $modifiers);
+    assert(is_string($value));
 
-    $newValue = $replace($this->search, $this->replace, $value);
-    assert(is_string($newValue));
-
-    return $newValue;
+    return preg_replace($pattern, $this->replace, $value);
   }
 }
