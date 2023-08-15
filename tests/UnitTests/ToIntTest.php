@@ -144,6 +144,7 @@ class ToIntTest extends TestCase
       ['+013', 0, 11],
       ['-013', 0, -11],
       ['1e10', 0, 1], // auto mode disables scientific
+      ['0x1a', 0, 26],
       ['0x1A', 0, 26],
       ['420000000000000000000', 0, 9223372036854775807],
     ];

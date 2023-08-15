@@ -1,6 +1,6 @@
 # ToInt
 
-ToInt - Returns the integer value.
+ToInt - Casts value to _integer_.
 
 Empty arrays return _0_, non-empty arrays return _1_.
 
@@ -23,8 +23,15 @@ class User {
 <dl>
 <dt><em>int</em> <code>base</code> (optional):</dt>
 <dd>
-Sets the base, only used when value is <em>string</em>.<br>
-Default value is <em>10</em>.
+<p>Sets the base, only used when value is <em>string</em>.</p>
+<p>When the base is set to <em>0</em>, the base is determined by string prefix.<br>
+If the string starts with:</p>
+<ul>
+<li><code>0b</code> or <code>0B</code> the base is <em>2</em>.</li>
+<li><code>0x</code> or <code>0X</code> the base is <em>16</em>.</li>
+<li><code>0</code> the base is <em>8</em>.</li>
+</ul>
+<p> Default value is <em>10</em>.</p>
 </dd>
 </dl>
 
@@ -37,7 +44,7 @@ use Jawira\Sanitizer\Filters as Sanitizer;
 
 class Product {
   #[Sanitizer\ToInt]
-  public $comments;
+  public $quantity;
 }
 ```
 
@@ -64,7 +71,7 @@ use Jawira\Sanitizer\Filters as Sanitizer;
 
 class Product {
   #[Sanitizer\ToInt(base: 2)]
-  public ;
+  public $quantity;
 }
 ```
 
@@ -73,6 +80,23 @@ class Product {
 "0b10011" → 19
 ```
 
+Detect string base.
+
+```php
+use Jawira\Sanitizer\Filters as Sanitizer;
+
+class Product {
+  #[Sanitizer\ToInt(base: 0)]
+  public $quantity;
+}
+```
+
+```php
+"0b10011" → 19
+"0x1A" → 26
+"077" → 63
+```
+
 ## See also
 
-
+[ToString](ToString.md) - Casts value to _string_.
