@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Jawira Portugal" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Pad - jawira/sanitize</title>
+    <title>ToString - jawira/sanitize</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Pad";
-        var mkdocs_page_input_path = "Strings/Pad.md";
+        var mkdocs_page_name = "ToString";
+        var mkdocs_page_input_path = "Cast/ToString.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -45,10 +45,20 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Cast</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../Cast/ToInt.html">ToInt</a>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="ToInt.html">ToInt</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Cast/ToString.html">ToString</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="ToString.html">ToString</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#basic-usage">Basic usage</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#see-also">See also</a>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Letter case</span></p>
@@ -79,30 +89,20 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Strings</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="Ascii.html">Ascii</a>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Strings/Ascii.html">Ascii</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="Cut.html">Cut</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../Strings/Cut.html">Cut</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="EmptyStringToNull.html">EmptyStringToNull</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../Strings/EmptyStringToNull.html">EmptyStringToNull</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="Pad.html">Pad</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#basic-usage">Basic usage</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#see-also">See also</a>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Strings/Pad.html">Pad</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="Replace.html">Replace</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../Strings/Replace.html">Replace</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="StripTags.html">StripTags</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../Strings/StripTags.html">StripTags</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="Trim.html">Trim</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../Strings/Trim.html">Trim</a>
                   </li>
               </ul>
       </div>
@@ -119,8 +119,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html" class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
-          <li>Strings &raquo;</li>
-      <li>Pad</li>
+          <li>Cast &raquo;</li>
+      <li>ToString</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -129,78 +129,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="pad">Pad</h1>
-<p>Pad - Pad a string to a certain length with another string.</p>
-<p>Pad only works with <code>string</code>, any other type is ignored.</p>
+                <h1 id="tostring">ToString</h1>
+<p>ToString - Casts value to <em>string</em>.</p>
+<p>ToString only works with <code>null</code>, <code>bool</code>, <code>int</code>, <code>float</code>, <code>array</code>, any other type
+is ignored.</p>
 <h2 id="basic-usage">Basic usage</h2>
 <pre><code class="language-php">use Jawira\Sanitizer\Filters as Sanitizer;
 
-class Report {
-  #[Sanitizer\Pad(length: 10)]
-  public string $category;
+class User {
+  #[Sanitizer\ToString]
+  public string $name;
 }
 </code></pre>
 <h2 id="parameters">Parameters</h2>
-<dl>
-<dt><em>int</em> <code>length</code>:</dt>
-<dd>Length of resulting string once pad is applied.</dd>
-<dt><em>string</em> <code>padString</code> (optional):</dt>
-<dd>
-String to use as pad.<br>
-The default value is "<em>space</em>" character.
-</dd>
-<dt><em>string</em> <code>side</code> (optional):</dt>
-<dd>
-Use <code>right</code> to apply pad at the end of string, this is the default value.<br>
-Use <code>left</code> to apply pad at the beginning of string.<br>
-Use <code>both</code> to apply pad at the beginning and the end of string.
-</dd>
-</dl>
-
+<p>No parameters.</p>
 <h2 id="examples">Examples</h2>
-<p>Add leading zeros when string has less than three characters:</p>
+<p>Cast value to string.</p>
 <pre><code class="language-php">use Jawira\Sanitizer\Filters as Sanitizer;
 
-class Classroom {
-  #[Sanitizer\Pad(length: 3, padString: '0', side: 'left')]
-  public string $number;
+class Car {
+  #[Sanitizer\ToString]
+  public $description;
 }
 </code></pre>
-<pre><code class="language-php">&quot;1&quot;   → &quot;001&quot;
-&quot;50&quot;  → &quot;050&quot;
-&quot;312&quot; → &quot;312&quot;
-</code></pre>
-<p>Create 30 characters width <em>ascii art</em> header:</p>
-<pre><code class="language-php">use Jawira\Sanitizer\Filters as Sanitizer;
-
-class AsciiArt {
-  #[Sanitizer\Pad(length: 30, padString: '-+-', side: 'both')]
-  public string $title;
-}
-</code></pre>
-<pre><code class="language-php">&quot;CREDITS&quot;       → &quot;-+--+--+--+CREDITS-+--+--+--+-&quot;
-&quot;DOCUMENTATION&quot; → &quot;-+--+--+DOCUMENTATION-+--+--+-&quot;
-&quot;AUTHOR&quot;        → &quot;-+--+--+--+-AUTHOR-+--+--+--+-&quot;
-</code></pre>
-<p>Right padding of 30 characters with asterisk symbol:</p>
-<pre><code class="language-php">use Jawira\Sanitizer\Filters as Sanitizer;
-
-class Paycheck {
-  #[Sanitizer\Pad(length: 30, padString: '*')]
-  public string $writtenAmount;
-}
-</code></pre>
-<pre><code class="language-php">&quot;four thousand&quot;             → &quot;four thousand*****************&quot;
-&quot;one thousand five hundred&quot; → &quot;one thousand five hundred*****&quot;
+<pre><code class="language-php">null → &quot;&quot;
+true → &quot;1&quot;
+false → &quot;&quot;
+456 → &quot;456&quot;
+3.14 → &quot;3.14&quot;
 </code></pre>
 <h2 id="see-also">See also</h2>
-<p><a href="Trim.html">Trim</a> - Strip whitespace (or other characters) from the beginning and end of a string.</p>
+<p><a href="ToInt.html">ToInt</a> - Casts value to <em>integer</em>.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="EmptyStringToNull.html" class="btn btn-neutral float-left" title="EmptyStringToNull"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="Replace.html" class="btn btn-neutral float-right" title="Replace">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="ToInt.html" class="btn btn-neutral float-left" title="ToInt"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Letter-case/Lowercase.html" class="btn btn-neutral float-right" title="Lowercase">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -224,10 +189,10 @@ class Paycheck {
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="EmptyStringToNull.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="ToInt.html" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="Replace.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../Letter-case/Lowercase.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -48,6 +48,22 @@
     </ul>
                 </li>
               </ul>
+              <p class="caption"><span class="caption-text">Cast</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="Cast/ToInt.html">ToInt</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Cast/ToString.html">ToString</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Letter case</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="Letter-case/Lowercase.html">Lowercase</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Letter-case/Title.html">Title</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Letter-case/Uppercase.html">Uppercase</a>
+                  </li>
+              </ul>
               <p class="caption"><span class="caption-text">Numbers</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="Numbers/Abs.html">Abs</a>
@@ -63,16 +79,22 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="Numeric-strings/FloatChars.html">FloatChars</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Numeric-strings/IntegerChars.html">IntegerChars</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Strings</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="Strings/Ascii.html">Ascii</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Strings/Cut.html">Cut</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="Strings/EmptyStringToNull.html">EmptyStringToNull</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="Strings/Pad.html">Pad</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="Strings/Title.html">Title</a>
+                  <li class="toctree-l1"><a class="reference internal" href="Strings/Replace.html">Replace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Strings/StripTags.html">StripTags</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="Strings/Trim.html">Trim</a>
                   </li>
@@ -132,6 +154,11 @@
 <td>Value is at most equal to provided number.</td>
 </tr>
 <tr>
+<td><a href="Strings/Cut.html">Cut</a></td>
+<td><em>string</em></td>
+<td>Limit string length.</td>
+</tr>
+<tr>
 <td><a href="Numeric-strings/Digits.html">Digits</a></td>
 <td><em>string</em></td>
 <td>Remove all characters except digits.</td>
@@ -144,15 +171,15 @@
 <tr>
 <td><a href="Numeric-strings/FloatChars.html">FloatChars</a></td>
 <td><em>string</em></td>
-<td>Remove all characters except digits, <code>+-.</code> and optionally <code>,eE</code>.</td>
+<td>Remove all characters except <code>0-9</code>, <code>+</code>, <code>-</code>, <code>.</code> and optionally <code>,</code>, <code>e</code>, and <code>E</code>.</td>
 </tr>
 <tr>
-<td><strong>IntegerChars</strong></td>
+<td><a href="Numeric-strings/IntegerChars.html">IntegerChars</a></td>
 <td><em>string</em></td>
-<td>Remove all characters except digits, plus and minus sign.</td>
+<td>Remove all characters except <code>0-9</code>, <code>+</code>, <code>-</code>.</td>
 </tr>
 <tr>
-<td><strong>Lowercase</strong></td>
+<td><a href="Letter-case/Lowercase.html">Lowercase</a></td>
 <td><em>string</em></td>
 <td>Make a <em>string</em> lowercase.</td>
 </tr>
@@ -162,34 +189,29 @@
 <td>Pad a <em>string</em> to a certain length with another <em>string</em>.</td>
 </tr>
 <tr>
-<td><strong>Replace</strong></td>
+<td><a href="Strings/Replace.html">Replace</a></td>
 <td><em>string</em></td>
 <td>Replace all occurrences of the search <em>string</em> with the replacement <em>string</em>.</td>
 </tr>
 <tr>
-<td><strong>StripTags</strong></td>
+<td><a href="Strings/StripTags.html">StripTags</a></td>
 <td><em>string</em></td>
 <td>Strip HTML and PHP tags from a <em>string</em>.</td>
 </tr>
 <tr>
-<td><strong>Substring</strong></td>
-<td><em>string</em></td>
-<td>Reduce the size of <em>string</em> to provided length.</td>
-</tr>
-<tr>
-<td><a href="Strings/Title.html">Title</a></td>
+<td><a href="Letter-case/Title.html">Title</a></td>
 <td><em>string</em></td>
 <td>Converts the first letter of each word to uppercase and leaves the others as lowercase.</td>
 </tr>
 <tr>
-<td><strong>ToInt</strong></td>
+<td><a href="Cast/ToInt.html">ToInt</a></td>
 <td><em>null</em>, <em>bool</em>, <em>float</em>,<br><em>string</em>, <em>array</em></td>
-<td>Cast to <em>integer</em>.</td>
+<td>Cast value to <em>integer</em>.</td>
 </tr>
 <tr>
-<td><strong>ToString</strong></td>
+<td><a href="Cast/ToString.html">ToString</a></td>
 <td><em>null</em>, <em>bool</em>, <em>int</em>,<br><em>float</em>, <em>array</em></td>
-<td>Cast to <em>string</em>.</td>
+<td>Cast value to <em>string</em>.</td>
 </tr>
 <tr>
 <td><a href="Strings/Trim.html">Trim</a></td>
@@ -197,7 +219,7 @@
 <td>Strip whitespace (or other characters) from the beginning and end of a <em>string</em>.</td>
 </tr>
 <tr>
-<td><strong>Uppercase</strong></td>
+<td><a href="Letter-case/Uppercase.html">Uppercase</a></td>
 <td><em>string</em></td>
 <td>Make a <em>string</em> uppercase.</td>
 </tr>
@@ -207,7 +229,7 @@
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="Numbers/Abs.html" class="btn btn-neutral float-right" title="Abs">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="Cast/ToInt.html" class="btn btn-neutral float-right" title="ToInt">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -232,7 +254,7 @@
     
     
     
-      <span><a href="Numbers/Abs.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="Cast/ToInt.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
@@ -251,5 +273,5 @@
 
 <!--
 MkDocs version : 1.4.3
-Build Date UTC : 2023-07-21 11:50:02.748259+00:00
+Build Date UTC : 2023-08-16 14:41:12.558236+00:00
 -->
