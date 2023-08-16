@@ -185,7 +185,7 @@ class Project {
 <pre><code class="language-php">use Jawira\Sanitizer\Filters as Sanitizer;
 
 class Project {
-  #[Sanitizer\Cut(length: 2)]
+  #[Sanitizer\Cut(length: 3, useBytes: true)]
   public string $name;
 }
 </code></pre>
