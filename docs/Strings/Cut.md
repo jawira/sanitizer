@@ -74,7 +74,7 @@ The string must be 3 bytes in size.
 use Jawira\Sanitizer\Filters as Sanitizer;
 
 class Project {
-  #[Sanitizer\Cut(length: 2)]
+  #[Sanitizer\Cut(length: 3, useBytes: true)]
   public string $name;
 }
 ```
