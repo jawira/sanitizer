@@ -26,11 +26,12 @@ Call `Sanitizer::sanitize` method to apply sanitizers:
 ```php
 use Jawira\Sanitizer\Sanitizer;
 
-$sanitizer = new Sanitizer();
 $user = new User();
 $user->name = ' BOB ';
 
+$sanitizer = new Sanitizer();
 $sanitizer->sanitize($user);
+
 echo $user->name; // 'Bob'
 ```
 
