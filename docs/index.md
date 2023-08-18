@@ -10,7 +10,7 @@
 | [AtMost](Numbers/AtMost.md)                       | _int_, _float_                                | Value is at most equal to provided number.                                              |
 | [Cut](Strings/Cut.md)                             | _string_                                      | Limit string length.                                                                    |
 | [Digits](Numeric-strings/Digits.md)               | _string_                                      | Remove all characters except digits.                                                    |
-| [EmptyStringToNull](Strings/EmptyStringToNull.md) | _string_                                      | Set _null_ if value is empty _string_.                                                  |
+| [EmptyStringToNull](Cast/EmptyStringToNull.md) | _string_                                      | Set _null_ if value is empty _string_.                                                  |
 | [FloatChars](Numeric-strings/FloatChars.md)       | _string_                                      | Remove all characters except `0-9`, `+`, `-`, `.` and optionally `,`, `e`, and `E`.     |
 | [IntegerChars](Numeric-strings/IntegerChars.md)   | _string_                                      | Remove all characters except `0-9`, `+`, `-`.                                           |
 | [Lowercase](Letter-case/Lowercase.md)             | _string_                                      | Make a _string_ lowercase.                                                              |
