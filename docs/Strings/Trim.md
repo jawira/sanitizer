@@ -1,6 +1,7 @@
 # Trim
 
-Trim - Strip whitespace (or other characters) from the beginning and end of a string.
+Trim - Strip whitespace (or other characters) from the beginning and end of a
+string.
 
 Trim only works with `string`, any other type is ignored.
 
@@ -20,11 +21,14 @@ class User {
 <dl>
 <dt><em>string</em> <code>characters</code> (optional):</dt>
 <dd>Set of characters you want to remove, default value is "<code> \t\n\r\0\x0B</code>".</dd>
-<dt><em>string</em> <code>side</code> (optional):</dt>
+<dt><em>Side</em> <code>side</code> (optional):</dt>
 <dd>
-Use <code>both</code> to apply trim at the beginning and the end of string, this is the default value.<br>
-Use <code>left</code> to apply trim at the beginning of string.<br>
-Use <code>right</code> to apply trim at the end of string.
+Use enum <code>\Jawira\Sanitizer\Enums\Side</code> to specify trim behaviour.<br>
+<ul>
+<li><code>Side::Both</code> - to apply trim at the beginning and the end of string (default value).</li>
+<li><code>Side::Left</code> - to apply trim at the beginning of string.</li>
+<li><code>Side::Right</code> - to apply trim at the end of string.</li>
+</ul>
 </dd>
 </dl>
 
