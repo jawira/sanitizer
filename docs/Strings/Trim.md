@@ -57,9 +57,9 @@ Remove spaces at the end of the string:
 
 ```php
 use Jawira\Sanitizer\Filters as Sanitizer;
-
+use \Jawira\Sanitizer\Enums\Side;
 class User {
-    #[Sanitizer\Trim(side: 'right')]
+    #[Sanitizer\Trim(Side::Right)]
     public string $name;
 }
 ```
@@ -76,9 +76,10 @@ Remove plus and minus signs at the beginning of the string:
 
 ```php
 use Jawira\Sanitizer\Filters as Sanitizer;
+use \Jawira\Sanitizer\Enums\Side;
 
 class User {
-    #[Sanitizer\Trim(side: 'left', characters: '+-')]
+    #[Sanitizer\Trim(Side::Left, characters: '+-')]
     public string $name;
 }
 ```
