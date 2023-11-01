@@ -17,7 +17,7 @@ class Currency
 
   public function __construct(
     #[Sanitizer\Digits]
-    #[Sanitizer\Pad(length: 3, padString: '0', side: 'left')]
+    #[Sanitizer\Pad(length: 3, padString: '0', side: Side::Left)]
     private string $number,
 
     #[Sanitizer\Uppercase]

@@ -3,6 +3,7 @@
 namespace Jawira\Sanitizer\Filters;
 
 use Attribute;
+use Jawira\Sanitizer\Enums\Side;
 use const STR_PAD_BOTH;
 use const STR_PAD_LEFT;
 use const STR_PAD_RIGHT;
@@ -10,13 +11,9 @@ use const STR_PAD_RIGHT;
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class Pad implements FilterInterface
 {
-  public const BOTH = 'both';
-  public const LEFT = 'left';
-  public const RIGHT = 'right';
-
-  public function __construct(private int    $length,
-                              private string $padString = ' ',
-                              private string $side = self::RIGHT)
+  public function __construct(private readonly int    $length,
+                              private readonly string $padString = ' ',
+                              private readonly Side   $side = Side::Right)
   {
   }
 
@@ -35,9 +32,9 @@ class Pad implements FilterInterface
   {
     assert(is_string($value));
     $padType = match ($this->side) {
-      self::LEFT => STR_PAD_LEFT,
-      self::RIGHT => STR_PAD_RIGHT,
-      self::BOTH => STR_PAD_BOTH,
+      Side::Left => STR_PAD_LEFT,
+      Side::Right => STR_PAD_RIGHT,
+      Side::Both => STR_PAD_BOTH,
     };
 
     return str_pad($value, $this->length, $this->padString, $padType);

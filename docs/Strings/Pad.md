@@ -25,11 +25,14 @@ class Report {
 String to use as pad.<br>
 The default value is "<em>space</em>" character.
 </dd>
-<dt><em>string</em> <code>side</code> (optional):</dt>
+<dt><em>Side</em> <code>side</code> (optional):</dt>
 <dd>
-Use <code>right</code> to apply pad at the end of string, this is the default value.<br>
-Use <code>left</code> to apply pad at the beginning of string.<br>
-Use <code>both</code> to apply pad at the beginning and the end of string.
+Use enum <code>\Jawira\Sanitizer\Enums\Side</code> to specify pad behaviour.<br>
+<ul>
+<li><code>Side::Both</code> - to apply pad at the beginning and the end of string (default value).</li>
+<li><code>Side::Left</code> - to apply pad at the beginning of string.</li>
+<li><code>Side::Right</code> - to apply pad at the end of string.</li>
+</ul>
 </dd>
 </dl>
 
@@ -39,9 +42,10 @@ Add leading zeros when string has less than three characters:
 
 ```php
 use Jawira\Sanitizer\Filters as Sanitizer;
+use \Jawira\Sanitizer\Enums\Side;
 
 class Classroom {
-  #[Sanitizer\Pad(length: 3, padString: '0', side: 'left')]
+  #[Sanitizer\Pad(length: 3, padString: '0', side: Side::Left)]
   public string $number;
 }
 ```
@@ -58,7 +62,7 @@ Create 30 characters width _ascii art_ header:
 use Jawira\Sanitizer\Filters as Sanitizer;
 
 class AsciiArt {
-  #[Sanitizer\Pad(length: 30, padString: '-+-', side: 'both')]
+  #[Sanitizer\Pad(length: 30, padString: '-+-', side: Side::Both)]
   public string $title;
 }
 ```
@@ -87,4 +91,5 @@ class Paycheck {
 
 ## See also
 
-[Trim](Trim.md) - Strip whitespace (or other characters) from the beginning and end of a string.
+[Trim](Trim.md) - Strip whitespace (or other characters) from the beginning and
+end of a string.
