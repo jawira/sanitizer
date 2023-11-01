@@ -1,8 +1,8 @@
-# Abs
+# Absolute
 
-Abs - Absolute value.
+Absolute - Absolute value.
 
-Abs only works with `int` and `float`, any other type is ignored.
+Absolute only works with `int` and `float`, any other type is ignored.
 
 ## Basic usage
 
@@ -10,7 +10,7 @@ Abs only works with `int` and `float`, any other type is ignored.
 use Jawira\Sanitizer\Filters as Sanitizer;
 
 class Travel {
-  #[Sanitizer\Abs]
+  #[Sanitizer\Absolute]
   public int $km;
 }
 ```
@@ -27,7 +27,7 @@ Absolute value:
 use Jawira\Sanitizer\Filters as Sanitizer;
 
 class User {
-  #[Sanitizer\Abs]
+  #[Sanitizer\Absolute]
   public int|float $age;
 }
 ```

@@ -7,8 +7,13 @@ use function abs;
 use function is_float;
 use function is_int;
 
+/**
+ * Absolute value.
+ *
+ * @link https://jawira.github.io/sanitizer/Numbers/Absolute.html
+ */
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
-class Abs implements FilterInterface
+class Absolute implements FilterInterface
 {
   public function precondition(mixed $value): bool
   {

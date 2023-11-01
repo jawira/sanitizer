@@ -12,7 +12,7 @@ class Car
   #[Sanitizer\Digits]
   public string $year;
 
-  #[Sanitizer\Abs]
+  #[Sanitizer\Absolute]
   public float $speed;
 
   #[Sanitizer\AtLeast(0)]
