@@ -5,3 +5,5 @@ site_author: Jawira Portugal
 strict: true
 use_directory_urls: false
 site_dir: public
+repo_url: https://github.com/jawira/sanitizer
+edit_uri: edit/main/docs/
