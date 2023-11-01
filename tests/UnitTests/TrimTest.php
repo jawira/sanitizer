@@ -2,6 +2,7 @@
 
 namespace UnitTests;
 
+use Jawira\Sanitizer\Enums\Side;
 use Jawira\Sanitizer\Filters\Trim;
 use PHPUnit\Framework\TestCase;
 
@@ -55,21 +56,21 @@ class TrimTest extends TestCase
   public function filterProvider()
   {
     return [
-      ['', Trim::BOTH, ''],
-      ["\t", Trim::BOTH, ''],
-      ["\r\n", Trim::BOTH, ''],
-      ['xxx', Trim::BOTH, 'xxx'],
-      ['123', Trim::BOTH, '123'],
-      ['5e5', Trim::BOTH, '5e5'],
-      ['      Hello', Trim::BOTH, 'Hello'],
-      ['   Hello   ', Trim::BOTH, 'Hello'],
-      ['Hello      ', Trim::BOTH, 'Hello'],
-      ['      Hello', Trim::LEFT, 'Hello'],
-      ['   Hello   ', Trim::LEFT, 'Hello   '],
-      ['Hello      ', Trim::LEFT, 'Hello      '],
-      ['      Hello', Trim::RIGHT, '      Hello'],
-      ['   Hello   ', Trim::RIGHT, '   Hello'],
-      ['Hello      ', Trim::RIGHT, 'Hello'],
+      ['', Side::Both, ''],
+      ["\t", Side::Both, ''],
+      ["\r\n", Side::Both, ''],
+      ['xxx', Side::Both, 'xxx'],
+      ['123', Side::Both, '123'],
+      ['5e5', Side::Both, '5e5'],
+      ['      Hello', Side::Both, 'Hello'],
+      ['   Hello   ', Side::Both, 'Hello'],
+      ['Hello      ', Side::Both, 'Hello'],
+      ['      Hello', Side::Left, 'Hello'],
+      ['   Hello   ', Side::Left, 'Hello   '],
+      ['Hello      ', Side::Left, 'Hello      '],
+      ['      Hello', Side::Right, '      Hello'],
+      ['   Hello   ', Side::Right, '   Hello'],
+      ['Hello      ', Side::Right, 'Hello'],
     ];
   }
 }

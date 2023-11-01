@@ -2,6 +2,7 @@
 
 namespace Dummies;
 
+use Jawira\Sanitizer\Enums\Side;
 use Jawira\Sanitizer\Filters as Sanitizer;
 
 /**
@@ -16,15 +17,15 @@ class Currency
 
   public function __construct(
     #[Sanitizer\Digits]
-    #[Sanitizer\Pad(length: 3, padString: '0', side: 'left')]
+    #[Sanitizer\Pad(length: 3, padString: '0', side: Side::Left)]
     private string $number,
 
     #[Sanitizer\Uppercase]
     #[Sanitizer\Trim]
     private string $code,
 
-    #[Sanitizer\Trim(side: 'left')]
-    #[Sanitizer\Trim(side: 'right')]
+    #[Sanitizer\Trim(side: Side::Left)]
+    #[Sanitizer\Trim(side: Side::Right)]
     private string $name,
 
     #[Sanitizer\AtLeast]

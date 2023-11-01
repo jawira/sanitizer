@@ -2,6 +2,7 @@
 
 namespace UnitTests;
 
+use Jawira\Sanitizer\Enums\Side;
 use Jawira\Sanitizer\Filters\Pad;
 use PHPUnit\Framework\TestCase;
 
@@ -105,26 +106,26 @@ class PadTest extends TestCase
   {
     return [
       // both
-      ['', 0, Pad::BOTH, ''],
-      ["\t", 3, Pad::BOTH, " \t "],
-      ['xxx', 10, Pad::BOTH, '   xxx    '],
-      ['123', 8, Pad::BOTH, '  123   '],
-      ['5e5', 0, Pad::BOTH, '5e5'],
-      ['Hello', 10, Pad::BOTH, '  Hello   '],
+      ['', 0, Side::Both, ''],
+      ["\t", 3, Side::Both, " \t "],
+      ['xxx', 10, Side::Both, '   xxx    '],
+      ['123', 8, Side::Both, '  123   '],
+      ['5e5', 0, Side::Both, '5e5'],
+      ['Hello', 10, Side::Both, '  Hello   '],
       // left
-      ['', 0, Pad::LEFT, ''],
-      ["\t", 3, Pad::LEFT, "  \t"],
-      ['xxx', 10, Pad::LEFT, '       xxx'],
-      ['123', 8, Pad::LEFT, '     123'],
-      ['5e5', 0, Pad::LEFT, '5e5'],
-      ['Hello', 10, Pad::LEFT, '     Hello'],
+      ['', 0, Side::Left, ''],
+      ["\t", 3, Side::Left, "  \t"],
+      ['xxx', 10, Side::Left, '       xxx'],
+      ['123', 8, Side::Left, '     123'],
+      ['5e5', 0, Side::Left, '5e5'],
+      ['Hello', 10, Side::Left, '     Hello'],
       // right
-      ['', 0, Pad::RIGHT, ''],
-      ["\t", 3, Pad::RIGHT, "\t  "],
-      ['xxx', 10, Pad::RIGHT, 'xxx       '],
-      ['123', 8, Pad::RIGHT, '123     '],
-      ['5e5', 0, Pad::RIGHT, '5e5'],
-      ['Hello', 10, Pad::RIGHT, 'Hello     '],
+      ['', 0, Side::Right, ''],
+      ["\t", 3, Side::Right, "\t  "],
+      ['xxx', 10, Side::Right, 'xxx       '],
+      ['123', 8, Side::Right, '123     '],
+      ['5e5', 0, Side::Right, '5e5'],
+      ['Hello', 10, Side::Right, 'Hello     '],
     ];
   }
 
@@ -144,15 +145,15 @@ class PadTest extends TestCase
   public function filterWithAllOptionsProvider()
   {
     return [
-      ['', 0, '*', 'left', ''],
-      ["\t", 3, ' ', 'right', "\t  "],
-      ['123', 8, 'azerty', 'left', 'azert123'],
-      ['68', 3, '0', 'left', '068'],
-      ['5e5', 0, 'x', 'both', '5e5'],
-      ['Hello      ', 10, 'x', 'right', 'Hello      '],
-      ['CREDITS', 30, '-+-', 'both', '-+--+--+--+CREDITS-+--+--+--+-'],
-      ['DOCUMENTATION', 30, '-+-', 'both', '-+--+--+DOCUMENTATION-+--+--+-'],
-      ['AUTHOR', 30, '-+-', 'both', '-+--+--+--+-AUTHOR-+--+--+--+-'],
+      ['', 0, '*', Side::Left, ''],
+      ["\t", 3, ' ', Side::Right, "\t  "],
+      ['123', 8, 'azerty', Side::Left, 'azert123'],
+      ['68', 3, '0', Side::Left, '068'],
+      ['5e5', 0, 'x', Side::Both, '5e5'],
+      ['Hello      ', 10, 'x', Side::Right, 'Hello      '],
+      ['CREDITS', 30, '-+-', Side::Both, '-+--+--+--+CREDITS-+--+--+--+-'],
+      ['DOCUMENTATION', 30, '-+-', Side::Both, '-+--+--+DOCUMENTATION-+--+--+-'],
+      ['AUTHOR', 30, '-+-', Side::Both, '-+--+--+--+-AUTHOR-+--+--+--+-'],
     ];
   }
 

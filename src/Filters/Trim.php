@@ -3,6 +3,7 @@
 namespace Jawira\Sanitizer\Filters;
 
 use Attribute;
+use Jawira\Sanitizer\Enums\Side;
 use function assert;
 use function is_string;
 use function ltrim;
@@ -12,12 +13,8 @@ use function trim;
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class Trim implements FilterInterface
 {
-  public const BOTH = 'both';
-  public const LEFT = 'left';
-  public const RIGHT = 'right';
-
-  public function __construct(private string $characters = " \t\n\r\0\x0B",
-                              private string $side = self::BOTH)
+  public function __construct(private readonly string $characters = " \t\n\r\0\x0B",
+                              private readonly Side   $side = Side::Both)
   {
   }
 
@@ -37,9 +34,9 @@ class Trim implements FilterInterface
     assert(is_string($value));
 
     return match ($this->side) {
-      self::LEFT => ltrim($value, $this->characters),
-      self::RIGHT => rtrim($value, $this->characters),
-      self::BOTH => trim($value, $this->characters),
+      Side::Left => ltrim($value, $this->characters),
+      Side::Right => rtrim($value, $this->characters),
+      Side::Both => trim($value, $this->characters),
     };
   }
 }
