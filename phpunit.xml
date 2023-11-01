@@ -9,6 +9,7 @@
          beStrictAboutOutputDuringTests="true"
          beStrictAboutTodoAnnotatedTests="true"
          convertDeprecationsToExceptions="true"
+         stopOnFailure="true"
          colors="true"
          failOnRisky="true"
          failOnWarning="true"

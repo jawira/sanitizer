@@ -5,7 +5,7 @@ namespace UnitTests;
 use Jawira\Sanitizer\Filters\Absolute;
 use PHPUnit\Framework\TestCase;
 
-class AbsTest extends TestCase
+class AbsoluteTest extends TestCase
 {
 
   /**
@@ -59,7 +59,7 @@ class AbsTest extends TestCase
     $filter = new Absolute;
     $result = $filter->filter($value);
 
-    $this->asserftSame($expected, $result);
+    $this->assertSame($expected, $result);
   }
 
   public function filterProvider()

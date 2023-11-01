@@ -1,8 +1,8 @@
-# Cut
+# MaxLength
 
-Cut - Limit string length.
+MaxLength - Limit string length.
 
-Cut only works with `string`, any other type is ignored.
+MaxLength only works with `string`, any other type is ignored.
 
 ## Basic usage
 
@@ -10,7 +10,7 @@ Cut only works with `string`, any other type is ignored.
 use Jawira\Sanitizer\Filters as Sanitizer;
 
 class Article {
-  #[Sanitizer\Cut(length: 255)]
+  #[Sanitizer\MaxLength(length: 255)]
   public string $title;
 }
 ```
@@ -25,11 +25,15 @@ If desired length is positive, the resulting string will start from the beginnin
 If length is negative, the resulting string will start from the ending of the string.
 </dd>
 
-<dt><em>bool</em> <code>useBytes</code> (optional):</dt>
+<dt><em>StringMode</em> <code>stringMode</code> (optional):</dt>
 <dd>
-When false, length will represent characters.<br>
-If true, length will be in bytes.<br>
-Default value is <em>false</em>.
+Use enum <code>\Jawira\Sanitizer\Enums\StringMode</code> to define how to measure string length.<br>
+
+<ul>
+<li><code>StringMode::Characters</code> - string is measured in characters (default value).</li>
+<li><code>StringMode::Bytes</code> - string is measured in bytes.</li>
+<li><code>StringMode::Graphemes</code> - string is measured in graphemes.</li>
+</ul>
 </dd>
 
 </dl>
@@ -42,7 +46,7 @@ Limit the length of string to 5 characters.
 use Jawira\Sanitizer\Filters as Sanitizer;
 
 class Project {
-  #[Sanitizer\Cut(length: 5)]
+  #[Sanitizer\MaxLength(5)]
   public string $name;
 }
 ```
@@ -58,7 +62,7 @@ Limit the length of string to the last 3 characters.
 use Jawira\Sanitizer\Filters as Sanitizer;
 
 class Project {
-  #[Sanitizer\Cut(length: -3)]
+  #[Sanitizer\MaxLength(-3)]
   public string $name;
 }
 ```
@@ -72,9 +76,10 @@ The string must be 3 bytes in size.
 
 ```php
 use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Enums\StringMode;
 
 class Project {
-  #[Sanitizer\Cut(length: 3, useBytes: true)]
+  #[Sanitizer\MaxLength(3, StringMode::Bytes)]
   public string $name;
 }
 ```

@@ -67,7 +67,7 @@ Interface `SanitizerInterface` is also available.
 | Sanitizer                         | Works with | Description                                                                      |
 |-----------------------------------|------------|----------------------------------------------------------------------------------|
 | [Ascii](Strings/Ascii.md)         | _string_   | Remove all characters except ascii characters.                                   |
-| [Cut](Strings/Cut.md)             | _string_   | Limit string length.                                                             |
+| [MaxLength](Strings/MaxLength.md) | _string_   | Limit string length.                                                             |
 | [Pad](Strings/Pad.md)             | _string_   | Pad a _string_ to a certain length with another _string_.                        |
 | [Replace](Strings/Replace.md)     | _string_   | Replace all occurrences of the search _string_ with the replacement _string_.    |
 | [StripTags](Strings/StripTags.md) | _string_   | Strip HTML and PHP tags from a _string_.                                         |
