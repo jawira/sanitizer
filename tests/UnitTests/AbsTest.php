@@ -2,19 +2,19 @@
 
 namespace UnitTests;
 
-use Jawira\Sanitizer\Filters\Abs;
+use Jawira\Sanitizer\Filters\Absolute;
 use PHPUnit\Framework\TestCase;
 
 class AbsTest extends TestCase
 {
 
   /**
-   * @covers       \Jawira\Sanitizer\Filters\Abs::precondition
+   * @covers       \Jawira\Sanitizer\Filters\Absolute::precondition
    * @dataProvider checkProvider
    */
   public function testCheck($value, $expected)
   {
-    $filter = new Abs();
+    $filter = new Absolute();
     $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
@@ -51,12 +51,12 @@ class AbsTest extends TestCase
 
 
   /**
-   * @covers       \Jawira\Sanitizer\Filters\Abs::filter
+   * @covers       \Jawira\Sanitizer\Filters\Absolute::filter
    * @dataProvider filterProvider
    */
   public function testFilter($value, $expected)
   {
-    $filter = new Abs;
+    $filter = new Absolute;
     $result = $filter->filter($value);
 
     $this->assertSame($expected, $result);
