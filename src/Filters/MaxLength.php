@@ -6,7 +6,7 @@ declare(strict_types=1);
 namespace Jawira\Sanitizer\Filters;
 
 use Attribute;
-use Jawira\Sanitizer\Enums\StringMode;
+use Jawira\Sanitizer\Enums\LengthMode;
 use Jawira\Sanitizer\FilterException;
 use function grapheme_substr;
 use function is_string;
@@ -17,7 +17,7 @@ use function mb_substr;
 class MaxLength implements FilterInterface
 {
   public function __construct(private readonly int        $length,
-                              private readonly StringMode $stringMode = StringMode::Characters)
+                              private readonly LengthMode $mode = LengthMode::Characters)
   {
   }
 
@@ -41,10 +41,10 @@ class MaxLength implements FilterInterface
       $length = null;
     }
 
-    return match ($this->stringMode) {
-      StringMode::Bytes => $this->lengthInBytes($value, $start, $length),
-      StringMode::Characters => $this->lengthInCharacters($value, $start, $length),
-      StringMode::Graphemes => $this->lengthInGraphemes($value, $start, $length),
+    return match ($this->mode) {
+      LengthMode::Bytes => $this->lengthInBytes($value, $start, $length),
+      LengthMode::Characters => $this->lengthInCharacters($value, $start, $length),
+      LengthMode::Graphemes => $this->lengthInGraphemes($value, $start, $length),
     };
   }
 

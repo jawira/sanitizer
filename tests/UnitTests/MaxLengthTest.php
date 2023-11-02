@@ -2,7 +2,7 @@
 
 namespace UnitTests;
 
-use Jawira\Sanitizer\Enums\StringMode;
+use Jawira\Sanitizer\Enums\LengthMode;
 use Jawira\Sanitizer\Filters\MaxLength;
 use PHPUnit\Framework\TestCase;
 
@@ -53,7 +53,7 @@ class MaxLengthTest extends TestCase
    */
   public function testFilterWithBytes($value, $length, $expected)
   {
-    $filter = new MaxLength(length: $length, stringMode: StringMode::Bytes);
+    $filter = new MaxLength(length: $length, mode: LengthMode::Bytes);
     $result = $filter->filter($value);
 
     $this->assertSame($expected, $result);
@@ -98,7 +98,7 @@ class MaxLengthTest extends TestCase
    */
   public function testFilterWithCharacter($value, $length, $expected)
   {
-    $filter = new MaxLength(length: $length, stringMode: StringMode::Characters);
+    $filter = new MaxLength(length: $length, mode: LengthMode::Characters);
     $result = $filter->filter($value);
 
     $this->assertSame($expected, $result);
@@ -143,7 +143,7 @@ class MaxLengthTest extends TestCase
    */
   public function testFilterWithGrapheme($value, $length, $expected)
   {
-    $filter = new MaxLength(length: $length, stringMode: StringMode::Graphemes);
+    $filter = new MaxLength(length: $length, mode: LengthMode::Graphemes);
     $result = $filter->filter($value);
 
     $this->assertSame($expected, $result);
