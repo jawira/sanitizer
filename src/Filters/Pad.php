@@ -13,9 +13,9 @@ use function in_array;
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class Pad implements FilterInterface
 {
-  public function __construct(private readonly int    $length,
-                              private readonly string $padString = ' ',
-                              private readonly Side   $side = Side::Right)
+  public function __construct(private int    $length,
+                              private string $padString = ' ',
+                              private Side   $side = Side::Right)
   {
   }
 

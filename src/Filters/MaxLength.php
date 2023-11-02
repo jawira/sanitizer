@@ -16,8 +16,8 @@ use function mb_substr;
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class MaxLength implements FilterInterface
 {
-  public function __construct(private readonly int        $length,
-                              private readonly LengthMode $mode = LengthMode::Characters)
+  public function __construct(private int        $length,
+                              private LengthMode $mode = LengthMode::Characters)
   {
   }
 
