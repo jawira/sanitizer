@@ -3,16 +3,15 @@
 namespace UnitTests;
 
 use Jawira\Sanitizer\Filters\Replace;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(Replace::class)]
 class ReplaceTest extends TestCase
 {
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\Replace::__construct
-   * @covers       \Jawira\Sanitizer\Filters\Replace::precondition
-   * @dataProvider checkProvider
-   */
+  #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
     $filter = new Replace('foo', 'bar');
@@ -21,7 +20,7 @@ class ReplaceTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function checkProvider()
+  public static function checkProvider()
   {
     return [
       ['', true],
@@ -43,11 +42,7 @@ class ReplaceTest extends TestCase
     ];
   }
 
-  /**
-   * @dataProvider filterProvider
-   * @covers       \Jawira\Sanitizer\Filters\Replace::__construct
-   * @covers       \Jawira\Sanitizer\Filters\Replace::filter
-   */
+  #[DataProvider('filterProvider')]
   public function testFilter($value, $expected)
   {
     $filter = new Replace(' ', '');
@@ -55,7 +50,7 @@ class ReplaceTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterProvider()
+  public static function filterProvider()
   {
     return [
       ['Hello World', 'HelloWorld'],
@@ -67,11 +62,7 @@ class ReplaceTest extends TestCase
     ];
   }
 
-  /**
-   * @dataProvider removeStringProvider
-   * @covers       \Jawira\Sanitizer\Filters\Replace::__construct
-   * @covers       \Jawira\Sanitizer\Filters\Replace::filter
-   */
+  #[DataProvider('removeStringProvider')]
   public function testRemoveString($search, $value, $expected)
   {
     $filter = new Replace($search, '');
@@ -79,7 +70,7 @@ class ReplaceTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function removeStringProvider()
+  public static function removeStringProvider()
   {
     return [
       ['Hello', 'Hello World. Hello Friend.', ' World.  Friend.'],
@@ -91,11 +82,7 @@ class ReplaceTest extends TestCase
     ];
   }
 
-  /**
-   * @dataProvider filterCustomProvider
-   * @covers       \Jawira\Sanitizer\Filters\Replace::__construct
-   * @covers       \Jawira\Sanitizer\Filters\Replace::filter
-   */
+  #[DataProvider('filterCustomProvider')]
   public function testFilterCustom($search, $replace, $value, $expected)
   {
     $filter = new Replace($search, $replace);
@@ -103,7 +90,7 @@ class ReplaceTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterCustomProvider()
+  public static function filterCustomProvider()
   {
     return [
       ['World', 'Bob', 'Hello World', 'Hello Bob'],
@@ -119,11 +106,7 @@ class ReplaceTest extends TestCase
     ];
   }
 
-  /**
-   * @dataProvider removeStringInsensitiveProvider
-   * @covers       \Jawira\Sanitizer\Filters\Replace::__construct
-   * @covers       \Jawira\Sanitizer\Filters\Replace::filter
-   */
+  #[DataProvider('removeStringInsensitiveProvider')]
   public function testRemoveStringInsensitive($search, $value, $expected)
   {
     $filter = new Replace($search, '', caseSensitive: false);
@@ -131,7 +114,7 @@ class ReplaceTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function removeStringInsensitiveProvider()
+  public static function removeStringInsensitiveProvider()
   {
     return [
       ['World', 'Hello World', 'Hello '],
@@ -144,11 +127,7 @@ class ReplaceTest extends TestCase
     ];
   }
 
-  /**
-   * @dataProvider filterCustomInsensitiveProvider
-   * @covers       \Jawira\Sanitizer\Filters\Replace::__construct
-   * @covers       \Jawira\Sanitizer\Filters\Replace::filter
-   */
+  #[DataProvider('filterCustomInsensitiveProvider')]
   public function testFilterCustomInsensitive($search, $replace, $value, $expected)
   {
     $filter = new Replace($search, $replace, caseSensitive: false);
@@ -156,7 +135,7 @@ class ReplaceTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterCustomInsensitiveProvider()
+  public static function filterCustomInsensitiveProvider()
   {
     return [
       ['del toro', 'del Toro', 'Guillermo del Toro', 'Guillermo del Toro'],

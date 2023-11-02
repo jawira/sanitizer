@@ -3,9 +3,22 @@
 namespace Integration;
 
 use Dummies\Currency;
+use Jawira\Sanitizer\Filters\AtLeast;
+use Jawira\Sanitizer\Filters\Digits;
+use Jawira\Sanitizer\Filters\Pad;
+use Jawira\Sanitizer\Filters\Trim;
+use Jawira\Sanitizer\Filters\Uppercase;
 use Jawira\Sanitizer\Sanitizer;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(AtLeast::class)]
+#[CoversClass(Digits::class)]
+#[CoversClass(Pad::class)]
+#[CoversClass(Sanitizer::class)]
+#[CoversClass(Trim::class)]
+#[CoversClass(Uppercase::class)]
 class CurrencyTest extends TestCase
 {
   private Sanitizer $sanitizer;
@@ -15,25 +28,7 @@ class CurrencyTest extends TestCase
     $this->sanitizer = new Sanitizer();
   }
 
-  /**
-   * @dataProvider nameProvider
-   * @covers       \Jawira\Sanitizer\Filters\Digits::precondition
-   * @covers       \Jawira\Sanitizer\Filters\Digits::filter
-   * @covers       \Jawira\Sanitizer\Filters\AtLeast::__construct
-   * @covers       \Jawira\Sanitizer\Filters\AtLeast::precondition
-   * @covers       \Jawira\Sanitizer\Filters\AtLeast::filter
-   * @covers       \Jawira\Sanitizer\Filters\Pad::__construct
-   * @covers       \Jawira\Sanitizer\Filters\Pad::precondition
-   * @covers       \Jawira\Sanitizer\Filters\Pad::filter
-   * @covers       \Jawira\Sanitizer\Filters\Trim::__construct
-   * @covers       \Jawira\Sanitizer\Filters\Trim::precondition
-   * @covers       \Jawira\Sanitizer\Filters\Trim::filter
-   * @covers       \Jawira\Sanitizer\Filters\Uppercase::precondition
-   * @covers       \Jawira\Sanitizer\Filters\Uppercase::filter
-   * @covers       \Jawira\Sanitizer\Sanitizer::applyFilter
-   * @covers       \Jawira\Sanitizer\Sanitizer::sanitize
-   * @covers       \Jawira\Sanitizer\Sanitizer::sanitizeProperty
-   */
+  #[DataProvider('nameProvider')]
   public function testName($number, $numberExpected, $code, $codeExpected, $name, $nameExpected, $digits, $digitsExpected)
   {
     $currency = new Currency($number, $code, $name, $digits);
@@ -45,7 +40,7 @@ class CurrencyTest extends TestCase
     $this->assertSame($digitsExpected, $currency->getDigits());
   }
 
-  public function nameProvider()
+  public static function nameProvider()
   {
     return [
       ['68', '068', "\tbob", 'BOB', '  Euro  ', 'Euro', 2, 2],

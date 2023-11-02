@@ -3,14 +3,14 @@
 namespace UnitTests;
 
 use Jawira\Sanitizer\Filters\Lowercase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(Lowercase::class)]
 class LowercaseTest extends TestCase
 {
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\Lowercase::precondition
-   * @dataProvider checkProvider
-   */
+  #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
     $filter = new Lowercase();
@@ -19,7 +19,7 @@ class LowercaseTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function checkProvider()
+  public static function checkProvider()
   {
     return [
       ['', true],
@@ -40,10 +40,7 @@ class LowercaseTest extends TestCase
     ];
   }
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\Lowercase::filter
-   * @dataProvider filterProvider
-   */
+  #[DataProvider('filterProvider')]
   public function testFilter($value, $expected)
   {
     $filter = new Lowercase();
@@ -52,20 +49,20 @@ class LowercaseTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterProvider()
+  public static function filterProvider()
   {
     return [
-      ['',''],
-      ["\t","\t"],
-      ['xxx','xxx'],
-      ['123','123'],
-      ['3.14','3.14'],
-      ['5e5','5e5'],
-      ['Hello      ','hello      '],
-      ['      Hello','      hello'],
-      ['   Hello   ','   hello   '],
-      ['Γεια σας','γεια σας'],
-      ['Австралия','австралия'],
+      ['', ''],
+      ["\t", "\t"],
+      ['xxx', 'xxx'],
+      ['123', '123'],
+      ['3.14', '3.14'],
+      ['5e5', '5e5'],
+      ['Hello      ', 'hello      '],
+      ['      Hello', '      hello'],
+      ['   Hello   ', '   hello   '],
+      ['Γεια σας', 'γεια σας'],
+      ['Австралия', 'австралия'],
     ];
   }
 }

@@ -4,19 +4,18 @@ namespace UnitTests;
 
 use Jawira\Sanitizer\Enums\LengthMode;
 use Jawira\Sanitizer\Filters\MaxLength;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @see https://www.kermitproject.org/utf8.html
  */
+#[CoversClass(MaxLength::class)]
 class MaxLengthTest extends TestCase
 {
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\MaxLength::precondition
-   * @covers       \Jawira\Sanitizer\Filters\MaxLength::__construct
-   * @dataProvider checkProvider
-   */
+  #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
     $filter = new MaxLength(0);
@@ -25,7 +24,7 @@ class MaxLengthTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function checkProvider()
+  public static function checkProvider()
   {
     return [
       ['', true],
@@ -45,12 +44,7 @@ class MaxLengthTest extends TestCase
     ];
   }
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\MaxLength::__construct
-   * @covers       \Jawira\Sanitizer\Filters\MaxLength::filter
-   * @covers       \Jawira\Sanitizer\Filters\MaxLength::lengthInBytes
-   * @dataProvider bytesProvider
-   */
+  #[DataProvider('bytesProvider')]
   public function testFilterWithBytes($value, $length, $expected)
   {
     $filter = new MaxLength(length: $length, mode: LengthMode::Bytes);
@@ -59,7 +53,7 @@ class MaxLengthTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function bytesProvider()
+  public static function bytesProvider()
   {
     return [
       ["Կրնամ ապակի ուտել և ինծի անհանգիստ չըներ։", -10, 'ըներ։'],
@@ -90,12 +84,7 @@ class MaxLengthTest extends TestCase
     ];
   }
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\MaxLength::__construct
-   * @covers       \Jawira\Sanitizer\Filters\MaxLength::filter
-   * @covers       \Jawira\Sanitizer\Filters\MaxLength::lengthInCharacters
-   * @dataProvider characterProvider
-   */
+  #[DataProvider('characterProvider')]
   public function testFilterWithCharacter($value, $length, $expected)
   {
     $filter = new MaxLength(length: $length, mode: LengthMode::Characters);
@@ -104,7 +93,7 @@ class MaxLengthTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function characterProvider()
+  public static function characterProvider()
   {
     return [
       ["Կրնամ ապակի ուտել և ինծի անհանգիստ չըներ։", -10, 'իստ չըներ։'],
@@ -135,12 +124,7 @@ class MaxLengthTest extends TestCase
     ];
   }
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\MaxLength::__construct
-   * @covers       \Jawira\Sanitizer\Filters\MaxLength::filter
-   * @covers       \Jawira\Sanitizer\Filters\MaxLength::lengthInGraphemes
-   * @dataProvider graphemeProvider
-   */
+  #[DataProvider('graphemeProvider')]
   public function testFilterWithGrapheme($value, $length, $expected)
   {
     $filter = new MaxLength(length: $length, mode: LengthMode::Graphemes);
@@ -149,7 +133,7 @@ class MaxLengthTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function graphemeProvider()
+  public static function graphemeProvider()
   {
     return [
       ["Կրնամ ապակի ուտել և ինծի անհանգիստ չըներ։", -10, 'իստ չըներ։'],

@@ -20,7 +20,7 @@ class AbsoluteTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  static public function checkProvider()
+  public static function checkProvider()
   {
     return [
       // true
@@ -59,7 +59,7 @@ class AbsoluteTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterProvider()
+  public static function filterProvider()
   {
     return [
       [0, 0],

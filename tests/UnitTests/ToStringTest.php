@@ -3,15 +3,15 @@
 namespace UnitTests;
 
 use Jawira\Sanitizer\Filters\ToString;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(ToString::class)]
 class ToStringTest extends TestCase
 {
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\ToString::precondition
-   * @dataProvider checkProvider
-   */
+  #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
     $filter = new ToString();
@@ -20,7 +20,7 @@ class ToStringTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function checkProvider()
+  public static function checkProvider()
   {
     $car = new class {
       public function __toString()
@@ -48,10 +48,7 @@ class ToStringTest extends TestCase
     ];
   }
 
-  /**
-   * @dataProvider filterProvider
-   * @covers       \Jawira\Sanitizer\Filters\ToString::filter
-   */
+  #[DataProvider('filterProvider')]
   public function testFilter($value, $expected)
   {
     $filter = new ToString();
@@ -61,7 +58,7 @@ class ToStringTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterProvider()
+  public static function filterProvider()
   {
     $television = new class {
       public function __toString()

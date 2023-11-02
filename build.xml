@@ -63,6 +63,7 @@
     <exec executable="vendor/bin/phpunit" checkreturn="true" passthru="true">
       <env key="XDEBUG_MODE" value="coverage"/>
       <arg value="--coverage-text"/>
+      <arg value="--color=always"/>
     </exec>
   </target>
 

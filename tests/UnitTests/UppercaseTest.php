@@ -3,14 +3,14 @@
 namespace UnitTests;
 
 use Jawira\Sanitizer\Filters\Uppercase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(Uppercase::class)]
 class UppercaseTest extends TestCase
 {
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\Uppercase::precondition
-   * @dataProvider checkProvider
-   */
+  #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
     $filter = new Uppercase();
@@ -19,7 +19,7 @@ class UppercaseTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function checkProvider()
+  public static function checkProvider()
   {
     return [
       ['', true],
@@ -40,10 +40,7 @@ class UppercaseTest extends TestCase
     ];
   }
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\Uppercase::filter
-   * @dataProvider filterProvider
-   */
+  #[DataProvider('filterProvider')]
   public function testFilter($value, $expected)
   {
     $filter = new Uppercase();
@@ -52,7 +49,7 @@ class UppercaseTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterProvider()
+  public static function filterProvider()
   {
     return [
       ['', ''],

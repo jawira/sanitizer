@@ -3,16 +3,15 @@
 namespace UnitTests;
 
 use Jawira\Sanitizer\Filters\FloatChars;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(FloatChars::class)]
 class FloatCharsTest extends TestCase
 {
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\FloatChars::precondition
-   * @covers       \Jawira\Sanitizer\Filters\FloatChars::__construct
-   * @dataProvider checkProvider
-   */
+  #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
     $filter = new FloatChars();
@@ -21,7 +20,7 @@ class FloatCharsTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function checkProvider()
+  public static function checkProvider()
   {
     return [
       ['', true],
@@ -46,12 +45,7 @@ class FloatCharsTest extends TestCase
     ];
   }
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\FloatChars::__construct
-   * @covers       \Jawira\Sanitizer\Filters\FloatChars::filter
-   * @dataProvider filterProvider
-   * @testdox      Integer filter sanitizes value $value as $expected
-   */
+  #[DataProvider('filterProvider')]
   public function testFilter($value, $expected)
   {
     $filter = new FloatChars();
@@ -60,7 +54,7 @@ class FloatCharsTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterProvider()
+  public static function filterProvider()
   {
     return [
       ['', ''],
@@ -90,12 +84,7 @@ class FloatCharsTest extends TestCase
     ];
   }
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\FloatChars::__construct
-   * @covers       \Jawira\Sanitizer\Filters\FloatChars::filter
-   * @dataProvider filterAllowThousandProvider
-   * @testdox      Integer filter sanitizes value $value as $expected
-   */
+  #[DataProvider('filterAllowThousandProvider')]
   public function testFilterAllowThousand($value, $expected)
   {
     $filter = new FloatChars(allowThousand: true);
@@ -104,7 +93,7 @@ class FloatCharsTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterAllowThousandProvider()
+  public static function filterAllowThousandProvider()
   {
     return [
       ['', ''],
@@ -135,12 +124,7 @@ class FloatCharsTest extends TestCase
     ];
   }
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\FloatChars::__construct
-   * @covers       \Jawira\Sanitizer\Filters\FloatChars::filter
-   * @dataProvider filterAllowScientificProvider
-   * @testdox      Integer filter sanitizes value $value as $expected
-   */
+  #[DataProvider('filterAllowScientificProvider')]
   public function testFilterAllowScientific($value, $expected)
   {
     $filter = new FloatChars(allowScientific: true);
@@ -149,7 +133,7 @@ class FloatCharsTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterAllowScientificProvider()
+  public static function filterAllowScientificProvider()
   {
     return [
       ['', ''],

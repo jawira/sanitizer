@@ -3,15 +3,14 @@
 namespace UnitTests;
 
 use Jawira\Sanitizer\Filters\AtMost;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(AtMost::class)]
 class AtMostTest extends TestCase
 {
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\AtMost::__construct
-   * @covers       \Jawira\Sanitizer\Filters\AtMost::precondition
-   * @dataProvider checkProvider
-   */
+  #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
     $filter = new AtMost();
@@ -20,7 +19,7 @@ class AtMostTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function checkProvider()
+  public static function checkProvider()
   {
     return [
       // false
@@ -44,12 +43,7 @@ class AtMostTest extends TestCase
     ];
   }
 
-
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\AtMost::__construct
-   * @covers       \Jawira\Sanitizer\Filters\AtMost::filter
-   * @dataProvider filterProvider
-   */
+  #[DataProvider('filterProvider')]
   public function testFilter($value, $expected)
   {
     $filter = new AtMost();
@@ -58,7 +52,7 @@ class AtMostTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterProvider()
+  public static function filterProvider()
   {
     return [
       [1, 0],
@@ -73,11 +67,7 @@ class AtMostTest extends TestCase
     ];
   }
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\AtMost::__construct
-   * @covers       \Jawira\Sanitizer\Filters\AtMost::filter
-   * @dataProvider filterWithNumberProvider
-   */
+  #[DataProvider('filterWithNumberProvider')]
   public function testFilterWithNumber($value = -5, $number = 0, $expected = 0)
   {
     $filter = new AtMost($number);
@@ -86,7 +76,7 @@ class AtMostTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterWithNumberProvider()
+  public static function filterWithNumberProvider()
   {
     return [
       // Number is selected
