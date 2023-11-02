@@ -78,6 +78,7 @@ class PadTest extends TestCase
       ['Hello      ', 10, 'x', 'Hello      '],
       ['four thousand', 30, '*', 'four thousand*****************'],
       ['one thousand five hundred', 30, '*', 'one thousand five hundred*****'],
+      ['Fire', 5, '🔥', 'Fire🔥'],
     ];
   }
 
@@ -99,6 +100,8 @@ class PadTest extends TestCase
       ['123', 8, Side::Both, '  123   '],
       ['5e5', 0, Side::Both, '5e5'],
       ['Hello', 10, Side::Both, '  Hello   '],
+      ['Piña', 6, Side::Both, ' Piña '],
+      ['🍍', 3, Side::Both, ' 🍍 '],
       // left
       ['', 0, Side::Left, ''],
       ["\t", 3, Side::Left, "  \t"],
@@ -106,6 +109,8 @@ class PadTest extends TestCase
       ['123', 8, Side::Left, '     123'],
       ['5e5', 0, Side::Left, '5e5'],
       ['Hello', 10, Side::Left, '     Hello'],
+      ['Piña', 6, Side::Left, '  Piña'],
+      ['🍍', 3, Side::Left, '  🍍'],
       // right
       ['', 0, Side::Right, ''],
       ["\t", 3, Side::Right, "\t  "],
@@ -113,6 +118,8 @@ class PadTest extends TestCase
       ['123', 8, Side::Right, '123     '],
       ['5e5', 0, Side::Right, '5e5'],
       ['Hello', 10, Side::Right, 'Hello     '],
+      ['Piña', 6, Side::Right, 'Piña  '],
+      ['🍍', 3, Side::Right, '🍍  '],
     ];
   }
 
@@ -137,6 +144,9 @@ class PadTest extends TestCase
       ['CREDITS', 30, '-+-', Side::Both, '-+--+--+--+CREDITS-+--+--+--+-'],
       ['DOCUMENTATION', 30, '-+-', Side::Both, '-+--+--+DOCUMENTATION-+--+--+-'],
       ['AUTHOR', 30, '-+-', Side::Both, '-+--+--+--+-AUTHOR-+--+--+--+-'],
+      ['Piña', 6, '🍍', Side::Right, 'Piña🍍🍍'],
+      ['Piña', 6, '🍍', Side::Left, '🍍🍍Piña'],
+      ['Piña', 6, '🍍', Side::Both, '🍍Piña🍍'],
     ];
   }
 
