@@ -4,6 +4,7 @@ namespace UnitTests;
 
 use Jawira\Sanitizer\Enums\LengthMode;
 use Jawira\Sanitizer\Filters\MaxLength;
+use Jawira\Sanitizer\Toolbox\Validate;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
@@ -12,6 +13,7 @@ use PHPUnit\Framework\TestCase;
  * @see https://www.kermitproject.org/utf8.html
  */
 #[CoversClass(MaxLength::class)]
+#[CoversClass(Validate::class)]
 class MaxLengthTest extends TestCase
 {
 

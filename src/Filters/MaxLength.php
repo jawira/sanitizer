@@ -7,7 +7,7 @@ namespace Jawira\Sanitizer\Filters;
 
 use Attribute;
 use Jawira\Sanitizer\Enums\LengthMode;
-use Jawira\Sanitizer\FilterException;
+use Jawira\Sanitizer\Toolbox\Validate;
 use function grapheme_substr;
 use function is_string;
 use function mb_strcut;
@@ -28,9 +28,8 @@ class MaxLength implements FilterInterface
 
   public function filter(mixed $value): mixed
   {
-    if (!is_string($value)) {
-      throw new FilterException('Value must be string.');
-    }
+    Validate::isString($value, 'Value must be string.');
+    assert(is_string($value)); // Tell Psalm $value is string
 
     $start = 0;
     $length = $this->length;
@@ -50,27 +49,21 @@ class MaxLength implements FilterInterface
 
   private function lengthInBytes(string $value, int $start, ?int $length): string
   {
-    if (!function_exists('mb_strcut')) {
-      throw new FilterException('mb_strcut function required, install mbstring extension.');
-    }
+    Validate::functionExists('mb_strcut', 'mb_strcut function required, install mbstring extension.');
 
     return mb_strcut($value, $start, $length);
   }
 
   private function lengthInCharacters(string $value, int $start, ?int $length): string
   {
-    if (!function_exists('mb_substr')) {
-      throw new FilterException('mb_substr function required, install mbstring extension.');
-    }
+    Validate::functionExists('mb_substr', 'mb_substr function required, install mbstring extension.');
 
     return mb_substr($value, $start, $length);
   }
 
   private function lengthInGraphemes(string $value, int $start, ?int $length): string
   {
-    if (!function_exists('grapheme_substr')) {
-      throw new FilterException('grapheme_substr function required, install intl extension.');
-    }
+    Validate::functionExists('grapheme_substr', 'grapheme_substr function required, install intl extension.');
 
     return grapheme_substr($value, $start, $length);
   }
