@@ -22,7 +22,6 @@ class Sanitizer implements SanitizerInterface
    */
   private function sanitizeProperty(object $object, ReflectionProperty $reflectionProperty): bool
   {
-    $reflectionProperty->setAccessible(true); // @todo remove when php >= 8.1
     if (!$reflectionProperty->isInitialized($object)) {
       return false;
     }
