@@ -1,8 +1,7 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
-use Jawira\Sanitizer\Filters\Pad;
 use Jawira\Sanitizer\Filters\StripTags;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;

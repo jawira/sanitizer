@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
 use Jawira\Sanitizer\Enums\Side;
 use Jawira\Sanitizer\Filters\Pad;

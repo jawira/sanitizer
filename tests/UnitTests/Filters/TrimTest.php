@@ -1,6 +1,6 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
 use Jawira\Sanitizer\Enums\Side;
 use Jawira\Sanitizer\Filters\Trim;

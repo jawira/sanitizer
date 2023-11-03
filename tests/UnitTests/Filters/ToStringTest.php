@@ -1,6 +1,6 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
 use Jawira\Sanitizer\Filters\ToString;
 use PHPUnit\Framework\Attributes\CoversClass;

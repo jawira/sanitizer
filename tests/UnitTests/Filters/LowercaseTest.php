@@ -1,19 +1,19 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
-use Jawira\Sanitizer\Filters\EmptyStringToNull;
+use Jawira\Sanitizer\Filters\Lowercase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(EmptyStringToNull::class)]
-class EmptyStringToNullTest extends TestCase
+#[CoversClass(Lowercase::class)]
+class LowercaseTest extends TestCase
 {
   #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
-    $filter = new EmptyStringToNull();
+    $filter = new Lowercase();
     $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
@@ -23,18 +23,16 @@ class EmptyStringToNullTest extends TestCase
   {
     return [
       ['', true],
-      ['a', false],
-      [' ', false],
-      ['hello-world', false],
-      ['10e13', false],
-      ['false', false],
-      ['HELLO', false],
-      ['Test', false],
-      ["\t", false],
+      ['a', true],
+      [' ', true],
+      ["hello-world", true],
+      ["10e13", true],
+      ["false", true],
+      ["HELLO", true],
+      ['Test', true],
+      ["\t", true],
       [123, false],
       [1.1, false],
-      [-123, false],
-      [-1.1, false],
       [null, false],
       [true, false],
       [false, false],
@@ -45,7 +43,7 @@ class EmptyStringToNullTest extends TestCase
   #[DataProvider('filterProvider')]
   public function testFilter($value, $expected)
   {
-    $filter = new EmptyStringToNull();
+    $filter = new Lowercase();
     $result = $filter->filter($value);
 
     $this->assertSame($expected, $result);
@@ -54,10 +52,17 @@ class EmptyStringToNullTest extends TestCase
   public static function filterProvider()
   {
     return [
-      ['', null],
-      ['0', '0'],
-      ['-1', '-1'],
-      ['Hello world', 'Hello world'],
+      ['', ''],
+      ["\t", "\t"],
+      ['xxx', 'xxx'],
+      ['123', '123'],
+      ['3.14', '3.14'],
+      ['5e5', '5e5'],
+      ['Hello      ', 'hello      '],
+      ['      Hello', '      hello'],
+      ['   Hello   ', '   hello   '],
+      ['Γεια σας', 'γεια σας'],
+      ['Австралия', 'австралия'],
     ];
   }
 }

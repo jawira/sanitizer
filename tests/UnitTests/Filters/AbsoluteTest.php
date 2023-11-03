@@ -1,10 +1,10 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
+use Jawira\Sanitizer\Filters\Absolute;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Jawira\Sanitizer\Filters\Absolute;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(Absolute::class)]

@@ -1,19 +1,19 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
-use Jawira\Sanitizer\Filters\AtMost;
+use Jawira\Sanitizer\Filters\AtLeast;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(AtMost::class)]
-class AtMostTest extends TestCase
+#[CoversClass(AtLeast::class)]
+class AtLeastTest extends TestCase
 {
   #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
-    $filter = new AtMost();
+    $filter = new AtLeast();
     $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
@@ -23,9 +23,9 @@ class AtMostTest extends TestCase
   {
     return [
       // false
-      [-123, false],
+      [123, false],
       [0, false],
-      [-1.1, false],
+      [1.1, false],
       ['', false],
       ["10e13", false],
       ["false", false],
@@ -36,17 +36,17 @@ class AtMostTest extends TestCase
       [false, false],
       [array(), false],
       // true
-      [1.1, true],
-      [0.0000001, true],
-      [500, true],
-      [5, true],
+      [-1.1, true],
+      [-0.0000001, true],
+      [-500, true],
+      [-5, true],
     ];
   }
 
   #[DataProvider('filterProvider')]
-  public function testFilter($value, $expected)
+  public function testFilter($value = -5, $expected = 0)
   {
-    $filter = new AtMost();
+    $filter = new AtLeast();
     $result = $filter->filter($value);
 
     $this->assertSame($expected, $result);
@@ -55,22 +55,20 @@ class AtMostTest extends TestCase
   public static function filterProvider()
   {
     return [
-      [1, 0],
-      [1.5, 0],
-      [500_000, 0],
-      [500.321654, 0],
+      [-1, 0],
+      [-1.5, 0],
+      [-500_000, 0],
+      [-500.321654, 0],
       [0, 0],
-      [-1, -1],
-      [-1.5, -1.5],
-      [-500_000, -500_000],
-      [-500.321654, -500.321654],
+      [10, 10],
+      [+1.5, 1.5],
     ];
   }
 
-  #[DataProvider('filterWithNumberProvider')]
+ #[DataProvider('filterWithNumberProvider')]
   public function testFilterWithNumber($value = -5, $number = 0, $expected = 0)
   {
-    $filter = new AtMost($number);
+    $filter = new AtLeast($number);
     $result = $filter->filter($value);
 
     $this->assertSame($expected, $result);
@@ -79,22 +77,22 @@ class AtMostTest extends TestCase
   public static function filterWithNumberProvider()
   {
     return [
-      // Number is selected
-      [-1, -5, -5],
-      [-1.5, -10, -10],
-      [-500_000, -500_001, -500_001],
-      [-500.321654, -500.6, -500.6],
-      [10, 0, 0],
-      [5, 1, 1],
-      [+2.5, 2, 2],
       // Value is selected
-      [-1, 11, -1],
-      [-1.5, 2.5, -1.5],
-      [-500_000, -400_000, -500_000],
-      [-500.321654, 0, -500.321654],
-      [0, 10, 0],
+      [-1, -5, -1],
+      [-1.5, -10, -1.5],
+      [-500_000, -500_001, -500_000],
+      [-500.321654, -500.6, -500.321654],
+      [10, 0, 10],
+      [5, 1, 5],
+      [+2.5, 2, +2.5],
+      // Number is selected
+      [-1, 11, 11],
+      [-1.5, 2.5, 2.5],
+      [-500_000, -400_000, -400_000],
+      [-500.321654, 0, 0],
+      [0, 10, 10],
       [10, 10, 10],
-      [+1.5, 2, +1.5],
+      [+1.5, 2, 2],
     ];
   }
 }

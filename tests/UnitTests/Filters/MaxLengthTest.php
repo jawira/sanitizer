@@ -1,6 +1,6 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
 use Jawira\Sanitizer\Enums\LengthMode;
 use Jawira\Sanitizer\Filters\MaxLength;

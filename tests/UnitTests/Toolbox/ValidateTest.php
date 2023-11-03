@@ -1,6 +1,6 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Toolbox;
 
 use Jawira\Sanitizer\FilterException;
 use Jawira\Sanitizer\Toolbox\Validate;

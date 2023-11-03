@@ -1,8 +1,7 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
-use Jawira\Sanitizer\Filters\FloatChars;
 use Jawira\Sanitizer\Filters\ToInt;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;

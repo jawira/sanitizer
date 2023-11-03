@@ -1,19 +1,19 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
-use Jawira\Sanitizer\Filters\Lowercase;
+use Jawira\Sanitizer\Filters\Title;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(Lowercase::class)]
-class LowercaseTest extends TestCase
+#[CoversClass(Title::class)]
+class TitleTest extends TestCase
 {
   #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
-    $filter = new Lowercase();
+    $filter = new Title();
     $result = $filter->precondition($value);
 
     $this->assertSame($expected, $result);
@@ -43,7 +43,7 @@ class LowercaseTest extends TestCase
   #[DataProvider('filterProvider')]
   public function testFilter($value, $expected)
   {
-    $filter = new Lowercase();
+    $filter = new Title();
     $result = $filter->filter($value);
 
     $this->assertSame($expected, $result);
@@ -54,15 +54,22 @@ class LowercaseTest extends TestCase
     return [
       ['', ''],
       ["\t", "\t"],
-      ['xxx', 'xxx'],
+      ['xxx', 'Xxx'],
       ['123', '123'],
       ['3.14', '3.14'],
-      ['5e5', '5e5'],
-      ['Hello      ', 'hello      '],
-      ['      Hello', '      hello'],
-      ['   Hello   ', '   hello   '],
-      ['Γεια σας', 'γεια σας'],
-      ['Австралия', 'австралия'],
+      ['5e5', '5E5'],
+      ['foo   bar   baz', 'Foo   Bar   Baz'],
+      [' need4speed ', ' Need4Speed '],
+      ["   FOO\tBAR   ", "   Foo\tBar   "],
+      ["foo\nbar", "Foo\nBar"],
+      ['Hello world', 'Hello World'],
+      ['Hello World', 'Hello World'],
+      ['hello world', 'Hello World'],
+      ['heLLo worLd', 'Hello World'],
+      ['HELLO WORLD', 'Hello World'],
+      ['Γεια σας', 'Γεια Σας'],
+      ['prêt-à-porter', 'Prêt-À-Porter'],
+      ['Loin, très loin, au delà des monts Mots.', 'Loin, Très Loin, Au Delà Des Monts Mots.'],
     ];
   }
 }
