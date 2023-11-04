@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 namespace Jawira\Sanitizer\Toolbox;
+
 use ValueError;
 
 class MultiByte
@@ -23,13 +24,8 @@ class MultiByte
     }
 
     try {
-      $validEncoding = @mb_check_encoding('', $encoding);
-    } catch (ValueError $e) {
-      throw new ValueError(sprintf('mb_str_pad(): Argument #5 ($encoding) must be a valid encoding, "%s" given', $encoding));
-    }
-
-    // BC for PHP 7.3 and lower
-    if (!$validEncoding) {
+      @mb_check_encoding('', $encoding);
+    } catch (ValueError) {
       throw new ValueError(sprintf('mb_str_pad(): Argument #5 ($encoding) must be a valid encoding, "%s" given', $encoding));
     }
 
