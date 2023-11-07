@@ -1,17 +1,17 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
 use Jawira\Sanitizer\Filters\Absolute;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(Absolute::class)]
 class AbsoluteTest extends TestCase
 {
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\Absolute::precondition
-   * @dataProvider checkProvider
-   */
+  #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
     $filter = new Absolute();
@@ -20,7 +20,7 @@ class AbsoluteTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function checkProvider()
+  public static function checkProvider()
   {
     return [
       // true
@@ -50,10 +50,7 @@ class AbsoluteTest extends TestCase
   }
 
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\Absolute::filter
-   * @dataProvider filterProvider
-   */
+  #[DataProvider('filterProvider')]
   public function testFilter($value, $expected)
   {
     $filter = new Absolute;
@@ -62,7 +59,7 @@ class AbsoluteTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterProvider()
+  public static function filterProvider()
   {
     return [
       [0, 0],

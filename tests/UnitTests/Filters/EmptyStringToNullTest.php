@@ -1,17 +1,16 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
 use Jawira\Sanitizer\Filters\EmptyStringToNull;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(EmptyStringToNull::class)]
 class EmptyStringToNullTest extends TestCase
 {
-
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\EmptyStringToNull::precondition
-   * @dataProvider checkProvider
-   */
+  #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
     $filter = new EmptyStringToNull();
@@ -20,7 +19,7 @@ class EmptyStringToNullTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function checkProvider()
+  public static function checkProvider()
   {
     return [
       ['', true],
@@ -43,10 +42,7 @@ class EmptyStringToNullTest extends TestCase
     ];
   }
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\EmptyStringToNull::filter
-   * @dataProvider filterProvider
-   */
+  #[DataProvider('filterProvider')]
   public function testFilter($value, $expected)
   {
     $filter = new EmptyStringToNull();
@@ -55,7 +51,7 @@ class EmptyStringToNullTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterProvider()
+  public static function filterProvider()
   {
     return [
       ['', null],

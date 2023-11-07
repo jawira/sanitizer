@@ -3,6 +3,7 @@
 Pad - Pad a string to a certain length with another string.
 
 Pad only works with `string`, any other type is ignored.
+This function is multibyte safe.
 
 ## Basic usage
 
@@ -42,7 +43,7 @@ Add leading zeros when string has less than three characters:
 
 ```php
 use Jawira\Sanitizer\Filters as Sanitizer;
-use \Jawira\Sanitizer\Enums\Side;
+use Jawira\Sanitizer\Enums\Side;
 
 class Classroom {
   #[Sanitizer\Pad(length: 3, padString: '0', side: Side::Left)]
@@ -60,6 +61,7 @@ Create 30 characters width _ascii art_ header:
 
 ```php
 use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Enums\Side;
 
 class AsciiArt {
   #[Sanitizer\Pad(length: 30, padString: '-+-', side: Side::Both)]
@@ -87,6 +89,22 @@ class Paycheck {
 ```php
 "four thousand"             → "four thousand*****************"
 "one thousand five hundred" → "one thousand five hundred*****"
+```
+
+Pad sanitizer is multibyte safe:
+
+```php
+use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Enums\Side;
+
+class MyEmoji {
+  #[Sanitizer\Pad(length: 6, padString: '🍍', side: Side::Both)]
+  public string $title;
+}
+```
+
+```php
+"Piña" → "🍍Piña🍍"
 ```
 
 ## See also

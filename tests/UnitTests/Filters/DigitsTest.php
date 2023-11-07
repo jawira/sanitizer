@@ -1,17 +1,16 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
 use Jawira\Sanitizer\Filters\Digits;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(Digits::class)]
 class DigitsTest extends TestCase
 {
-
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\Digits::precondition
-   * @dataProvider checkProvider
-   */
+  #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
     $filter = new Digits();
@@ -20,7 +19,7 @@ class DigitsTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function checkProvider()
+  public static function checkProvider()
   {
     return [
       ['', true],
@@ -45,10 +44,7 @@ class DigitsTest extends TestCase
     ];
   }
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\Digits::filter
-   * @dataProvider filterProvider
-   */
+  #[DataProvider('filterProvider')]
   public function testFilter($value = '10 AM', $expected = '10')
   {
     $filter = new Digits();
@@ -57,7 +53,7 @@ class DigitsTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterProvider()
+  public static function filterProvider()
   {
     $longText = <<<TEXT
     Lorem ipsum dolor 123 sit amet, 24 consectetur adipiscing elit.

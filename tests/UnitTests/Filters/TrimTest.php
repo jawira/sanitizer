@@ -1,18 +1,17 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
 use Jawira\Sanitizer\Enums\Side;
 use Jawira\Sanitizer\Filters\Trim;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(Trim::class)]
 class TrimTest extends TestCase
 {
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\Trim::precondition
-   * @covers       \Jawira\Sanitizer\Filters\Trim::__construct
-   * @dataProvider checkProvider
-   */
+  #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
     $filter = new Trim();
@@ -21,7 +20,7 @@ class TrimTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function checkProvider()
+  public static function checkProvider()
   {
     return [
       ['', true],
@@ -41,11 +40,7 @@ class TrimTest extends TestCase
     ];
   }
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\Trim::filter
-   * @covers       \Jawira\Sanitizer\Filters\Trim::__construct
-   * @dataProvider filterProvider
-   */
+  #[DataProvider('filterProvider')]
   public function testFilter($value, $direction, $expected)
   {
     $filter = new Trim(side: $direction);
@@ -53,7 +48,7 @@ class TrimTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterProvider()
+  public static function filterProvider()
   {
     return [
       ['', Side::Both, ''],

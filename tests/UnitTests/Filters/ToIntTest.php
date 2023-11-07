@@ -1,19 +1,17 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
-use Jawira\Sanitizer\Filters\FloatChars;
 use Jawira\Sanitizer\Filters\ToInt;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(ToInt::class)]
 class ToIntTest extends TestCase
 {
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\ToInt::precondition
-   * @covers       \Jawira\Sanitizer\Filters\ToInt::__construct
-   * @dataProvider checkProvider
-   */
+  #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
     $filter = new ToInt();
@@ -22,7 +20,7 @@ class ToIntTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function checkProvider()
+  public static function checkProvider()
   {
     return [
       ['', true],
@@ -49,11 +47,7 @@ class ToIntTest extends TestCase
     ];
   }
 
-  /**
-   * @dataProvider filterProvider
-   * @covers       \Jawira\Sanitizer\Filters\ToInt::__construct
-   * @covers       \Jawira\Sanitizer\Filters\ToInt::filter
-   */
+  #[DataProvider('filterProvider')]
   public function testFilter($value, $expected)
   {
     $filter = new ToInt();
@@ -62,7 +56,7 @@ class ToIntTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterProvider()
+  public static function filterProvider()
   {
     return [
       [null, 0],
@@ -95,11 +89,7 @@ class ToIntTest extends TestCase
     ];
   }
 
-  /**
-   * @dataProvider filterWithBaseProvider
-   * @covers       \Jawira\Sanitizer\Filters\ToInt::__construct
-   * @covers       \Jawira\Sanitizer\Filters\ToInt::filter
-   */
+  #[DataProvider('filterWithBaseProvider')]
   public function testFilterWithBase($value, $base, $expected)
   {
     $filter = new ToInt($base);
@@ -109,7 +99,7 @@ class ToIntTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterWithBaseProvider()
+  public static function filterWithBaseProvider()
   {
     return [
       // No strings, base has no effect

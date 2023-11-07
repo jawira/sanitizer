@@ -1,16 +1,16 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
 use Jawira\Sanitizer\Filters\IntegerChars;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(IntegerChars::class)]
 class IntegerCharsTest extends TestCase
 {
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\IntegerChars::precondition
-   * @dataProvider checkProvider
-   */
+  #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
     $filter = new IntegerChars();
@@ -19,7 +19,7 @@ class IntegerCharsTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function checkProvider()
+  public static function checkProvider()
   {
     return [
       ['', true],
@@ -44,11 +44,7 @@ class IntegerCharsTest extends TestCase
     ];
   }
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\IntegerChars::filter
-   * @dataProvider filterProvider
-   * @testdox      Integer filter sanitizes value $value as $expected
-   */
+  #[DataProvider('filterProvider')]
   public function testFilter($value, $expected)
   {
     $filter = new IntegerChars();
@@ -57,7 +53,7 @@ class IntegerCharsTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterProvider()
+  public static function filterProvider()
   {
     return [
       ['', ''],

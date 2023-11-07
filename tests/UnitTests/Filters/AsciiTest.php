@@ -1,17 +1,16 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
 use Jawira\Sanitizer\Filters\Ascii;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(Ascii::class)]
 class AsciiTest extends TestCase
 {
-  /**
-   * @dataProvider checkProvider
-   * @covers       \Jawira\Sanitizer\Filters\Ascii::__construct
-   * @covers       \Jawira\Sanitizer\Filters\Ascii::precondition
-   */
+  #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
     $filter = new Ascii();
@@ -20,7 +19,7 @@ class AsciiTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function checkProvider()
+  public static function checkProvider()
   {
     return [
       ['', true],
@@ -42,11 +41,8 @@ class AsciiTest extends TestCase
     ];
   }
 
-  /**
-   * @dataProvider filterProvider
-   * @covers       \Jawira\Sanitizer\Filters\Ascii::filter
-   * @covers       \Jawira\Sanitizer\Filters\Ascii::__construct
-   */
+  #[DataProvider('filterProvider')]
+
   public function testFilter($value, $onlyPrintable, $expected)
   {
     $filter = new Ascii($onlyPrintable);
@@ -55,7 +51,7 @@ class AsciiTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterProvider()
+  public static function filterProvider()
   {
     return [
       ['', false, ''],

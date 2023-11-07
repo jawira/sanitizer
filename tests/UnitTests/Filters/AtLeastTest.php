@@ -1,17 +1,16 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
 use Jawira\Sanitizer\Filters\AtLeast;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(AtLeast::class)]
 class AtLeastTest extends TestCase
 {
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\AtLeast::__construct
-   * @covers       \Jawira\Sanitizer\Filters\AtLeast::precondition
-   * @dataProvider checkProvider
-   */
+  #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
     $filter = new AtLeast();
@@ -20,7 +19,7 @@ class AtLeastTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function checkProvider()
+  public static function checkProvider()
   {
     return [
       // false
@@ -44,12 +43,7 @@ class AtLeastTest extends TestCase
     ];
   }
 
-
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\AtLeast::__construct
-   * @covers       \Jawira\Sanitizer\Filters\AtLeast::filter
-   * @dataProvider filterProvider
-   */
+  #[DataProvider('filterProvider')]
   public function testFilter($value = -5, $expected = 0)
   {
     $filter = new AtLeast();
@@ -58,7 +52,7 @@ class AtLeastTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterProvider()
+  public static function filterProvider()
   {
     return [
       [-1, 0],
@@ -71,11 +65,7 @@ class AtLeastTest extends TestCase
     ];
   }
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\AtLeast::__construct
-   * @covers       \Jawira\Sanitizer\Filters\AtLeast::filter
-   * @dataProvider filterWithNumberProvider
-   */
+ #[DataProvider('filterWithNumberProvider')]
   public function testFilterWithNumber($value = -5, $number = 0, $expected = 0)
   {
     $filter = new AtLeast($number);
@@ -84,7 +74,7 @@ class AtLeastTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterWithNumberProvider()
+  public static function filterWithNumberProvider()
   {
     return [
       // Value is selected

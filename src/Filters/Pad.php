@@ -4,16 +4,15 @@ namespace Jawira\Sanitizer\Filters;
 
 use Attribute;
 use Jawira\Sanitizer\Enums\Side;
-use const STR_PAD_BOTH;
-use const STR_PAD_LEFT;
-use const STR_PAD_RIGHT;
+use Jawira\Sanitizer\FilterException;
+use function Symfony\Component\String\u;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class Pad implements FilterInterface
 {
-  public function __construct(private readonly int    $length,
-                              private readonly string $padString = ' ',
-                              private readonly Side   $side = Side::Right)
+  public function __construct(private int    $length,
+                              private string $padString = ' ',
+                              private Side   $side = Side::Right)
   {
   }
 
@@ -30,13 +29,17 @@ class Pad implements FilterInterface
    */
   public function filter(mixed $value): string
   {
-    assert(is_string($value));
-    $padType = match ($this->side) {
-      Side::Left => STR_PAD_LEFT,
-      Side::Right => STR_PAD_RIGHT,
-      Side::Both => STR_PAD_BOTH,
+    is_string($value) ?: throw new FilterException('Pad value must be string');
+    assert(is_string($value)); // Tell Psalm $value is string
+
+    $string = u($value);
+
+    $padString = match ($this->side) {
+      Side::Left => $string->padStart($this->length, $this->padString),
+      Side::Right => $string->padEnd($this->length, $this->padString),
+      Side::Both => $string->padBoth($this->length, $this->padString),
     };
 
-    return str_pad($value, $this->length, $this->padString, $padType);
+    return $padString->toString();
   }
 }

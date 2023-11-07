@@ -13,8 +13,8 @@ use function trim;
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
 class Trim implements FilterInterface
 {
-  public function __construct(private readonly string $characters = " \t\n\r\0\x0B",
-                              private readonly Side   $side = Side::Both)
+  public function __construct(private string $characters = " \t\n\r\0\x0B",
+                              private Side   $side = Side::Both)
   {
   }
 

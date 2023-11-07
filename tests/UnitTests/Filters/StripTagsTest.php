@@ -1,19 +1,18 @@
 <?php
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
-use Jawira\Sanitizer\Filters\Pad;
 use Jawira\Sanitizer\Filters\StripTags;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(StripTags::class)]
 class StripTagsTest extends TestCase
 {
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\StripTags::precondition
-   * @covers       \Jawira\Sanitizer\Filters\StripTags::__construct
-   * @dataProvider checkProvider
-   */
+  #[DataProvider('checkProvider')]
+
   public function testCheck($value, $expected)
   {
     $filter = new StripTags();
@@ -22,7 +21,7 @@ class StripTagsTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function checkProvider()
+  public static function checkProvider()
   {
     return [
       ['', true],
@@ -41,12 +40,7 @@ class StripTagsTest extends TestCase
     ];
   }
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\StripTags::filter
-   * @covers       \Jawira\Sanitizer\Filters\StripTags::__construct
-   * @dataProvider filterProvider
-   *
-   */
+  #[DataProvider('filterProvider')]
   public function testFilter($value = 'Hello <b>world</b>', $allowedTags = [], $expected = 'Hello world')
   {
     $filter = new StripTags($allowedTags);
@@ -55,7 +49,7 @@ class StripTagsTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterProvider()
+  public static function filterProvider()
   {
     return [
       ['Abc', [], 'Abc'],

@@ -2,7 +2,7 @@
 
 namespace Jawira\Sanitizer\Enums;
 
-enum StringMode: string
+enum LengthMode: string
 {
   case Bytes = 'bytes';
   case Characters = 'characters';

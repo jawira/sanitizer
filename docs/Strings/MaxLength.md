@@ -25,14 +25,14 @@ If desired length is positive, the resulting string will start from the beginnin
 If length is negative, the resulting string will start from the ending of the string.
 </dd>
 
-<dt><em>StringMode</em> <code>stringMode</code> (optional):</dt>
+<dt><em>LengthMode</em> <code>mode</code> (optional):</dt>
 <dd>
-Use enum <code>\Jawira\Sanitizer\Enums\StringMode</code> to define how to measure string length.<br>
+Use enum <code>\Jawira\Sanitizer\Enums\LengthMode</code> to define how to measure string length.<br>
 
 <ul>
-<li><code>StringMode::Characters</code> - string is measured in characters (default value).</li>
-<li><code>StringMode::Bytes</code> - string is measured in bytes.</li>
-<li><code>StringMode::Graphemes</code> - string is measured in graphemes.</li>
+<li><code>LengthMode::Characters</code> - string is measured in characters (default value).</li>
+<li><code>LengthMode::Bytes</code> - string is measured in bytes.</li>
+<li><code>LengthMode::Graphemes</code> - string is measured in graphemes.</li>
 </ul>
 </dd>
 
@@ -76,10 +76,10 @@ The string must be 3 bytes in size.
 
 ```php
 use Jawira\Sanitizer\Filters as Sanitizer;
-use Jawira\Sanitizer\Enums\StringMode;
+use Jawira\Sanitizer\Enums\LengthMode;
 
 class Project {
-  #[Sanitizer\MaxLength(3, StringMode::Bytes)]
+  #[Sanitizer\MaxLength(3, LengthMode::Bytes)]
   public string $name;
 }
 ```

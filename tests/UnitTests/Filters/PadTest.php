@@ -1,18 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace UnitTests;
+namespace UnitTests\Filters;
 
 use Jawira\Sanitizer\Enums\Side;
 use Jawira\Sanitizer\Filters\Pad;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(Pad::class)]
 class PadTest extends TestCase
 {
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\Pad::precondition
-   * @covers       \Jawira\Sanitizer\Filters\Pad::__construct
-   * @dataProvider checkProvider
-   */
+  #[DataProvider('checkProvider')]
   public function testCheck($value, $expected)
   {
     $filter = new Pad(0);
@@ -21,7 +20,7 @@ class PadTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function checkProvider()
+  public static function checkProvider()
   {
     return [
       ['', true],
@@ -40,11 +39,7 @@ class PadTest extends TestCase
     ];
   }
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\Pad::filter
-   * @covers       \Jawira\Sanitizer\Filters\Pad::__construct
-   * @dataProvider filterProvider
-   */
+  #[DataProvider('filterProvider')]
   public function testFilter($value, $length, $expected)
   {
     $filter = new Pad(length: $length);
@@ -52,7 +47,7 @@ class PadTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterProvider()
+  public static function filterProvider()
   {
     return [
       ['', 0, ''],
@@ -64,11 +59,7 @@ class PadTest extends TestCase
     ];
   }
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\Pad::filter
-   * @covers       \Jawira\Sanitizer\Filters\Pad::__construct
-   * @dataProvider filterWithPadStringProvider
-   */
+  #[DataProvider('filterWithPadStringProvider')]
   public function testFilterWithPadString($value, $length, $padString, $expected)
   {
     $filter = new Pad(length: $length, padString: $padString,);
@@ -76,7 +67,7 @@ class PadTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterWithPadStringProvider()
+  public static function filterWithPadStringProvider()
   {
     return [
       ['', 0, '*', ''],
@@ -87,14 +78,11 @@ class PadTest extends TestCase
       ['Hello      ', 10, 'x', 'Hello      '],
       ['four thousand', 30, '*', 'four thousand*****************'],
       ['one thousand five hundred', 30, '*', 'one thousand five hundred*****'],
+      ['Fire', 5, '🔥', 'Fire🔥'],
     ];
   }
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\Pad::filter
-   * @covers       \Jawira\Sanitizer\Filters\Pad::__construct
-   * @dataProvider filterWithSideProvider
-   */
+  #[DataProvider('filterWithSideProvider')]
   public function testFilterWithSide($value, $length, $side, $expected)
   {
     $filter = new Pad(length: $length, side: $side);
@@ -102,7 +90,7 @@ class PadTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterWithSideProvider()
+  public static function filterWithSideProvider()
   {
     return [
       // both
@@ -112,6 +100,8 @@ class PadTest extends TestCase
       ['123', 8, Side::Both, '  123   '],
       ['5e5', 0, Side::Both, '5e5'],
       ['Hello', 10, Side::Both, '  Hello   '],
+      ['Piña', 6, Side::Both, ' Piña '],
+      ['🍍', 3, Side::Both, ' 🍍 '],
       // left
       ['', 0, Side::Left, ''],
       ["\t", 3, Side::Left, "  \t"],
@@ -119,6 +109,8 @@ class PadTest extends TestCase
       ['123', 8, Side::Left, '     123'],
       ['5e5', 0, Side::Left, '5e5'],
       ['Hello', 10, Side::Left, '     Hello'],
+      ['Piña', 6, Side::Left, '  Piña'],
+      ['🍍', 3, Side::Left, '  🍍'],
       // right
       ['', 0, Side::Right, ''],
       ["\t", 3, Side::Right, "\t  "],
@@ -126,15 +118,13 @@ class PadTest extends TestCase
       ['123', 8, Side::Right, '123     '],
       ['5e5', 0, Side::Right, '5e5'],
       ['Hello', 10, Side::Right, 'Hello     '],
+      ['Piña', 6, Side::Right, 'Piña  '],
+      ['🍍', 3, Side::Right, '🍍  '],
     ];
   }
 
 
-  /**
-   * @covers       \Jawira\Sanitizer\Filters\Pad::filter
-   * @covers       \Jawira\Sanitizer\Filters\Pad::__construct
-   * @dataProvider filterWithAllOptionsProvider
-   */
+  #[DataProvider('filterWithAllOptionsProvider')]
   public function testFilterWithAllOptions($value, $length, $padString, $side, $expected)
   {
     $filter = new Pad(length: $length, padString: $padString, side: $side);
@@ -142,7 +132,7 @@ class PadTest extends TestCase
     $this->assertSame($expected, $result);
   }
 
-  public function filterWithAllOptionsProvider()
+  public static function filterWithAllOptionsProvider()
   {
     return [
       ['', 0, '*', Side::Left, ''],
@@ -154,19 +144,10 @@ class PadTest extends TestCase
       ['CREDITS', 30, '-+-', Side::Both, '-+--+--+--+CREDITS-+--+--+--+-'],
       ['DOCUMENTATION', 30, '-+-', Side::Both, '-+--+--+DOCUMENTATION-+--+--+-'],
       ['AUTHOR', 30, '-+-', Side::Both, '-+--+--+--+-AUTHOR-+--+--+--+-'],
+      ['Piña', 6, '🍍', Side::Right, 'Piña🍍🍍'],
+      ['Piña', 6, '🍍', Side::Left, '🍍🍍Piña'],
+      ['Piña', 6, '🍍', Side::Both, '🍍Piña🍍'],
     ];
   }
 
-  /**
-   * @coversNothing
-   */
-  public function testNewFunction()
-  {
-    $exists = function_exists('mb_str_pad');
-    /**
-     * @link https://wiki.php.net/rfc/mb_str_pad
-     */
-    $this->assertFalse($exists, 'Update filter with mb_str_pad!!');
-  }
 }
-
