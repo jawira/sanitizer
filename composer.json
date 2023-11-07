@@ -8,8 +8,7 @@
   "keywords": [
     "attribute",
     "sanitizer",
-    "filter",
-    "qa"
+    "filter"
   ],
   "authors": [
     {
@@ -18,7 +17,8 @@
     }
   ],
   "require": {
-    "php": "^8.1"
+    "php": "^8.1",
+    "symfony/string": "5.1"
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.31",
