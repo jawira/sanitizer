@@ -54,6 +54,13 @@ class SlugTest extends TestCase
     return [
       ['Moño', 'Mono'],
       ['Wôrķšƥáçè ~~sèťtïñğš~~', 'Workspace-settings'],
+      ['お久しぶりですね', 'o-jiushiburidesune'],
+      ['川', 'chuan'], // With japanese locale this is "kawa"
+      ['나는 유리를', 'naneun-yulileul'],
+      ['Я можу їсти шкло, й воно мені не пошкодить.', 'A-mozu-isti-sklo-j-vono-meni-ne-poskodit'],
+      ['Happy Halloween 🎃', 'Happy-Halloween'],
+      ['🍍 Piña Colada 🍍', 'Pina-Colada'],
+      ['はい', 'hai'],
     ];
   }
 }
