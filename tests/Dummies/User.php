@@ -2,20 +2,20 @@
 
 namespace Dummies;
 
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class User
 {
-  #[Sanitizer\Trim]
+  #[Filter\Trim]
   public string $name;
 
-  #[Sanitizer\Trim]
+  #[Filter\Trim]
   public string $lastName;
 
-  #[Sanitizer\Ascii(onlyPrintable: true)]
+  #[Filter\Ascii(onlyPrintable: true)]
   public string $phone;
 
-  #[Sanitizer\AtLeast(0)]
+  #[Filter\AtLeast(0)]
   public int $age;
 
   public string $email;

@@ -7,7 +7,7 @@ AtLeast only works with `int` and `float`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Sanitizer;
 
 class Motorcycle {
   #[Sanitizer\AtLeast(number: 2)]
@@ -32,7 +32,7 @@ Default value is <em>0</em>.
 Value must be positive or zero.
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Sanitizer;
 
 class Post {
   #[Sanitizer\AtLeast]
@@ -49,7 +49,7 @@ class Post {
 Value must be greater or equal than _-273.15_.
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Sanitizer;
 
 class Chemical {
   #[Sanitizer\AtLeast(number: -273.15)]

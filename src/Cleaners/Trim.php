@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Jawira\Sanitizer\Filters;
+namespace Jawira\Sanitizer\Cleaners;
 
 use Attribute;
 use Jawira\Sanitizer\Enums\Side;
@@ -11,7 +11,7 @@ use function rtrim;
 use function trim;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
-class Trim implements FilterInterface
+class Trim implements CleanerInterface
 {
   public function __construct(private string $characters = " \t\n\r\0\x0B",
                               private Side   $side = Side::Both)

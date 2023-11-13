@@ -3,7 +3,7 @@
 namespace Dummies;
 
 use Jawira\Sanitizer\Enums\Side;
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 /**
  * @see https://en.wikipedia.org/wiki/ISO_4217
@@ -16,19 +16,19 @@ class Currency
   private null|string $comments;
 
   public function __construct(
-    #[Sanitizer\Digits]
-    #[Sanitizer\Pad(length: 3, padString: '0', side: Side::Left)]
+    #[Filter\Digits]
+    #[Filter\Pad(length: 3, padString: '0', side: Side::Left)]
     private string $number,
 
-    #[Sanitizer\Uppercase]
-    #[Sanitizer\Trim]
+    #[Filter\Uppercase]
+    #[Filter\Trim]
     private string $code,
 
-    #[Sanitizer\Trim(side: Side::Left)]
-    #[Sanitizer\Trim(side: Side::Right)]
+    #[Filter\Trim(side: Side::Left)]
+    #[Filter\Trim(side: Side::Right)]
     private string $name,
 
-    #[Sanitizer\AtLeast]
+    #[Filter\AtLeast]
     private int $digits,
   )
   {

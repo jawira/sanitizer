@@ -8,7 +8,7 @@ is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Sanitizer;
 
 class User {
   #[Sanitizer\ToString]
@@ -25,7 +25,7 @@ No parameters.
 Cast value to string.
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Sanitizer;
 
 class Car {
   #[Sanitizer\ToString]

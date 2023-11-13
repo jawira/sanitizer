@@ -9,7 +9,7 @@ Ascii sanitizer only works with `string`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Sanitizer;
 
 class User {
   #[Sanitizer\Ascii]
@@ -35,7 +35,7 @@ also removed, this is the first column of the following table.
 Remove all non-ascii characters:
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Sanitizer;
 
 class Message {
   #[Sanitizer\Ascii]
@@ -53,7 +53,7 @@ class Message {
 Remove all non-ascii characters and removing non-printable characters:
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Sanitizer;
 
 class Message {
   #[Sanitizer\Ascii(onlyPrintable: true)]

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Jawira\Sanitizer\Filters;
+namespace Jawira\Sanitizer\Cleaners;
 
 use Attribute;
 use function assert;
@@ -9,7 +9,7 @@ use function is_int;
 use function max;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
-class AtLeast implements FilterInterface
+class AtLeast implements CleanerInterface
 {
   public function __construct(private int|float $number = 0)
   {

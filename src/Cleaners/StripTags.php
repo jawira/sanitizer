@@ -1,30 +1,31 @@
 <?php declare(strict_types=1);
 
-namespace Jawira\Sanitizer\Filters;
+namespace Jawira\Sanitizer\Cleaners;
 
 use Attribute;
 use function assert;
 use function is_string;
-use function mb_strtolower;
+use function strip_tags;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
-class Lowercase implements FilterInterface
+class StripTags implements CleanerInterface
 {
-  /**
-   * `mb_strtolower` function only accepts strings.
-   */
+  public function __construct(
+    /** @var string[] */
+    private array $allowedTags = []
+  ) {
+  }
+
   public function precondition(mixed $value): bool
   {
     return is_string($value);
   }
 
-  /**
-   * Apply `mb_strtolower function.
-   */
   public function filter(mixed $value): string
   {
     assert(is_string($value));
 
-    return mb_strtolower($value);
+    /** @psalm-suppress InvalidArgument */
+    return strip_tags($value, $this->allowedTags);
   }
 }

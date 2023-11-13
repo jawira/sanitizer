@@ -3,18 +3,18 @@
 declare(strict_types=1);
 
 
-namespace Jawira\Sanitizer\Filters;
+namespace Jawira\Sanitizer\Cleaners;
 
 use Attribute;
 use Jawira\Sanitizer\Enums\LengthMode;
-use Jawira\Sanitizer\FilterException;
+use Jawira\Sanitizer\Exceptions\FilterException;
 use function grapheme_substr;
 use function is_string;
 use function mb_strcut;
 use function mb_substr;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
-class MaxLength implements FilterInterface
+class MaxLength implements CleanerInterface
 {
   public function __construct(private int        $length,
                               private LengthMode $mode = LengthMode::Characters)

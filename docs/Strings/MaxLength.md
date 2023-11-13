@@ -7,7 +7,7 @@ MaxLength only works with `string`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Sanitizer;
 
 class Article {
   #[Sanitizer\MaxLength(length: 255)]
@@ -43,7 +43,7 @@ Use enum <code>\Jawira\Sanitizer\Enums\LengthMode</code> to define how to measur
 Limit the length of string to 5 characters.
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Sanitizer;
 
 class Project {
   #[Sanitizer\MaxLength(5)]
@@ -59,7 +59,7 @@ class Project {
 Limit the length of string to the last 3 characters.
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Sanitizer;
 
 class Project {
   #[Sanitizer\MaxLength(-3)]
@@ -75,7 +75,7 @@ class Project {
 The string must be 3 bytes in size.
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Sanitizer;
 use Jawira\Sanitizer\Enums\LengthMode;
 
 class Project {

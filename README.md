@@ -12,7 +12,7 @@
 Add sanitizer attributes to your class:
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Sanitizer;
 
 class User {
     #[Sanitizer\Trim]

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Jawira\Sanitizer\Filters;
+namespace Jawira\Sanitizer\Cleaners;
 
 use Attribute;
 use const FILTER_FLAG_ALLOW_FRACTION;
@@ -12,7 +12,7 @@ use function filter_var;
 use function is_string;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
-class FloatChars implements FilterInterface
+class FloatChars implements CleanerInterface
 {
   public function __construct(private bool $allowThousand = false,
                               private bool $allowScientific = false)

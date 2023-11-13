@@ -3,7 +3,7 @@
 namespace UnitTests\Filters;
 
 use Jawira\Sanitizer\Enums\LengthMode;
-use Jawira\Sanitizer\Filters\MaxLength;
+use Jawira\Sanitizer\Cleaners\MaxLength;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;

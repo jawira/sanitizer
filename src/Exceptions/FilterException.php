@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Jawira\Sanitizer;
+namespace Jawira\Sanitizer\Exceptions;
 
 use Exception;
 
