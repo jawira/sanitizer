@@ -8,10 +8,10 @@ Trim only works with `string`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class User {
-  #[Sanitizer\Trim]
+  #[Filter\Trim]
   public string $name;
 }
 ```
@@ -37,10 +37,10 @@ Use enum <code>\Jawira\Sanitizer\Enums\Side</code> to specify trim behaviour.<br
 Remove spaces from the beginning and end of string:
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class User {
-    #[Sanitizer\Trim]
+    #[Filter\Trim]
     public string $name;
 }
 ```
@@ -56,10 +56,10 @@ class User {
 Remove spaces at the end of the string:
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 use \Jawira\Sanitizer\Enums\Side;
 class User {
-    #[Sanitizer\Trim(Side::Right)]
+    #[Filter\Trim(Side::Right)]
     public string $name;
 }
 ```
@@ -75,11 +75,11 @@ class User {
 Remove plus and minus signs at the beginning of the string:
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 use \Jawira\Sanitizer\Enums\Side;
 
 class User {
-    #[Sanitizer\Trim(Side::Left, characters: '+-')]
+    #[Filter\Trim(Side::Left, characters: '+-')]
     public string $name;
 }
 ```

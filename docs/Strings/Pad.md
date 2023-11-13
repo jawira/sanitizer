@@ -8,10 +8,10 @@ This function is multibyte safe.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Report {
-  #[Sanitizer\Pad(length: 10)]
+  #[Filter\Pad(length: 10)]
   public string $category;
 }
 ```
@@ -42,11 +42,11 @@ Use enum <code>\Jawira\Sanitizer\Enums\Side</code> to specify pad behaviour.<br>
 Add leading zeros when string has less than three characters:
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 use Jawira\Sanitizer\Enums\Side;
 
 class Classroom {
-  #[Sanitizer\Pad(length: 3, padString: '0', side: Side::Left)]
+  #[Filter\Pad(length: 3, padString: '0', side: Side::Left)]
   public string $number;
 }
 ```
@@ -60,11 +60,11 @@ class Classroom {
 Create 30 characters width _ascii art_ header:
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 use Jawira\Sanitizer\Enums\Side;
 
 class AsciiArt {
-  #[Sanitizer\Pad(length: 30, padString: '-+-', side: Side::Both)]
+  #[Filter\Pad(length: 30, padString: '-+-', side: Side::Both)]
   public string $title;
 }
 ```
@@ -78,10 +78,10 @@ class AsciiArt {
 Right padding of 30 characters with asterisk symbol:
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Paycheck {
-  #[Sanitizer\Pad(length: 30, padString: '*')]
+  #[Filter\Pad(length: 30, padString: '*')]
   public string $writtenAmount;
 }
 ```
@@ -94,11 +94,11 @@ class Paycheck {
 Pad sanitizer is multibyte safe:
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 use Jawira\Sanitizer\Enums\Side;
 
 class MyEmoji {
-  #[Sanitizer\Pad(length: 6, padString: '🍍', side: Side::Both)]
+  #[Filter\Pad(length: 6, padString: '🍍', side: Side::Both)]
   public string $title;
 }
 ```

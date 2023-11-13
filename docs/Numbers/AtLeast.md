@@ -7,10 +7,10 @@ AtLeast only works with `int` and `float`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Motorcycle {
-  #[Sanitizer\AtLeast(number: 2)]
+  #[Filter\AtLeast(number: 2)]
   public int $wheels;
 }
 ```
@@ -32,10 +32,10 @@ Default value is <em>0</em>.
 Value must be positive or zero.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Post {
-  #[Sanitizer\AtLeast]
+  #[Filter\AtLeast]
   public int $likes;
 }
 ```
@@ -49,10 +49,10 @@ class Post {
 Value must be greater or equal than _-273.15_.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Chemical {
-  #[Sanitizer\AtLeast(number: -273.15)]
+  #[Filter\AtLeast(number: -273.15)]
   public int|float $temperature;
 }
 ```

@@ -7,10 +7,10 @@ AtMost only works with `int` and `float`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Exam {
-  #[Sanitizer\AtMost(number: 100)]
+  #[Filter\AtMost(number: 100)]
   public string $grade;
 }
 ```
@@ -32,10 +32,10 @@ Default value is <em>0</em>.
 Value must be negative or zero.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Submarine {
-  #[Sanitizer\AtMost]
+  #[Filter\AtMost]
   public int|float $depth;
 }
 ```
@@ -51,10 +51,10 @@ class Submarine {
 Value cannot be greater than 20.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Building {
-  #[Sanitizer\AtMost(number: 20)]
+  #[Filter\AtMost(number: 20)]
   public int $levels;
 }
 ```

@@ -12,11 +12,11 @@
 Add sanitizer attributes to your class:
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class User {
-    #[Sanitizer\Trim]
-    #[Sanitizer\Title]
+    #[Filter\Trim]
+    #[Filter\Title]
     public string $name;
 }
 ```

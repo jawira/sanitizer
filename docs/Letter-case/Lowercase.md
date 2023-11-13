@@ -7,10 +7,10 @@ Lowercase only works with `string`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class User {
-  #[Sanitizer\Lowercase]
+  #[Filter\Lowercase]
   public string $username;
 }
 ```
@@ -24,10 +24,10 @@ No parameters.
 Convert string to lowercase letters.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Article {
-  #[Sanitizer\Lowercase]
+  #[Filter\Lowercase]
   public string $keywords;
 }
 ```

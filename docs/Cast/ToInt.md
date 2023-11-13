@@ -10,10 +10,10 @@ is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class User {
-  #[Sanitizer\ToInt]
+  #[Filter\ToInt]
   public int|string $age;
 }
 ```
@@ -40,10 +40,10 @@ If the string starts with:</p>
 Cast value to integer.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Product {
-  #[Sanitizer\ToInt]
+  #[Filter\ToInt]
   public $quantity;
 }
 ```
@@ -67,10 +67,10 @@ false → 0
 Cast binary string to integer.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Product {
-  #[Sanitizer\ToInt(base: 2)]
+  #[Filter\ToInt(base: 2)]
   public $quantity;
 }
 ```
@@ -83,10 +83,10 @@ class Product {
 Detect string base.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Product {
-  #[Sanitizer\ToInt(base: 0)]
+  #[Filter\ToInt(base: 0)]
   public $quantity;
 }
 ```

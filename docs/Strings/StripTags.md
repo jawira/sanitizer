@@ -7,10 +7,10 @@ StripTags only works with `string`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Article {
-  #[Sanitizer\StripTags]
+  #[Filter\StripTags]
   public string $content;
 }
 ```
@@ -30,10 +30,10 @@ Default value is empty array.
 Strip all html tags.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Article {
-  #[Sanitizer\StripTags]
+  #[Filter\StripTags]
   public string $content;
 }
 ```
@@ -47,10 +47,10 @@ class Article {
 Strip all html tags but `<br>` and `<p>` tags.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Article {
-  #[Sanitizer\StripTags(allowedTags: ['br', 'p'])]
+  #[Filter\StripTags(allowedTags: ['br', 'p'])]
   public string $content;
 }
 ```
