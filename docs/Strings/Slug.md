@@ -9,10 +9,10 @@ This function is multibyte safe.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Product {
-  #[Sanitizer\Slug]
+  #[Filter\Slug]
   public string $code;
 }
 ```
@@ -26,11 +26,11 @@ No parameters.
 Add leading zeros when string has less than three characters:
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 use Jawira\Sanitizer\Enums\Side;
 
 class BlogPost {
-  #[Sanitizer\Slug]
+  #[Filter\Slug]
   public string $code;
 }
 ```
