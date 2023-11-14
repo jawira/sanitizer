@@ -2,7 +2,7 @@
 
 namespace UnitTests\Filters;
 
-use Jawira\Sanitizer\Filters\Lowercase;
+use Jawira\Sanitizer\Cleaners\Lowercase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;

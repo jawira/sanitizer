@@ -1,29 +1,27 @@
 <?php declare(strict_types=1);
 
-namespace Jawira\Sanitizer\Filters;
+namespace Jawira\Sanitizer\Cleaners;
 
 use Attribute;
+use const FILTER_SANITIZE_NUMBER_INT;
 use function assert;
+use function filter_var;
 use function is_string;
-use function mb_strtoupper;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
-class Uppercase implements FilterInterface
+class IntegerChars implements CleanerInterface
 {
-  /**
-   * `mb_strtoupper` function only accepts strings.
-   */
   public function precondition(mixed $value): bool
   {
     return is_string($value);
   }
 
-  /**
-   * Apply `mb_strtoupper` function.
-   */
   public function filter(mixed $value): string
   {
     assert(is_string($value));
-    return mb_strtoupper($value);
+    $result = filter_var($value, FILTER_SANITIZE_NUMBER_INT);
+    assert(is_string($result));
+
+    return $result;
   }
 }

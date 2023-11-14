@@ -2,7 +2,7 @@
 
 namespace UnitTests\Filters;
 
-use Jawira\Sanitizer\Filters\Replace;
+use Jawira\Sanitizer\Cleaners\Replace;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;

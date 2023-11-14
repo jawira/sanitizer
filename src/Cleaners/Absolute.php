@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Jawira\Sanitizer\Filters;
+namespace Jawira\Sanitizer\Cleaners;
 
 use Attribute;
 use function abs;
@@ -13,7 +13,7 @@ use function is_int;
  * @link https://jawira.github.io/sanitizer/Numbers/Absolute.html
  */
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
-class Absolute implements FilterInterface
+class Absolute implements CleanerInterface
 {
   public function precondition(mixed $value): bool
   {

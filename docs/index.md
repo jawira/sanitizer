@@ -3,23 +3,25 @@
 Add sanitizer attributes to your class:
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class User {
-    #[Sanitizer\Trim]
-    #[Sanitizer\Title]
+    #[Filter\Trim]
+    #[Filter\Title]
     public string $name;
 }
 ```
 
-Call `Sanitizer::sanitize` method to apply sanitizers:
+Call `Sanitizer::sanitize` method to apply sanitizers on object:
 
 ```php
 use Jawira\Sanitizer\Sanitizer;
 
+// Setting value
 $user = new User();
 $user->name = ' BOB ';
 
+// Cleaning object's properties
 $sanitizer = new Sanitizer();
 $sanitizer->sanitize($user);
 

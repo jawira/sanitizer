@@ -9,10 +9,10 @@ Digits only works with `strings`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Phone {
-  #[Sanitizer\Digits]
+  #[Filter\Digits]
   public string $pinCode;
 }
 ```
@@ -26,10 +26,10 @@ No parameters.
 Remove all characters but digits.
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Phone {
-  #[Sanitizer\Digits]
+  #[Filter\Digits]
   public string $pinCode;
 }
 ```

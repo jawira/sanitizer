@@ -17,10 +17,10 @@ FloatChars only works with `string`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class User {
-  #[Sanitizer\FloatChars]
+  #[Filter\FloatChars]
   public string $height;
 }
 ```
@@ -45,10 +45,10 @@ Default value is <em>false</em>.
 Only allow `0-9`, `+`, `-` and `.` characters.
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Car {
-  #[Sanitizer\FloatChars]
+  #[Filter\FloatChars]
   public string $odometer;
 }
 ```
@@ -65,10 +65,10 @@ class Car {
 Only allow `0-9`, `+`, `-`, `.`, and thousand separator `,`.
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Car {
-  #[Sanitizer\FloatChars(allowThousand: true)]
+  #[Filter\FloatChars(allowThousand: true)]
   public string $odometer;
 }
 ```
@@ -83,10 +83,10 @@ class Car {
 Only allow `0-9`, `+`, `-`, `.`, and scientific notation characters `e`, `E`.
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Car {
-  #[Sanitizer\FloatChars(allowScientific: true)]
+  #[Filter\FloatChars(allowScientific: true)]
   public string $odometer;
 }
 ```

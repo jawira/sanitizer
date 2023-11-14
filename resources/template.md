@@ -7,10 +7,10 @@
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class User {
-  #[Sanitizer\xxxxxxxxxxxxxxxxxxxxxx]
+  #[Filter\xxxxxxxxxxxxxxxxxxxxxx]
   public string $name;
 }
 ```
@@ -32,10 +32,10 @@ xxxxxxxxxxxxxxxxxxxxxx.
 xxxxxxxxxxxxxxxxxxxxxx.
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class User {
-  #[Sanitizer\xxxxxxxxxxxxxxxxxxxxxx]
+  #[Filter\xxxxxxxxxxxxxxxxxxxxxx]
   public string $name;
 }
 ```

@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Jawira\Sanitizer\Filters;
+namespace Jawira\Sanitizer\Cleaners;
 
 use Attribute;
 use function is_string;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
-class Replace implements FilterInterface
+class Replace implements CleanerInterface
 {
   private const DELIMITER = '#';
 
