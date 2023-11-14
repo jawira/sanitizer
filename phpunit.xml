@@ -8,6 +8,11 @@
          colors="true"
          failOnRisky="true"
          failOnWarning="true"
+         failOnDeprecation="true"
+         failOnNotice="true"
+         failOnSkipped="true"
+         failOnIncomplete="true"
+         failOnEmptyTestSuite="true"
          cacheDirectory=".phpunit.cache"
          requireCoverageMetadata="true"
          beStrictAboutCoverageMetadata="true">

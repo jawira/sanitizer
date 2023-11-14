@@ -33,7 +33,7 @@ jobs:
       - name: Composer install
         run: bin/phing composer:install
 
-      - name: PHPUnit
-        run: bin/phing phpunit:check
+      - name: Quality assurance
+        run: bin/phing qa
 
 
