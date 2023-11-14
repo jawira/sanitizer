@@ -24,6 +24,9 @@ jobs:
       - name: Download phing
         run: mkdir bin && curl -L -C - -s -S -o bin/phing https://github.com/phingofficial/phing/releases/download/3.0.0-rc6/phing-3.0.0-RC6.phar && chmod +x bin/phing
 
+      - name: Composer install
+        run: bin/phing composer:install
+
       - name: PHPUnit
         run: bin/phing phpunit:check
 
