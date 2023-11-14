@@ -1,15 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Jawira\Sanitizer\Filters;
+namespace Jawira\Sanitizer\Cleaners;
 
 use Attribute;
-use const MB_CASE_TITLE;
 use function assert;
 use function is_string;
-use function mb_convert_case;
+use function preg_replace;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
-class Title implements FilterInterface
+class Digits implements CleanerInterface
 {
   public function precondition(mixed $value): bool
   {
@@ -20,6 +19,6 @@ class Title implements FilterInterface
   {
     assert(is_string($value));
 
-    return mb_convert_case($value, MB_CASE_TITLE);
+    return preg_replace('#\D+#', '', $value);
   }
 }

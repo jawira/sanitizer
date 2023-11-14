@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Jawira\Sanitizer\Filters;
+namespace Jawira\Sanitizer\Cleaners;
 
 use Attribute;
 use function intval;
@@ -13,7 +13,7 @@ use function is_scalar;
  * @see https://www.php.net/manual/en/language.types.integer.php#language.types.integer.casting
  */
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
-class ToInt implements FilterInterface
+class ToInt implements CleanerInterface
 {
   public function __construct(
     /**

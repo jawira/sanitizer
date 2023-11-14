@@ -8,10 +8,10 @@ Replace only works with `string`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class User {
-  #[Sanitizer\Replace(search: ' ', replace: '_')]
+  #[Filter\Replace(search: ' ', replace: '_')]
   public string $name;
 }
 ```
@@ -35,10 +35,10 @@ Default value is _true_.
 Remove all whitespace characters.
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class User {
-  #[Sanitizer\Replace(search: ' ', replace: '')]
+  #[Filter\Replace(search: ' ', replace: '')]
   public string $email;
 }
 ```
@@ -52,10 +52,10 @@ class User {
 Replace a string by another.
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Order {
-  #[Sanitizer\Replace('pizza', 'fries')]
+  #[Filter\Replace('pizza', 'fries')]
   public string $description;
 }
 ```
@@ -67,10 +67,10 @@ class Order {
 Perform case-insensitive search.
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Famous {
-  #[Sanitizer\Replace('del toro', 'del Toro')]
+  #[Filter\Replace('del toro', 'del Toro')]
   public string $name;
 }
 ```

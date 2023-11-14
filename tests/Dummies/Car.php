@@ -2,28 +2,20 @@
 
 namespace Dummies;
 
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Car
 {
-  public function __construct(
-    #[Sanitizer\Slug]
-    #[Sanitizer\Lowercase]
-    public string $code,
+  #[Filter\Trim]
+  public string $constructor;
 
-    #[Sanitizer\Trim]
-    public string $brand,
+  #[Filter\Digits]
+  public string $year;
 
-    #[Sanitizer\Digits]
-    public string $year,
+  #[Filter\Absolute]
+  public float $speed;
 
-    #[Sanitizer\Absolute]
-    public float  $speed,
-
-    #[Sanitizer\AtLeast(0)]
-    #[Sanitizer\AtMost(130)]
-    public float  $odometer,
-  )
-  {
-  }
+  #[Filter\AtLeast(0)]
+  #[Filter\AtMost(130)]
+  public float $odometer;
 }

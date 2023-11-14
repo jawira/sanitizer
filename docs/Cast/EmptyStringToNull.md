@@ -7,10 +7,10 @@ EmptyStringToNull only works with `string`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Article {
-  #[Sanitizer\EmptyStringToNull]
+  #[Filter\EmptyStringToNull]
   public ?string $category;
 }
 ```
@@ -24,10 +24,10 @@ No parameters.
 Set null if value is empty string.
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class User {
-  #[Sanitizer\EmptyStringToNull]
+  #[Filter\EmptyStringToNull]
   public ?string $name;
 }
 ```

@@ -8,6 +8,9 @@ use ReflectionProperty;
 use function array_map;
 use function assert;
 
+/**
+ * Sanitizer service.
+ */
 class Sanitizer implements SanitizerInterface
 {
   public function sanitize(object $object): void
@@ -27,11 +30,11 @@ class Sanitizer implements SanitizerInterface
     }
     $mapper = function (ReflectionAttribute $attribute) use ($object, $reflectionProperty): bool {
       $filter = $attribute->newInstance();
-      assert($filter instanceof Filters\FilterInterface);
+      assert($filter instanceof Cleaners\CleanerInterface);
 
       return $this->applyFilter($object, $reflectionProperty, $filter);
     };
-    array_map($mapper, $reflectionProperty->getAttributes(Filters\FilterInterface::class, ReflectionAttribute::IS_INSTANCEOF));
+    array_map($mapper, $reflectionProperty->getAttributes(Cleaners\CleanerInterface::class, ReflectionAttribute::IS_INSTANCEOF));
 
     return true;
   }
@@ -39,7 +42,7 @@ class Sanitizer implements SanitizerInterface
   /**
    * @return bool Return value is useless but required by `array_map` function.
    */
-  private function applyFilter(object $object, ReflectionProperty $reflectionProperty, Filters\FilterInterface $filter): bool
+  private function applyFilter(object $object, ReflectionProperty $reflectionProperty, Cleaners\CleanerInterface $filter): bool
   {
     /** @var mixed $oldValue */
     $oldValue = $reflectionProperty->getValue($object);

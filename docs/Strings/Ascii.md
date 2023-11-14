@@ -9,10 +9,10 @@ Ascii sanitizer only works with `string`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class User {
-  #[Sanitizer\Ascii]
+  #[Filter\Ascii]
   public string $username;
 }
 ```
@@ -35,10 +35,10 @@ also removed, this is the first column of the following table.
 Remove all non-ascii characters:
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Message {
-  #[Sanitizer\Ascii]
+  #[Filter\Ascii]
   public string $content;
 }
 ```
@@ -53,10 +53,10 @@ class Message {
 Remove all non-ascii characters and removing non-printable characters:
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Message {
-  #[Sanitizer\Ascii(onlyPrintable: true)]
+  #[Filter\Ascii(onlyPrintable: true)]
   public string $content;
 }
 ```

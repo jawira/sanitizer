@@ -8,10 +8,10 @@ is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class User {
-  #[Sanitizer\ToString]
+  #[Filter\ToString]
   public string $name;
 }
 ```
@@ -25,10 +25,10 @@ No parameters.
 Cast value to string.
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Car {
-  #[Sanitizer\ToString]
+  #[Filter\ToString]
   public $description;
 }
 ```

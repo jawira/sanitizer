@@ -7,10 +7,10 @@ Uppercase only works with `string`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class User {
-  #[Sanitizer\Uppercase]
+  #[Filter\Uppercase]
   public string $initials;
 }
 ```
@@ -24,10 +24,10 @@ No parameters.
 Convert string to lowercase letters.
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Article {
-  #[Sanitizer\Uppercase]
+  #[Filter\Uppercase]
   public string $keywords;
 }
 ```

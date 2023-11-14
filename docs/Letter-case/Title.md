@@ -8,10 +8,10 @@ Title only works with `string`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Article {
-  #[Sanitizer\Title]
+  #[Filter\Title]
   public string $title;
 }
 ```
@@ -25,10 +25,10 @@ No parameters.
 Set value in title case.
 
 ```php
-use Jawira\Sanitizer\Filters as Sanitizer;
+use Jawira\Sanitizer\Cleaners as Filter;
 
 class Article {
-  #[Sanitizer\Title]
+  #[Filter\Title]
   public string $title;
 }
 ```

@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Jawira\Sanitizer\Filters;
+namespace Jawira\Sanitizer\Cleaners;
 
 use Attribute;
 use Jawira\Sanitizer\Enums\Side;
-use Jawira\Sanitizer\FilterException;
+use Jawira\Sanitizer\Exceptions\FilterException;
 use function Symfony\Component\String\u;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
-class Pad implements FilterInterface
+class Pad implements CleanerInterface
 {
   public function __construct(private int    $length,
                               private string $padString = ' ',
