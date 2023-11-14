@@ -1,11 +1,10 @@
-name: GitHub Actions Demo
-run-name: Running PHPUnit
-on: [ push ]
+name: Quality Assurance
+on: [ pull_request ]
 jobs:
-  PHPUnit:
+  QA:
     strategy:
       matrix:
-        php: [ '8.1', '8.2' ]
+        php: [ '8.1', '8.2', '8.3' ]
         lowest: [ '0','1' ]
 
     runs-on: ubuntu-latest
