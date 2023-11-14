@@ -34,5 +34,5 @@ jobs:
 
       - name: Quality assurance
         run: bin/phing qa
-
-
+        env:
+          PHP_CS_FIXER_IGNORE_ENV: 1
