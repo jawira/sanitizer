@@ -20,7 +20,6 @@ class IntegerChars implements CleanerInterface
   {
     assert(is_string($value));
     $result = filter_var($value, FILTER_SANITIZE_NUMBER_INT);
-    assert(is_string($result));
 
     return $result;
   }
