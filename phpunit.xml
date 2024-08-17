@@ -15,7 +15,13 @@
          failOnEmptyTestSuite="true"
          cacheDirectory=".phpunit.cache"
          requireCoverageMetadata="true"
-         beStrictAboutCoverageMetadata="true">
+         beStrictAboutCoverageMetadata="true"
+         displayDetailsOnIncompleteTests="true"
+         displayDetailsOnSkippedTests="true"
+         displayDetailsOnTestsThatTriggerDeprecations="true"
+         displayDetailsOnTestsThatTriggerErrors="true"
+         displayDetailsOnTestsThatTriggerNotices="true"
+         displayDetailsOnTestsThatTriggerWarnings="true">
 
   <testsuites>
     <testsuite name="default">
