@@ -19,7 +19,8 @@ class IntegerChars implements CleanerInterface
   public function filter(mixed $value): string
   {
     assert(is_string($value));
+    $result = filter_var($value, FILTER_SANITIZE_NUMBER_INT);
 
-    return filter_var($value, FILTER_SANITIZE_NUMBER_INT);
+    return $result;
   }
 }
