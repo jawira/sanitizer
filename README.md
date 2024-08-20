@@ -2,6 +2,13 @@
 
 **Sanitize your objects with attributes.**
 
+> [!CAUTION]
+> **v1.1.0 BC break**
+> Due to a mistake, a new namespace must be used with attributes:
+> ```php
+> use Jawira\Sanitizer\Cleaners as Filter;
+> ```
+
 [![Latest Stable Version](http://poser.pugx.org/jawira/sanitizer/v)](https://packagist.org/packages/jawira/sanitizer)
 [![Total Downloads](http://poser.pugx.org/jawira/sanitizer/downloads)](https://packagist.org/packages/jawira/sanitizer)
 [![PHP Version Require](http://poser.pugx.org/jawira/sanitizer/require/php)](https://packagist.org/packages/jawira/sanitizer)
