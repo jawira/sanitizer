@@ -7,7 +7,7 @@ StripTags only works with `string`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Article {
   #[Filter\StripTags]
@@ -30,7 +30,7 @@ Default value is empty array.
 Strip all html tags.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Article {
   #[Filter\StripTags]
@@ -47,7 +47,7 @@ class Article {
 Strip all html tags but `<br>` and `<p>` tags.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Article {
   #[Filter\StripTags(allowedTags: ['br', 'p'])]

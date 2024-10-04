@@ -7,7 +7,7 @@
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class User {
   #[Filter\xxxxxxxxxxxxxxxxxxxxxx]
@@ -32,7 +32,7 @@ xxxxxxxxxxxxxxxxxxxxxx.
 xxxxxxxxxxxxxxxxxxxxxx.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class User {
   #[Filter\xxxxxxxxxxxxxxxxxxxxxx]

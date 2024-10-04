@@ -2,7 +2,7 @@
 
 namespace Dummies;
 
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class User
 {

@@ -3,7 +3,7 @@
 namespace UnitTests\Filters;
 
 use Jawira\Sanitizer\Enums\Side;
-use Jawira\Sanitizer\Cleaners\Trim;
+use Jawira\Sanitizer\Attribute\Trim;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;

@@ -8,7 +8,7 @@ Title only works with `string`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Article {
   #[Filter\Title]
@@ -25,7 +25,7 @@ No parameters.
 Set value in title case.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Article {
   #[Filter\Title]

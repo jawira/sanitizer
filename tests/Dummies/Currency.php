@@ -3,7 +3,7 @@
 namespace Dummies;
 
 use Jawira\Sanitizer\Enums\Side;
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 /**
  * @see https://en.wikipedia.org/wiki/ISO_4217

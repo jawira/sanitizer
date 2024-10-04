@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Jawira\Sanitizer\Cleaners;
+namespace Jawira\Sanitizer\Attribute;
 
 use Attribute;
 use function assert;
 use function is_float;
 use function is_int;
-use function max;
+use function min;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
-class AtLeast implements CleanerInterface
+class AtMost implements CleanerInterface
 {
   public function __construct(private int|float $number = 0)
   {
@@ -21,13 +21,13 @@ class AtLeast implements CleanerInterface
       return false;
     }
 
-    return $value < $this->number;
+    return $this->number < $value;
   }
 
   public function filter(mixed $value): int|float
   {
     assert(is_int($value) || is_float($value));
 
-    return max($this->number, $value);
+    return min($this->number, $value);
   }
 }

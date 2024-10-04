@@ -17,7 +17,7 @@ FloatChars only works with `string`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class User {
   #[Filter\FloatChars]
@@ -45,7 +45,7 @@ Default value is <em>false</em>.
 Only allow `0-9`, `+`, `-` and `.` characters.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Car {
   #[Filter\FloatChars]
@@ -65,7 +65,7 @@ class Car {
 Only allow `0-9`, `+`, `-`, `.`, and thousand separator `,`.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Car {
   #[Filter\FloatChars(allowThousand: true)]
@@ -83,7 +83,7 @@ class Car {
 Only allow `0-9`, `+`, `-`, `.`, and scientific notation characters `e`, `E`.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Car {
   #[Filter\FloatChars(allowScientific: true)]
