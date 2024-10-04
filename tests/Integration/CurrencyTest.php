@@ -3,11 +3,11 @@
 namespace Integration;
 
 use Dummies\Currency;
-use Jawira\Sanitizer\Cleaners\AtLeast;
-use Jawira\Sanitizer\Cleaners\Digits;
-use Jawira\Sanitizer\Cleaners\Pad;
-use Jawira\Sanitizer\Cleaners\Trim;
-use Jawira\Sanitizer\Cleaners\Uppercase;
+use Jawira\Sanitizer\Attribute\AtLeast;
+use Jawira\Sanitizer\Attribute\Digits;
+use Jawira\Sanitizer\Attribute\Pad;
+use Jawira\Sanitizer\Attribute\Trim;
+use Jawira\Sanitizer\Attribute\Uppercase;
 use Jawira\Sanitizer\Sanitizer;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;

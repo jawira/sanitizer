@@ -6,7 +6,7 @@
 > **v1.1.0 BC break**
 > Due to a mistake, a new namespace must be used with attributes:
 > ```php
-> use Jawira\Sanitizer\Cleaners as Filter;
+> use Jawira\Sanitizer\Attribute as Filter;
 > ```
 
 [![Latest Stable Version](http://poser.pugx.org/jawira/sanitizer/v)](https://packagist.org/packages/jawira/sanitizer)
@@ -19,7 +19,7 @@
 Add sanitizer attributes to your class:
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class User {
     #[Filter\Trim]

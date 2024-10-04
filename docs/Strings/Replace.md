@@ -8,7 +8,7 @@ Replace only works with `string`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class User {
   #[Filter\Replace(search: ' ', replace: '_')]
@@ -35,7 +35,7 @@ Default value is _true_.
 Remove all whitespace characters.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class User {
   #[Filter\Replace(search: ' ', replace: '')]
@@ -52,7 +52,7 @@ class User {
 Replace a string by another.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Order {
   #[Filter\Replace('pizza', 'fries')]
@@ -67,7 +67,7 @@ class Order {
 Perform case-insensitive search.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Famous {
   #[Filter\Replace('del toro', 'del Toro')]

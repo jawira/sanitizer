@@ -3,7 +3,7 @@
 Add sanitizer attributes to your class:
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class User {
     #[Filter\Trim]

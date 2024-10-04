@@ -30,11 +30,11 @@ class Sanitizer implements SanitizerInterface
     }
     $mapper = function (ReflectionAttribute $attribute) use ($object, $reflectionProperty): bool {
       $filter = $attribute->newInstance();
-      assert($filter instanceof Cleaners\CleanerInterface);
+      assert($filter instanceof Attribute\CleanerInterface);
 
       return $this->applyFilter($object, $reflectionProperty, $filter);
     };
-    array_map($mapper, $reflectionProperty->getAttributes(Cleaners\CleanerInterface::class, ReflectionAttribute::IS_INSTANCEOF));
+    array_map($mapper, $reflectionProperty->getAttributes(Attribute\CleanerInterface::class, ReflectionAttribute::IS_INSTANCEOF));
 
     return true;
   }
@@ -42,7 +42,7 @@ class Sanitizer implements SanitizerInterface
   /**
    * @return bool Return value is useless but required by `array_map` function.
    */
-  private function applyFilter(object $object, ReflectionProperty $reflectionProperty, Cleaners\CleanerInterface $filter): bool
+  private function applyFilter(object $object, ReflectionProperty $reflectionProperty, Attribute\CleanerInterface $filter): bool
   {
     /** @var mixed $oldValue */
     $oldValue = $reflectionProperty->getValue($object);
