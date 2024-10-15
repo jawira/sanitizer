@@ -3,13 +3,13 @@
 namespace Integration;
 
 use Dummies\Car;
-use Jawira\Sanitizer\Filters\Absolute;
-use Jawira\Sanitizer\Filters\AtLeast;
-use Jawira\Sanitizer\Filters\AtMost;
-use Jawira\Sanitizer\Filters\Digits;
-use Jawira\Sanitizer\Filters\Lowercase;
-use Jawira\Sanitizer\Filters\Slug;
-use Jawira\Sanitizer\Filters\Trim;
+use Jawira\Sanitizer\Attribute\Absolute;
+use Jawira\Sanitizer\Attribute\AtLeast;
+use Jawira\Sanitizer\Attribute\AtMost;
+use Jawira\Sanitizer\Attribute\Digits;
+use Jawira\Sanitizer\Attribute\Lowercase;
+use Jawira\Sanitizer\Attribute\Slug;
+use Jawira\Sanitizer\Attribute\Trim;
 use Jawira\Sanitizer\Sanitizer;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -38,6 +38,7 @@ class CarTest extends TestCase
   public function testCar($code, $codeExpected, $brand, $brandExpected, $year, $yearExpected, $speed, $speedExpected, $odometer, $odometerExpected)
   {
     $car = new Car($code, $brand, $year, $speed, $odometer);
+    /** @var Car $car */
     $this->sanitizer->sanitize($car);
     $this->assertSame($codeExpected, $car->code);
   }
