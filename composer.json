@@ -27,7 +27,8 @@
     "jawira/skeleton": "^2.23",
     "pds/skeleton": "^1.0",
     "phpunit/phpunit": "^10.5.30",
-    "vimeo/psalm": "^5.25"
+    "vimeo/psalm": "^5.25",
+    "ext-intl": "*"
   },
   "autoload": {
     "psr-4": {
