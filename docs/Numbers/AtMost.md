@@ -7,7 +7,7 @@ AtMost only works with `int` and `float`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Exam {
   #[Filter\AtMost(number: 100)]
@@ -32,7 +32,7 @@ Default value is <em>0</em>.
 Value must be negative or zero.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Submarine {
   #[Filter\AtMost]
@@ -51,7 +51,7 @@ class Submarine {
 Value cannot be greater than 20.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Building {
   #[Filter\AtMost(number: 20)]

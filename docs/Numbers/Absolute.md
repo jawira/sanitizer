@@ -7,7 +7,7 @@ Absolute only works with `int` and `float`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Travel {
   #[Filter\Absolute]
@@ -24,7 +24,7 @@ No parameters.
 Absolute value:
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class User {
   #[Filter\Absolute]

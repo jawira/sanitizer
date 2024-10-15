@@ -7,7 +7,7 @@ EmptyStringToNull only works with `string`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Article {
   #[Filter\EmptyStringToNull]
@@ -24,7 +24,7 @@ No parameters.
 Set null if value is empty string.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class User {
   #[Filter\EmptyStringToNull]

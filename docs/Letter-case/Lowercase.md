@@ -7,7 +7,7 @@ Lowercase only works with `string`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class User {
   #[Filter\Lowercase]
@@ -24,7 +24,7 @@ No parameters.
 Convert string to lowercase letters.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Article {
   #[Filter\Lowercase]
