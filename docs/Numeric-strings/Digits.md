@@ -9,7 +9,7 @@ Digits only works with `strings`, any other type is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Phone {
   #[Filter\Digits]
@@ -26,7 +26,7 @@ No parameters.
 Remove all characters but digits.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Phone {
   #[Filter\Digits]

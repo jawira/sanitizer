@@ -10,7 +10,7 @@ is ignored.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class User {
   #[Filter\ToInt]
@@ -40,7 +40,7 @@ If the string starts with:</p>
 Cast value to integer.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Product {
   #[Filter\ToInt]
@@ -67,7 +67,7 @@ false → 0
 Cast binary string to integer.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Product {
   #[Filter\ToInt(base: 2)]
@@ -83,7 +83,7 @@ class Product {
 Detect string base.
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Product {
   #[Filter\ToInt(base: 0)]

@@ -8,7 +8,7 @@ This function is multibyte safe.
 ## Basic usage
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Report {
   #[Filter\Pad(length: 10)]
@@ -42,7 +42,7 @@ Use enum <code>\Jawira\Sanitizer\Enums\Side</code> to specify pad behaviour.<br>
 Add leading zeros when string has less than three characters:
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 use Jawira\Sanitizer\Enums\Side;
 
 class Classroom {
@@ -60,7 +60,7 @@ class Classroom {
 Create 30 characters width _ascii art_ header:
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 use Jawira\Sanitizer\Enums\Side;
 
 class AsciiArt {
@@ -78,7 +78,7 @@ class AsciiArt {
 Right padding of 30 characters with asterisk symbol:
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 
 class Paycheck {
   #[Filter\Pad(length: 30, padString: '*')]
@@ -94,7 +94,7 @@ class Paycheck {
 Pad sanitizer is multibyte safe:
 
 ```php
-use Jawira\Sanitizer\Cleaners as Filter;
+use Jawira\Sanitizer\Attribute as Filter;
 use Jawira\Sanitizer\Enums\Side;
 
 class MyEmoji {

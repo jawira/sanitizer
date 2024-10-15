@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Jawira\Sanitizer\Cleaners;
+namespace Jawira\Sanitizer\Attribute;
 
 use Attribute;
 use function assert;
 use function is_string;
-use function mb_strtolower;
+use function mb_strtoupper;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_PROPERTY)]
-class Lowercase implements CleanerInterface
+class Uppercase implements CleanerInterface
 {
   /**
-   * `mb_strtolower` function only accepts strings.
+   * `mb_strtoupper` function only accepts strings.
    */
   public function precondition(mixed $value): bool
   {
@@ -19,12 +19,11 @@ class Lowercase implements CleanerInterface
   }
 
   /**
-   * Apply `mb_strtolower function.
+   * Apply `mb_strtoupper` function.
    */
   public function filter(mixed $value): string
   {
     assert(is_string($value));
-
-    return mb_strtolower($value);
+    return mb_strtoupper($value);
   }
 }
