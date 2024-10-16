@@ -29,7 +29,7 @@ jobs:
           chmod +x ~/.local/bin/phing
 
       - name: Install dependencies
-        run: composer update --no-interaction ${{ matrix.dependencies && '' || '--prefer-lowest' }}
+        run: composer update --no-interaction ${{ matrix.dependencies == 'lowest' && '--prefer-lowest' || '' }}
 
       - name: Quality assurance
         run: phing qa
