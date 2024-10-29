@@ -1,8 +1,10 @@
 /.idea					export-ignore
+/.github				export-ignore
 /.phpunit.cache			export-ignore
 /docs					export-ignore
 /site					export-ignore
 /tests					export-ignore
+/resources				export-ignore
 /vendor					export-ignore
 /.editorconfig			export-ignore
 /.gitattributes			export-ignore
