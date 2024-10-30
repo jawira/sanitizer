@@ -16,20 +16,14 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: mbstring, intl
           coverage: xdebug
+          tools: phing:v3.0.0
 
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install phing
-        env:
-          PHING_VERSION: '3.0.0'
-        run: |
-          mkdir -p ~/.local/bin
-          curl -L -C - -s -S -o ~/.local/bin/phing https://github.com/phingofficial/phing/releases/download/${PHING_VERSION}/phing-${PHING_VERSION}.phar
-          chmod +x ~/.local/bin/phing
-
-      - name: Install dependencies
-        run: composer update --no-interaction ${{ matrix.dependencies == 'lowest' && '--prefer-lowest' || '' }}
+      - uses: "ramsey/composer-install@v3"
+        with:
+          dependency-versions: "${{ matrix.dependencies }}"
 
       - name: Quality assurance
         run: phing qa
